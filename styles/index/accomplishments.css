@@ -1,0 +1,209 @@
+#accomplishments {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 28px;
+}
+
+#accomplishments::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background-color: #303030;
+}
+
+/* Each achievement */
+.achievement {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.achievement:last-child {
+    margin-bottom: 0;
+}
+
+/* Dot on the timeline */
+.achievement-dot {
+    position: absolute;
+    left: -28px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #181818;
+}
+
+.achievement-dot-inner {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+/* Category colours */
+.achievement-dot.hiking {
+    border-color: #1D9E75;
+}
+
+.achievement-dot.hiking .achievement-dot-inner {
+    background: #0F6E56;
+}
+
+.achievement-dot.hiking-plus {
+    border-color: #534AB7;
+}
+
+.achievement-dot.hiking-plus .achievement-dot-inner {
+    background: #3C3489;
+}
+
+.achievement-dot.cycling {
+    border-color: #D85A30;
+}
+
+.achievement-dot.cycling .achievement-dot-inner {
+    background: #993C1D;
+}
+
+.achievement-dot.running {
+    border-color: #378ADD;
+}
+
+.achievement-dot.running .achievement-dot-inner {
+    background: #185FA5;
+}
+
+.achievement-dot.run-art {
+    border-color: #BA7517;
+}
+
+.achievement-dot.run-art .achievement-dot-inner {
+    background: #854F0B;
+}
+
+/* Card */
+.achievement-card {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s;
+}
+
+.achievement-card:hover {
+    border-color: #444444;
+}
+
+/* Card header: title + badge */
+.achievement-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-header h3 {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.achievement-badge {
+    font-family: "Noto Sans", serif;
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.achievement-badge.hiking {
+    background: #0b2e22;
+    color: #4ade80;
+}
+
+.achievement-badge.hiking-plus {
+    background: #1a1740;
+    color: #a78bfa;
+}
+
+.achievement-badge.cycling {
+    background: #2e1508;
+    color: #fb923c;
+}
+
+.achievement-badge.running {
+    background: #0a1e30;
+    color: #60a5fa;
+}
+
+.achievement-badge.run-art {
+    background: #2a1a04;
+    color: #fbbf24;
+}
+
+/* Description */
+.achievement-desc {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    padding-top: 0 !important;
+    /* override #main p padding-top */
+    margin-bottom: 0.75rem;
+}
+
+/* Stat chips */
+.achievement-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.achievement-stat {
+    background-color: #181818;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+.achievement-stat-val {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.85rem;
+    color: #ffffff;
+}
+
+.achievement-stat-label {
+    font-size: 0.65rem;
+    color: #6b6b68;
+    margin-top: 1px;
+}
+
+/* O(2^n) closer */
+.achievement-closer {
+    margin-top: 2rem;
+    border-top: 1px solid #303030;
+    padding-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.achievement-closer-code {
+    font-family: "Lexend", sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.achievement-closer-text {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+}

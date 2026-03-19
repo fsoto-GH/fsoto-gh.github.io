@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="styles/shared/content.css">
     <link rel="stylesheet" href="styles/shared/profile.css">
     <link rel="stylesheet" href="styles/index/index.css">
+    <link rel="stylesheet" href="styles/index/accomplishments.css">
     <link rel="stylesheet" href="styles/shared/navbar.css">
     <script src="scripts/index.js"></script>
     <script src="scripts/shared/navbar.js"></script>
@@ -44,15 +45,40 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="nav-bar">
-        <ul id="links">
-            <li><a href="#contact"><img src="favicon_io/favicon-32x32.png" alt="My website logo."></a></li>
+        <a href="#contact">
+            <img src="favicon_io/favicon-32x32.png" alt="My website logo.">
+        </a>
+
+        <!-- Desktop links -->
+        <ul id="links" class="hide-when-small">
             <li><a href="#welcome">About</a></li>
             <li><a href="#technical-skills">Skills</a></li>
             <li><a href="#work-experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="hide-when-big">Contact</a>
+
+        <!-- Hamburger button (mobile only) -->
+        <button id="hamburger-icon" class="hide-when-big" aria-label="Open menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+                <rect id="bar1" x="1" y="4" width="20" height="2" rx="1" fill="#fff" />
+                <rect id="bar2" x="1" y="10" width="20" height="2" rx="1" fill="#fff" />
+                <rect id="bar3" x="1" y="16" width="20" height="2" rx="1" fill="#fff" />
+            </svg>
+        </button>
     </nav>
+
+    <!-- Mobile drawer -->
+    <div id="mobile-menu" aria-hidden="true">
+        <ul>
+            <li><a href="#welcome" class="mobile-link">About</a></li>
+            <li><a href="#technical-skills" class="mobile-link">Skills</a></li>
+            <li><a href="#work-experience" class="mobile-link">Experience</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
+
     <div class="container">
         <!-- Left Section: Profile with Image -->
         <div id="contact">
@@ -172,47 +198,175 @@
                         What began as a simple goal to complete a cycling century quickly evolved into pushing my limits
                         further than I ever imagined within a single year.
                     </p>
-                    <p>Here are a few of my proudest accomplishments! You can learn more about them in my blog section
-                        (coming soon)!</p>
-                    <dl id="accomplishments">
-                        <dt><a href="https://hof.everesting.com/hall-of-fame/hall-of-fame-details?uuid=3e492b89-1f3f-45ad-9aa2-6143959875f4"
-                                target="_blank">
-                                Everest
-                            </a></dt>
-                        <dd>A challenge around climbing the equivalent of Mount Everest (8848 meters) on local hills
-                            with no
-                            sleep in between.
-                            I accomplished this in Chicago which is known for one of the flattest cities!</dd>
-                        <dt><a href="https://hof.everesting.com/hall-of-fame/hall-of-fame-details?uuid=48853284-e2b9-433d-bc7d-7ee2d8afebb7&"
-                                target="_blank">
-                                Everest ROAM
-                            </a></dt>
-                        <dd>Like an Everest, except the elevation is 10,000 meters AND it has to cover at least 400 km
-                            of distance
-                            within 36 hours. I also completed this in Chicago!</dd>
-                        <dt><a href="https://www.strava.com/activities/11990071202" target="_blank">24-hour, 400-mile,
-                                Quad-State Ride</a></dt>
-                        <dd>Throughout the year, I increased my cycling distances from 100mi, 150mi, 200mi, and 250mi. I
-                            wanted
-                            to see what the agreed, self-supported upper-limit for distance was and it was about 400
-                            miles. I drafted a route based on routes I have ridden in the past and went accross
-                            Michigan, Illinois, Indiana, and Wisconsin.</dd>
+                    <!-- Replace your existing <dl id="accomplishments"> block with this -->
 
-                        <dt><a href="https://www.strava.com/activities/12309622227" target="_blank">Marathon</a></dt>
-                        <dd>Strava has milestones for cycling, and I speedran through those. There were two milestones
-                            that I had yet to complete: a marathon and an ultra-marathon. I am not much of a runner, but
-                            I wanted to prove to myself that I could!</dd>
+                    <p>
+                        Here are a few of my proudest accomplishments! You can learn more about them
+                        in my blog section (coming soon)!
+                    </p>
 
-                        <dt><a href="https://www.strava.com/activities/12785966983" target="_blank">Ultra-Marathon (run
-                                art)</a></dt>
-                        <dd>My friend, who's deeply into Spartan Races, inspired me to dive into running for 2025. To
-                            celebrate his birthday just before one of his toughest Spartan Races, I crafted a run art
-                            route to wish him well!
-                        <dd>
-                    </dl>
-                    <p class="no-top">In engineering terms, my growth for the year of 2024 was O(2<sup>n</sup>)! I look
-                        forward to continue growing
-                        as an engineer and pursuing even more crazy endurance challenges.</p>
+                    <div id="accomplishments">
+
+                        <!-- Everest -->
+                        <div class="achievement">
+                            <div class="achievement-dot hiking">
+                                <div class="achievement-dot-inner"></div>
+                            </div>
+                            <div class="achievement-card">
+                                <div class="achievement-header">
+                                    <h3>Everest</h3>
+                                    <span class="achievement-badge hiking">hiking</span>
+                                </div>
+                                <p class="achievement-desc no-top">
+                                    Climbed the elevation equivalent of Mount Everest on local Chicago hills —
+                                    no sleep between attempts.
+                                </p>
+                                <div class="achievement-stats">
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">8,848 m</div>
+                                        <div class="achievement-stat-label">total elevation</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">0 hrs</div>
+                                        <div class="achievement-stat-label">sleep</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">Chicago, IL</div>
+                                        <div class="achievement-stat-label">location</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Everest ROAM -->
+                        <div class="achievement">
+                            <div class="achievement-dot hiking-plus">
+                                <div class="achievement-dot-inner"></div>
+                            </div>
+                            <div class="achievement-card">
+                                <div class="achievement-header">
+                                    <h3>Everest ROAM</h3>
+                                    <span class="achievement-badge hiking-plus">hiking+</span>
+                                </div>
+                                <p class="achievement-desc no-top">
+                                    An Everest — but harder. 10,000 m of elevation AND 400 km of distance,
+                                    completed within 36 hours. Still Chicago.
+                                </p>
+                                <div class="achievement-stats">
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">10,000 m</div>
+                                        <div class="achievement-stat-label">elevation</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">400 km</div>
+                                        <div class="achievement-stat-label">distance</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">36 hrs</div>
+                                        <div class="achievement-stat-label">time limit</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quad-State Ride -->
+                        <div class="achievement">
+                            <div class="achievement-dot cycling">
+                                <div class="achievement-dot-inner"></div>
+                            </div>
+                            <div class="achievement-card">
+                                <div class="achievement-header">
+                                    <h3>24-hr quad-state ride</h3>
+                                    <span class="achievement-badge cycling">cycling</span>
+                                </div>
+                                <p class="achievement-desc no-top">
+                                    Built up distance across the year: 100 → 150 → 200 → 250 miles, then pushed
+                                    to the self-supported upper limit. Crossed Michigan, Illinois, Indiana, and
+                                    Wisconsin in 24 hours.
+                                </p>
+                                <div class="achievement-stats">
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">~400 mi</div>
+                                        <div class="achievement-stat-label">distance</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">24 hrs</div>
+                                        <div class="achievement-stat-label">duration</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">4 states</div>
+                                        <div class="achievement-stat-label">MI · IL · IN · WI</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Marathon -->
+                        <div class="achievement">
+                            <div class="achievement-dot running">
+                                <div class="achievement-dot-inner"></div>
+                            </div>
+                            <div class="achievement-card">
+                                <div class="achievement-header">
+                                    <h3>Marathon</h3>
+                                    <span class="achievement-badge running">running</span>
+                                </div>
+                                <p class="achievement-desc no-top">
+                                    Speed-ran Strava's cycling milestones, then tackled the two remaining: a
+                                    marathon and an ultra. Not a runner — but proved it anyway.
+                                </p>
+                                <div class="achievement-stats">
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">26.2 mi</div>
+                                        <div class="achievement-stat-label">distance</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">Strava</div>
+                                        <div class="achievement-stat-label">milestone</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ultra-Marathon Run Art -->
+                        <div class="achievement">
+                            <div class="achievement-dot run-art">
+                                <div class="achievement-dot-inner"></div>
+                            </div>
+                            <div class="achievement-card">
+                                <div class="achievement-header">
+                                    <h3>Ultra-marathon run art</h3>
+                                    <span class="achievement-badge run-art">running</span>
+                                </div>
+                                <p class="achievement-desc no-top">
+                                    Inspired by a friend deep into Spartan Races, crafted a GPS run art route
+                                    as a birthday tribute — timed right before one of his toughest races.
+                                </p>
+                                <div class="achievement-stats">
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">26.2+ mi</div>
+                                        <div class="achievement-stat-label">ultra distance</div>
+                                    </div>
+                                    <div class="achievement-stat">
+                                        <div class="achievement-stat-val">GPS art</div>
+                                        <div class="achievement-stat-label">route design</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Closer -->
+                        <div class="achievement-closer">
+                            <div class="achievement-closer-code">O(2<sup>n</sup>)</div>
+                            <div class="achievement-closer-text">
+                                My growth rate for 2024. Each year's challenges scale exponentially —
+                                more to come as an engineer and endurance athlete.
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
                 <div id="technical-skills" class="section">
                     <h2>Skills</h2>
