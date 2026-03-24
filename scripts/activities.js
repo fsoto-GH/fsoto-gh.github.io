@@ -225,8 +225,8 @@
 
     L.circleMarker(full[full.length - 1], {
       radius: 5,
-      color: "#FC4C02",
-      fillColor: "#FC4C02",
+      color: activity.startColor,
+      fillColor: activity.startColor,
       fillOpacity: 1,
       weight: 0,
     }).addTo(map);

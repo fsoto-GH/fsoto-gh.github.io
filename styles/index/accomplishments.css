@@ -427,6 +427,12 @@
     color: #F09595;
 }
 
+.accomplishment-tag.accomplishment-tag-trail-run {
+    background-color: #2a1a04;
+    border: 1px solid #854F0B;
+    color: #fbbf24;
+}
+
 /* Hide the standalone accomplishment-card when an activity card is present */
 .accomplishment:has(.accomplishment-map-card) .accomplishment-card {
     display: none;

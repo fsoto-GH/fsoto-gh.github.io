@@ -23,8 +23,8 @@ import re
 import sys
 import os
 
-gpx_path = r"S:\Downloads\First_Everest_ (1).gpx"
-use_all_points = True
+gpx_path = r"S:\Downloads\First_Spartan_Beast_21k_Race_ (1).gpx"
+use_all_points = not True
 
 if not os.path.exists(gpx_path):
     print(f"Error: file not found: {gpx_path}", file=sys.stderr)
@@ -58,7 +58,7 @@ if use_all_points:
     t_full = full
     print(f"Using all {total} points for all tiers.", file=sys.stderr)
 else:
-    step_overview = max(1, total // 50)
+    step_overview = max(1, total // 100)
     step_mid = max(1, total // 200)
     step_full = max(1, total // 800)
     t_overview = full[::step_overview]

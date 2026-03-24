@@ -240,13 +240,13 @@
                                 <div class="accomplishment-dot spartan">
                                     <div class="accomplishment-dot-inner"></div>
                                 </div>
-                                <div class="accomplishment-card-tbd">
+                                <div class="accomplishment-card">
                                     <div class="accomplishment-header">
                                         <h3>Spartan Trifecta</h3>
-                                        <span class="accomplishment-badge tbd">coming soon</span>
                                     </div>
-                                    <div class="accomplishment-tbd-text">write-up coming soon</div>
+                                    <p class="accomplishment-desc no-top"></p>
                                 </div>
+                                <div class="accomplishment-map-card" data-activity="spartan-trifecta"></div>
                             </div>
 
                             <!-- Mishigami 2025 — Jul 2025 (highlight) -->
@@ -541,6 +541,7 @@
                                 <span class="skills-chip">CSS</span>
                                 <span class="skills-chip">ASP.NET Core</span>
                                 <span class="skills-chip">React</span>
+                                <span class="skills-chip">Flask</span>
                             </div>
                         </div>
 
@@ -552,6 +553,7 @@
                             <div class="skills-chips">
                                 <span class="skills-chip">SQL</span>
                                 <span class="skills-chip">MongoDB</span>
+                                <span class="skills-chip">Redis</span>
                             </div>
                         </div>
 
@@ -611,16 +613,24 @@
                                     </div>
                                 </div>
                                 <ul class="ex-bullets">
-                                    <li>Optimized critical API endpoint via profiling, schema analysis &amp;
-                                        business
-                                        logic enhancements.</li>
-                                    <li>Migrated Selenium &rarr; Cypress (TypeScript), reducing flakiness and
-                                        accelerating test development.</li>
-                                    <li>Standardized API documentation, reducing inter-team questions and improving
-                                        collaboration.</li>
-                                    <li>Resolved show-stopper bugs during critical release cycles, unblocking
-                                        API-first
-                                        initiatives.</li>
+                                    <li>Optimized high-throughput API workflows through profiling, SQL tuning, and
+                                        business-logic refactors, improving performance by <strong>7.5x</strong> and
+                                        reducing query volume by <strong>8x</strong> while supporting <strong>3,000
+                                            req/s</strong>.</li>
+                                    <li>Designed and enhanced bulk Time Entry and Pay Type APIs, supporting complex
+                                        modifiers, duration-based workflows, and validation-heavy edge cases across
+                                        versioned endpoints.</li>
+                                    <li>Investigated and resolved API contract inconsistencies across V2/V3 endpoints,
+                                        preventing downstream integration issues and shaping future endpoint behavior.
+                                    </li>
+                                    <li>Resolved critical production and release-blocking issues involving cost centers,
+                                        audit trails, payroll modifiers, and logging, improving reliability for
+                                        downstream consumers.</li>
+                                    <li>Improved API usability by strengthening validation logic, refining error
+                                        messaging, and expanding documentation (Swagger), reducing support overhead from
+                                        partner teams.</li>
+                                    <li>Increased platform reliability by migrating CI pipelines to dedicated build
+                                        pools and completing .NET upgrades for internal services.</li>
                                 </ul>
                             </div>
                         </div>
@@ -644,14 +654,20 @@
                                     </div>
                                 </div>
                                 <ul class="ex-bullets">
-                                    <li>Fixed browser-specific bug affecting 18% of users, restoring functionality
-                                        for
-                                        international users.</li>
-                                    <li>Built automation coverage for a key product suite used by ~22.5% of the user
-                                        base.</li>
-                                    <li>Integrated deep linking across the product suite, collaborating with the
-                                        mobile
-                                        team.</li>
+                                    <li>Built and expanded automated test coverage for a core product suite used by
+                                        <strong>~22.5% of the user base</strong>, improving regression confidence and
+                                        release stability.
+                                    </li>
+                                    <li>Migrated end-to-end testing from Selenium to Cypress (TypeScript), reducing test
+                                        flakiness and accelerating test development velocity.</li>
+                                    <li>Identified and resolved a browser-specific defect impacting <strong>18% of
+                                            users</strong>, restoring functionality for international customers.</li>
+                                    <li>Implemented deep linking across the product suite in collaboration with Mobile,
+                                        improving cross-platform navigation and user experience.</li>
+                                    <li>Standardized API documentation and added inline code documentation, improving
+                                        maintainability and reducing onboarding friction.</li>
+                                    <li>Supported debugging and triage across frontend and backend systems, building
+                                        domain knowledge in APIs and contributing to early issue detection.</li>
                                 </ul>
                             </div>
                         </div>
@@ -675,11 +691,12 @@
                                     </div>
                                 </div>
                                 <ul class="ex-bullets">
-                                    <li>Implemented application tracking via Google Analytics for data-driven
-                                        decision-making.</li>
-                                    <li>Resolved two critical bugs, improving page load times by 15%.</li>
-                                    <li>Analyzed stored procedure usage with senior engineers to support deprecation
-                                        strategy.</li>
+                                    <li>Implemented application tracking using Google Analytics to enable data-driven
+                                        insights into user behavior and feature usage.</li>
+                                    <li>Diagnosed and resolved two critical performance-related bugs, improving page
+                                        load times by <strong>15%</strong>.</li>
+                                    <li>Collaborated with senior engineers to analyze stored procedure usage and support
+                                        a broader database deprecation and modernization effort.</li>
                                 </ul>
                             </div>
                         </div>
@@ -703,19 +720,23 @@
                             </div>
                         </div>
                         <div class="pj-body">
-                            <p class="pj-desc">Started as a DB-driven loan tracker, evolved into a full-stack app I
-                                actively use &mdash; Windows Form &rarr; RESTful API &rarr; React front end.</p>
+                            <p class="pj-desc">
+                                Personal Lending Tracker (Accounting) — a full-stack financial system that evolved from
+                                a database-driven tool into an API-first architecture with a modern web client, built
+                                for real-world daily use.
+                            </p>
+
                             <ul class="pj-bullets">
-                                <li>Built a financial education tool, evolving it from a DB system to a full-stack
-                                    app.
-                                </li>
-                                <li>Designed SQL database with stored procedures and triggers for data consistency.
-                                </li>
-                                <li>Transitioned to API-first with a RESTful API following service layer and DAO
-                                    patterns.</li>
-                                <li>Created a React front end with pagination, error handling, and responsive
-                                    design.
-                                </li>
+                                <li>Engineered a full-stack application, transitioning from a Windows Forms client to a
+                                    decoupled React frontend backed by a RESTful API.</li>
+                                <li>Designed a normalized SQL database with stored procedures and triggers to enforce
+                                    data integrity and automate financial transaction workflows.</li>
+                                <li>Developed a RESTful API in C# using service layer and DAO patterns, enabling
+                                    scalable and maintainable business logic.</li>
+                                <li>Implemented a responsive React UI with pagination, validation, and error handling to
+                                    improve usability and accessibility.</li>
+                                <li>Continuously iterate on the system through real-world usage, shaping features around
+                                    practical lending scenarios and financial tracking needs.</li>
                             </ul>
                             <div class="pj-thumbs">
                                 <a data-fancybox="lending" href="images/accounting/app_view.png"
