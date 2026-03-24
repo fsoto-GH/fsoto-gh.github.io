@@ -1,17 +1,7 @@
 "use strict";
 
 const bindPictures = () => {
-  const project_pic_class = ".project-images";
-
-  // group project pictures into a gallery
-  for (let i = 1; i <= project_pic_class.length; i++) {
-    Fancybox.bind(
-      `#projects table:nth-of-type(${i}) ${project_pic_class} img`,
-      {
-        groupAll: true,
-      }
-    );
-  }
+  Fancybox.bind("[data-fancybox]");
 };
 
 const smoothScrollRelativeLinks = () => {

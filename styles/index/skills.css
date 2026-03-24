@@ -1,0 +1,396 @@
+/* ── About cards ───────────────────────────────────────────────────────────── */
+
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin: 1.25rem 0;
+}
+
+.about-card {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    transition: border-color 0.2s;
+}
+
+.about-card:hover {
+    border-color: #505050;
+}
+
+.about-card-label {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.about-card-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.about-card-text {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    line-height: 1.65;
+}
+
+/* Add to styles/index/index.css, or save as styles/index/skills.css          */
+/* and link it in <head> alongside your other stylesheets.                    */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.skills-card {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    transition: border-color 0.2s;
+}
+
+.skills-card:hover {
+    border-color: #505050;
+}
+
+.skills-card-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.skills-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.skills-chip {
+    font-family: "Noto Sans", serif;
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #cccccc;
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+}
+
+/* ── Experience timeline ───────────────────────────────────────────────────── */
+
+.ex-company {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.ex-company-name {
+    font-family: "Lexend", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.ex-company-loc {
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+.ex-timeline {
+    position: relative;
+    padding-left: 28px;
+}
+
+.ex-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: #303030;
+}
+
+.ex-item {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+
+.ex-item:last-child {
+    margin-bottom: 0;
+}
+
+.ex-dot {
+    position: absolute;
+    left: -28px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid;
+    background: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ex-dot-inner {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.ex-card {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s;
+}
+
+.ex-card:hover {
+    border-color: #505050;
+}
+
+.ex-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.ex-role {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.ex-date {
+    font-size: 0.75rem;
+    color: #666666;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.ex-badge {
+    display: inline-block;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: #1a1740;
+    color: #AFA9EC;
+}
+
+.ex-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 10px;
+}
+
+.ex-stat {
+    background-color: #181818;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+.ex-stat-val {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.85rem;
+    color: #ffffff;
+}
+
+.ex-stat-label {
+    font-size: 0.65rem;
+    color: #666666;
+    margin-top: 1px;
+}
+
+.ex-bullets {
+    padding-left: 1rem;
+    margin: 0;
+}
+
+.ex-bullets li {
+    font-size: 0.82rem;
+    color: #999999;
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.ex-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+/* ── Projects accordion ────────────────────────────────────────────────────── */
+
+.pj-card {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.pj-card:hover {
+    border-color: #505050;
+}
+
+.pj-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem 0;
+    gap: 12px;
+}
+
+.pj-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pj-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.95rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.pj-title:hover {
+    color: #AFA9EC;
+}
+
+.pj-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.pj-chip {
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    color: #aaaaaa;
+}
+
+/* Color-coded chips matching skills section */
+.pj-chip.pj-lang {
+    background-color: #1a1740;
+    border-color: #534AB7;
+    color: #AFA9EC;
+}
+
+.pj-chip.pj-web {
+    background-color: #0b2e22;
+    border-color: #1D9E75;
+    color: #5DCAA5;
+}
+
+.pj-chip.pj-db {
+    background-color: #2e1508;
+    border-color: #D85A30;
+    color: #F0997B;
+}
+
+.pj-chip.pj-tool {
+    background-color: #2a2a28;
+    border-color: #5F5E5A;
+    color: #B4B2A9;
+}
+
+.pj-chip.pj-test {
+    background-color: #0a1e30;
+    border-color: #378ADD;
+    color: #85B7EB;
+}
+
+.pj-chevron {
+    display: none;
+}
+
+.pj-body {
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid #2a2a2a;
+    margin-top: 0.75rem;
+}
+
+.pj-desc {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    line-height: 1.65;
+    padding-top: 0.75rem;
+    margin-bottom: 10px;
+}
+
+.pj-bullets {
+    padding-left: 1rem;
+    margin: 0 0 12px;
+}
+
+.pj-bullets li {
+    font-size: 0.82rem;
+    color: #999999;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.pj-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+.pj-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.pj-thumb {
+    width: 80px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #303030;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 0.15s, border-color 0.15s;
+    display: block;
+}
+
+.pj-thumb:hover {
+    opacity: 1;
+    border-color: #505050;
+}

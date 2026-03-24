@@ -11,9 +11,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
-    margin-left: calc(var(--margin-right) + var(--profile-width));
+    margin-left: calc(var(--margin-right) + var(--profile-width) + 1px);
     box-sizing: border-box;
-    width: calc(100% - calc(var(--margin-right) + var(--profile-width)));
+    width: calc(100% - var(--margin-right) - var(--profile-width) - 1px);
     background-color: #181818;
     z-index: 200;
 }
@@ -99,7 +99,7 @@
     background-color: #2a2a2a;
 }
 
-/* ── Breakpoints */
+/* ── Breakpoints ─────────────────────────────────────────────────────────── */
 
 /* Large: sidebar visible, hamburger hidden */
 @media (min-width: 1020px) {

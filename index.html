@@ -20,6 +20,10 @@
         href="https://fonts.googleapis.com/css2?family=Lexend&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
+    <!-- LeafLet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <!-- Favicon for general browsers -->
     <link rel="icon" href="favicon_io/favicon.ico" type="image/x-icon">
     <link rel="icon" sizes="16x16" href="favicon_io/favicon-16x16.png" type="image/png">
@@ -37,8 +41,12 @@
     <link rel="stylesheet" href="styles/shared/profile.css">
     <link rel="stylesheet" href="styles/index/index.css">
     <link rel="stylesheet" href="styles/index/accomplishments.css">
+    <link rel="stylesheet" href="styles/index/skills.css">
+    <link rel="stylesheet" href="styles/index/projects.css">
     <link rel="stylesheet" href="styles/shared/navbar.css">
     <script src="scripts/index.js"></script>
+    <script src="scripts/activities-data.js"></script>
+    <script src="scripts/activities.js"></script>
     <script src="scripts/shared/navbar.js"></script>
 </head>
 
@@ -52,10 +60,10 @@
         <!-- Desktop links -->
         <ul id="links" class="hide-when-small">
             <li><a href="#welcome">About</a></li>
+            <li><a href="#accomplishments-section">Accomplishments</a></li>
             <li><a href="#technical-skills">Skills</a></li>
             <li><a href="#work-experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
 
         <!-- Hamburger button (mobile only) -->
@@ -72,6 +80,7 @@
     <div id="mobile-menu" aria-hidden="true">
         <ul>
             <li><a href="#welcome" class="mobile-link">About</a></li>
+            <li><a href="#accomplishments-section" class="mobile-link">Accomplishments</a></li>
             <li><a href="#technical-skills" class="mobile-link">Skills</a></li>
             <li><a href="#work-experience" class="mobile-link">Experience</a></li>
             <li><a href="#projects" class="mobile-link">Projects</a></li>
@@ -184,533 +193,653 @@
             <div id="content">
                 <div id="welcome" class="section">
                     <h2>Welcome to My Portfolio 👋</h2>
-                    <p>¡Buenas! Mi nombre es Fernando Soto.</p>
-                    <p>I'm a Full-Stack Software Engineer with a background in Computer Science and
-                        Mathematics, holding a Bachelor of Science in both fields from Dominican University. Rooted in
-                        my Mexican heritage, I bring creativity, determination, and a unique perspective to
-                        problem-solving and engineering challenges.</p>
-                    <p>I specialize in building efficient and scalable solutions, with expertise in C#, React,
-                        SQL, Python, and more. My projects range from developing web applications to creating automation
-                        tools, always with a focus on delivering impactful results.</p>
-                    <p>Beyond coding, I thrive on endurance challenges—my endurance background truly sets me apart from
-                        other engineers. If you're looking for someone who can persevere and get the job done, I'm your
-                        person! Before 2024, I had no athletic background, but that year was nothing short of explosive.
-                        What began as a simple goal to complete a cycling century quickly evolved into pushing my limits
-                        further than I ever imagined within a single year.
-                    </p>
-                    <!-- Replace your existing <dl id="accomplishments"> block with this -->
-
-                    <p>
-                        Here are a few of my proudest accomplishments! You can learn more about them
-                        in my blog section (coming soon)!
-                    </p>
-
-                    <div id="accomplishments">
-
-                        <!-- Everest -->
-                        <div class="achievement">
-                            <div class="achievement-dot hiking">
-                                <div class="achievement-dot-inner"></div>
+                    <p>¡Buenas! I'm Fernando Soto&mdash;a Full-Stack Software Engineer based in Chicago with a B.S. in
+                        Computer Science &amp; Mathematics from Dominican University, rooted in my Mexican heritage.</p>
+                    <div class="about-cards">
+                        <div class="about-card">
+                            <div class="about-card-label" style="color:#AFA9EC">
+                                <div class="about-card-dot" style="background:#534AB7"></div>
+                                Engineering
                             </div>
-                            <div class="achievement-card">
-                                <div class="achievement-header">
-                                    <h3>Everest</h3>
-                                    <span class="achievement-badge hiking">hiking</span>
-                                </div>
-                                <p class="achievement-desc no-top">
-                                    Climbed the elevation equivalent of Mount Everest on local Chicago hills —
-                                    no sleep between attempts.
-                                </p>
-                                <div class="achievement-stats">
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">8,848 m</div>
-                                        <div class="achievement-stat-label">total elevation</div>
-                                    </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">0 hrs</div>
-                                        <div class="achievement-stat-label">sleep</div>
-                                    </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">Chicago, IL</div>
-                                        <div class="achievement-stat-label">location</div>
-                                    </div>
+                            <p class="about-card-text no-top">I build efficient, scalable solutions across C#, React,
+                                SQL, Python, and more&mdash;from web apps to automation tools, always focused on
+                                impactful
+                                results.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-label" style="color:#5DCAA5">
+                                <div class="about-card-dot" style="background:#1D9E75"></div>
+                                Endurance
+                            </div>
+                            <p class="about-card-text no-top">Before 2024, I had zero athletic background. That year
+                                became something else entirely&mdash;a simple cycling century quickly spiraled into
+                                pushing
+                                limits I didn't know I had.</p>
+                        </div>
+                    </div>
+
+                    <div id="accomplishments-section" class="section">
+                        <div class="accomplishments-section-head">
+                            <h2>Accomplishments</h2>
+                            <div class="acc-toggle" id="accomplishments-toggle">
+                                <div class="acc-toggle-pill"></div>
+                                <div class="acc-toggle-labels">
+                                    <span class="acc-toggle-label best">Best</span>
+                                    <span class="acc-toggle-label all">More</span>
                                 </div>
                             </div>
                         </div>
+                        <p>In the short time I've been in the world of ultra-endurance, I've accomplished a lot. Below
+                            is a hand-picked selection of my proudest moments!</p>
 
-                        <!-- Everest ROAM -->
-                        <div class="achievement">
-                            <div class="achievement-dot hiking-plus">
-                                <div class="achievement-dot-inner"></div>
+                        <div id="accomplishments">
+
+                            <!-- Spartan Trifecta — Dec 2025 (all only) -->
+                            <div class="accomplishment accomplishment-extended">
+                                <div class="accomplishment-month">Dec 2025</div>
+                                <div class="accomplishment-dot spartan">
+                                    <div class="accomplishment-dot-inner"></div>
+                                </div>
+                                <div class="accomplishment-card-tbd">
+                                    <div class="accomplishment-header">
+                                        <h3>Spartan Trifecta</h3>
+                                        <span class="accomplishment-badge tbd">coming soon</span>
+                                    </div>
+                                    <div class="accomplishment-tbd-text">write-up coming soon</div>
+                                </div>
                             </div>
-                            <div class="achievement-card">
-                                <div class="achievement-header">
-                                    <h3>Everest ROAM</h3>
-                                    <span class="achievement-badge hiking-plus">hiking+</span>
+
+                            <!-- Mishigami 2025 — Jul 2025 (highlight) -->
+                            <div class="accomplishment accomplishment-highlight">
+                                <div class="accomplishment-month">Jul 2025</div>
+                                <div class="accomplishment-dot race">
+                                    <div class="accomplishment-dot-inner"></div>
                                 </div>
-                                <p class="achievement-desc no-top">
-                                    An Everest — but harder. 10,000 m of elevation AND 400 km of distance,
-                                    completed within 36 hours. Still Chicago.
-                                </p>
-                                <div class="achievement-stats">
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">10,000 m</div>
-                                        <div class="achievement-stat-label">elevation</div>
+                                <div class="accomplishment-card">
+                                    <div class="accomplishment-header">
+                                        <h3>Mishigami 2025</h3>
+                                        <div class="accomplishment-badges">
+                                            <span class="accomplishment-badge cycling">cycling</span>
+                                            <span class="accomplishment-badge race">race</span>
+                                        </div>
                                     </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">400 km</div>
-                                        <div class="achievement-stat-label">distance</div>
-                                    </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">36 hrs</div>
-                                        <div class="achievement-stat-label">time limit</div>
+                                    <p class="accomplishment-desc no-top">
+                                        My first ever race&mdash;and my first time seeing a real hill. Fought from the
+                                        back
+                                        of the pack
+                                        all the way to 2nd place, on 2 hours of sleep, in a city that had never once
+                                        prepared me for
+                                        actual elevation.
+                                    </p>
+                                    <div class="accomplishment-stats">
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">1st Chicagoan</div>
+                                            <div class="accomplishment-stat-label">2025 finisher</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">2nd place</div>
+                                            <div class="accomplishment-stat-label">finishing position</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">&lt;4 days</div>
+                                            <div class="accomplishment-stat-label">1st Chicagoan ever</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">~20 hrs</div>
+                                            <div class="accomplishment-stat-label">under prev. FKT</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">3x</div>
+                                            <div class="accomplishment-stat-label">distance PR</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">2 hrs</div>
+                                            <div class="accomplishment-stat-label">sleep before start</div>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="accomplishment-map-card" data-activity="mishigami"></div>
+                            </div>
+
+                            <!-- Ultra-marathon run art — Oct 2024 (highlight) -->
+                            <div class="accomplishment accomplishment-extended">
+                                <div class="accomplishment-month">Oct 2024</div>
+                                <div class="accomplishment-dot running">
+                                    <div class="accomplishment-dot-inner"></div>
+                                </div>
+                                <div class="accomplishment-card">
+                                    <p class="accomplishment-desc no-top">
+                                        After speedrunning the Strava run milestones, only one challenge remained: an
+                                        ultramarathon. To mark it, I crafted a GPS run art route as a birthday tribute
+                                        to a friend ahead of one of his toughest Spartan Races.
+                                    </p>
+                                    <div class="accomplishment-stats">
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">50+ km</div>
+                                            <div class="accomplishment-stat-label">ultra distance</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">GPS art</div>
+                                            <div class="accomplishment-stat-label">route design</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accomplishment-map-card" data-activity="ultra-run"></div>
+                            </div>
+
+                            <!-- Marathon — Sep 2024 (all only) -->
+                            <div class="accomplishment accomplishment-extended">
+                                <div class="accomplishment-month">Sep 2024</div>
+                                <div class="accomplishment-dot running">
+                                    <div class="accomplishment-dot-inner"></div>
+                                </div>
+                                <div class="accomplishment-card">
+                                    <div class="accomplishment-header">
+                                        <h3>Marathon</h3>
+                                        <span class="accomplishment-badge running">running</span>
+                                    </div>
+                                    <p class="accomplishment-desc no-top">
+                                        Speed-ran Strava's cycling milestones, then tackled the two remaining: a
+                                        marathon and an ultra. Not a runner&mdash;but proved it anyway.
+                                    </p>
+                                    <div class="accomplishment-stats">
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">26.2 mi</div>
+                                            <div class="accomplishment-stat-label">distance</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">Strava</div>
+                                            <div class="accomplishment-stat-label">milestone</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accomplishment-map-card" data-activity="marathon"></div>
+                            </div>
+
+                            <!-- Everest ROAM — Aug 2024 (highlight) -->
+                            <div class="accomplishment accomplishment-highlight">
+                                <div class="accomplishment-month">Aug 2024</div>
+                                <div class="accomplishment-dot cycling">
+                                    <div class="accomplishment-dot-inner"></div>
+                                </div>
+                                <div class="accomplishment-card">
+                                    <div class="accomplishment-header">
+                                        <h3>Everest ROAM</h3>
+                                        <span class="accomplishment-badge cycling">cycling</span>
+                                    </div>
+                                    <p class="accomplishment-desc no-top">
+                                        An Everest&mdash;but harder. More elevation, more distance, stricter time limit.
+                                        Over 1,150 hill repeats on the same bridge I completed my first Everest!
+                                    </p>
+                                    <div class="accomplishment-stats">
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">Only Illinoisan</div>
+                                            <div class="accomplishment-stat-label">Everest ROAM finisher</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">10,000 m</div>
+                                            <div class="accomplishment-stat-label">elevation</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">400 km</div>
+                                            <div class="accomplishment-stat-label">distance</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">36 hrs</div>
+                                            <div class="accomplishment-stat-label">time limit</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">1,150+</div>
+                                            <div class="accomplishment-stat-label">hill repeats</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accomplishment-map-card hof" data-activity="everest-roam"
+                                    data-hof-url="https://hof.everesting.com/activities/a65777dc-7e4e-41d5-b4cd-11e35eef69c5">
+                                </div>
+                            </div>
+
+                            <!-- 24-hr quad-state ride — Jul 2024 (highlight) -->
+                            <div class="accomplishment accomplishment-highlight">
+                                <div class="accomplishment-month">Jul 2024</div>
+                                <div class="accomplishment-dot cycling">
+                                    <div class="accomplishment-dot-inner"></div>
+                                </div>
+                                <div class="accomplishment-card">
+                                    <div class="accomplishment-header">
+                                        <h3>24-hr quad-state ride</h3>
+                                        <span class="accomplishment-badge cycling">cycling</span>
+                                    </div>
+                                    <p class="accomplishment-desc no-top">
+                                        Built up distance across the year: 100 → 150 → 200 → 250 miles, then pushed
+                                        to the self-supported upper limit. Crossed Michigan, Illinois, Indiana, and
+                                        Wisconsin in 24 hours.
+                                    </p>
+                                    <div class="accomplishment-stats">
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">+150 mi</div>
+                                            <div class="accomplishment-stat-label">distance PR</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">24 hrs</div>
+                                            <div class="accomplishment-stat-label">duration</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">4 states</div>
+                                            <div class="accomplishment-stat-label">MI · IL · IN · WI</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accomplishment-map-card" data-activity="quad-state-ride"></div>
+                            </div>
+
+                            <!-- Everest — Jun 2024 (all only) -->
+                            <div class="accomplishment accomplishment-extended">
+                                <div class="accomplishment-month">Jun 2024</div>
+                                <div class="accomplishment-dot cycling">
+                                    <div class="accomplishment-dot-inner"></div>
+                                </div>
+                                <div class="accomplishment-card">
+                                    <p class="accomplishment-desc no-top">
+                                        Climbed the elevation equivalent of Mount Everest on a local Chicago
+                                        hill (bridge 😅)&mdash;no sleep between attempts.
+                                    </p>
+                                    <div class="accomplishment-stats">
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">Chicago, IL</div>
+                                            <div class="accomplishment-stat-label">location</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">7x</div>
+                                            <div class="accomplishment-stat-label">elevation PR</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">8,848 m</div>
+                                            <div class="accomplishment-stat-label">elevation</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">0 hrs</div>
+                                            <div class="accomplishment-stat-label">sleep</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accomplishment-map-card hof" data-activity="everest"
+                                    data-hof-url="https://hof.everesting.com/activities/504688e0-771c-4f84-ae09-073b6a28733a">
+                                </div>
+                            </div>
+
+                            <!-- First American Century — Apr 2024 -->
+                            <div class="accomplishment accomplishment-highlight">
+                                <div class="accomplishment-month">Apr 2024</div>
+                                <div class="accomplishment-dot cycling">
+                                    <div class="accomplishment-dot-inner"></div>
+                                </div>
+                                <div class="accomplishment-card">
+                                    <div class="accomplishment-header">
+                                        <h3>First American Century</h3>
+                                        <span class="accomplishment-badge cycling">cycling</span>
+                                    </div>
+                                    <p class="accomplishment-desc no-top">
+                                        After a bicycle accident that left me with a broken wrist, broken thumbs, and
+                                        chipped teeth, I came back with one goal: 100 miles. Built up 30 → 40 → 60 mi,
+                                        skipped 80, and ripped the bandaid.
+                                    </p>
+                                    <div class="accomplishment-stats">
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">100 mi</div>
+                                            <div class="accomplishment-stat-label">first century</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">30 mi</div>
+                                            <div class="accomplishment-stat-label">longest ride before</div>
+                                        </div>
+                                        <div class="accomplishment-stat">
+                                            <div class="accomplishment-stat-val">the start</div>
+                                            <div class="accomplishment-stat-label">of everything</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accomplishment-map-card" data-activity="first-century"></div>
+                            </div>
+
+                            <!-- Closer -->
+                            <div class="accomplishment-closer">
+                                <div class="accomplishment-closer-code">O(2<sup>n</sup>)</div>
+                                <div class="accomplishment-closer-text">
+                                    Apr → Oct 2024&mdash;six disciplines in seven months. The curve doesn't flatten.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="technical-skills" class="section">
+                    <h2>Skills</h2>
+                    <div class="skills-grid">
+
+                        <div class="skills-card">
+                            <div class="skills-card-title">
+                                <div class="skills-dot" style="background:#534AB7"></div>
+                                <span style="color:#AFA9EC">Languages</span>
+                            </div>
+                            <div class="skills-chips">
+                                <span class="skills-chip">C#</span>
+                                <span class="skills-chip">Python</span>
+                                <span class="skills-chip">Java</span>
+                                <span class="skills-chip">JavaScript</span>
+                                <span class="skills-chip">PHP</span>
                             </div>
                         </div>
 
-                        <!-- Quad-State Ride -->
-                        <div class="achievement">
-                            <div class="achievement-dot cycling">
-                                <div class="achievement-dot-inner"></div>
+                        <div class="skills-card">
+                            <div class="skills-card-title">
+                                <div class="skills-dot" style="background:#1D9E75"></div>
+                                <span style="color:#5DCAA5">Web</span>
                             </div>
-                            <div class="achievement-card">
-                                <div class="achievement-header">
-                                    <h3>24-hr quad-state ride</h3>
-                                    <span class="achievement-badge cycling">cycling</span>
-                                </div>
-                                <p class="achievement-desc no-top">
-                                    Built up distance across the year: 100 → 150 → 200 → 250 miles, then pushed
-                                    to the self-supported upper limit. Crossed Michigan, Illinois, Indiana, and
-                                    Wisconsin in 24 hours.
-                                </p>
-                                <div class="achievement-stats">
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">~400 mi</div>
-                                        <div class="achievement-stat-label">distance</div>
-                                    </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">24 hrs</div>
-                                        <div class="achievement-stat-label">duration</div>
-                                    </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">4 states</div>
-                                        <div class="achievement-stat-label">MI · IL · IN · WI</div>
-                                    </div>
-                                </div>
+                            <div class="skills-chips">
+                                <span class="skills-chip">HTML</span>
+                                <span class="skills-chip">CSS</span>
+                                <span class="skills-chip">ASP.NET Core</span>
+                                <span class="skills-chip">React</span>
                             </div>
                         </div>
 
-                        <!-- Marathon -->
-                        <div class="achievement">
-                            <div class="achievement-dot running">
-                                <div class="achievement-dot-inner"></div>
+                        <div class="skills-card">
+                            <div class="skills-card-title">
+                                <div class="skills-dot" style="background:#D85A30"></div>
+                                <span style="color:#F0997B">Databases</span>
                             </div>
-                            <div class="achievement-card">
-                                <div class="achievement-header">
-                                    <h3>Marathon</h3>
-                                    <span class="achievement-badge running">running</span>
-                                </div>
-                                <p class="achievement-desc no-top">
-                                    Speed-ran Strava's cycling milestones, then tackled the two remaining: a
-                                    marathon and an ultra. Not a runner — but proved it anyway.
-                                </p>
-                                <div class="achievement-stats">
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">26.2 mi</div>
-                                        <div class="achievement-stat-label">distance</div>
-                                    </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">Strava</div>
-                                        <div class="achievement-stat-label">milestone</div>
-                                    </div>
-                                </div>
+                            <div class="skills-chips">
+                                <span class="skills-chip">SQL</span>
+                                <span class="skills-chip">MongoDB</span>
                             </div>
                         </div>
 
-                        <!-- Ultra-Marathon Run Art -->
-                        <div class="achievement">
-                            <div class="achievement-dot run-art">
-                                <div class="achievement-dot-inner"></div>
+                        <div class="skills-card">
+                            <div class="skills-card-title">
+                                <div class="skills-dot" style="background:#5F5E5A"></div>
+                                <span style="color:#B4B2A9">Source Control</span>
                             </div>
-                            <div class="achievement-card">
-                                <div class="achievement-header">
-                                    <h3>Ultra-marathon run art</h3>
-                                    <span class="achievement-badge run-art">running</span>
-                                </div>
-                                <p class="achievement-desc no-top">
-                                    Inspired by a friend deep into Spartan Races, crafted a GPS run art route
-                                    as a birthday tribute — timed right before one of his toughest races.
-                                </p>
-                                <div class="achievement-stats">
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">26.2+ mi</div>
-                                        <div class="achievement-stat-label">ultra distance</div>
-                                    </div>
-                                    <div class="achievement-stat">
-                                        <div class="achievement-stat-val">GPS art</div>
-                                        <div class="achievement-stat-label">route design</div>
-                                    </div>
-                                </div>
+                            <div class="skills-chips">
+                                <span class="skills-chip">Git</span>
+                                <span class="skills-chip">Bash</span>
                             </div>
                         </div>
 
-                        <!-- Closer -->
-                        <div class="achievement-closer">
-                            <div class="achievement-closer-code">O(2<sup>n</sup>)</div>
-                            <div class="achievement-closer-text">
-                                My growth rate for 2024. Each year's challenges scale exponentially —
-                                more to come as an engineer and endurance athlete.
+                        <div class="skills-card">
+                            <div class="skills-card-title">
+                                <div class="skills-dot" style="background:#378ADD"></div>
+                                <span style="color:#85B7EB">Automation</span>
+                            </div>
+                            <div class="skills-chips">
+                                <span class="skills-chip">Cypress</span>
+                                <span class="skills-chip">Selenium</span>
                             </div>
                         </div>
 
                     </div>
-
-
-                </div>
-                <div id="technical-skills" class="section">
-                    <h2>Skills</h2>
-                    <ul class="aligned-list">
-                        <li>Programing Languages: C#, Python, Java, JavaScript, PHP</li>
-                        <li>Web Development: HTML, CSS, ASP.NET Core, React</li>
-                        <li>Databases: SQL, MongoDB</li>
-                        <li>Source Control & Scripting: Git, Bash</li>
-                        <li>Automation: Cypress, Selenium</li>
-                    </ul>
                 </div>
                 <div id="work-experience" class="section">
                     <h2>Experience</h2>
-                    <!-- #region job #1 -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Paylocity</td>
-                                <td class="right">Chicago, IL (Remote)</td>
-                            </tr>
-                            <tr>
-                                <td>Software Engineer</td>
-                                <td class="right">August 2024 &mdash; Present</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <ul class="aligned-list">
-                                        <li>Optimized the performance of a critical API endpoint, achieving a throughput
-                                            of 3,000 requests per second—a 7.5x improvement over the previous threshold.
-                                            This was accomplished through code profiling, schema analysis, and strategic
-                                            business logic enhancements, reducing SQL queries by 8x and significantly
-                                            improving system responsiveness and scalability.</li>
-                                        <li>Migrated Selenium end-to-end automation to Cypress, leveraging TypeScript to
-                                            enhance readability, reusability, and stability while accelerating test
-                                            development. This transition reduced flakiness and significantly improved
-                                            overall testing efficiency.</li>
-                                        <li>Established a standardized approach to API documentation to set a strong
-                                            precedent for future endpoints, enhance existing documentation, address
-                                            misconceptions, and reduce inter-team questions, improving overall clarity
-                                            and collaboration.</li>
-                                        <li>Quickly identified root causes of show-stopper bugs during critical release
-                                            cycles and implemented rapid fixes, enabling the team to proceed with
-                                            API-first strategy initiatives while ensuring a seamless release process.
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!-- #endregion -->
-                    <!-- #region job #2 -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Paylocity</td>
-                                <td class="right">Chicago, IL (Remote)</td>
-                            </tr>
-                            <tr>
-                                <td>Associate Software Engineer</td>
-                                <td class="right">July 2022 &mdash; August 2024</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <ul class="aligned-list">
-                                        <li>Diagnosed and resolved a complex, browser-specific bug that impacted the
-                                            company's culture support initiative,
-                                            affecting 18% of the user base and hindering critical application
-                                            functionality. This fix restored key features and
-                                            improved platform reliability for international users.</li>
-                                        <li>Developed automation coverage for a key product suite used by ~22.5% of the
-                                            user base, improving test reliability and
-                                            addressing flakiness. This effort reduced team alert fatigue and increased
-                                            overall confidence in automation.</li>
-                                        <li>Contributed to company initiative to improve mobile application experience
-                                            by integrating deep linking functionality
-                                            across the product suite. This involved collaborating with the mobile
-                                            development team to align on technical approach
-                                            and ensure a seamless implementation</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!-- #endregion -->
-                    <!-- #region job #3 -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Paylocity</td>
-                                <td class="right">Chicago, IL (Remote)</td>
-                            </tr>
-                            <tr>
-                                <td>Software Engineer Intern</td>
-                                <td class="right">May 2021 &mdash; August 2021</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <ul class="aligned-list">
-                                        <li>Implemented a streamlined application tracking process using Google
-                                            Analytics, enabling more efficient data collection
-                                            and actionable user insights, providing actionable insights into user
-                                            activity and facilitating data-driven decision-making.
-                                        </li>
-                                        <li>Identified and resolved two crucial bugs, leading to a 15% improvement in
-                                            page load times, enhancing site
-                                            performance and user experience.</li>
-                                        <li>Collaborated with senior engineers to analyze and document stored procedure
-                                            usage, evaluate performance metrics, and outline deprecation strategies to
-                                            support upcoming initiatives.</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!-- #endregion -->
+                    <div class="ex-company">
+                        <span class="ex-company-name">Paylocity</span>
+                        <span class="ex-company-loc">Chicago, IL (Remote)</span>
+                    </div>
+                    <div class="ex-timeline">
+                        <div class="ex-item">
+                            <div class="ex-dot" style="border-color:#534AB7">
+                                <div class="ex-dot-inner" style="background:#534AB7"></div>
+                            </div>
+                            <div class="ex-card">
+                                <div class="ex-card-head">
+                                    <span class="ex-role">Software Engineer</span>
+                                    <span class="ex-date">Aug 2024 &mdash; Present</span>
+                                </div>
+                                <span class="ex-badge">Current</span>
+                                <div class="ex-stats">
+                                    <div class="ex-stat">
+                                        <div class="ex-stat-val">3,000 req/s</div>
+                                        <div class="ex-stat-label">API throughput</div>
+                                    </div>
+                                    <div class="ex-stat">
+                                        <div class="ex-stat-val">7.5x</div>
+                                        <div class="ex-stat-label">perf improvement</div>
+                                    </div>
+                                    <div class="ex-stat">
+                                        <div class="ex-stat-val">8x</div>
+                                        <div class="ex-stat-label">SQL query reduction</div>
+                                    </div>
+                                </div>
+                                <ul class="ex-bullets">
+                                    <li>Optimized critical API endpoint via profiling, schema analysis &amp;
+                                        business
+                                        logic enhancements.</li>
+                                    <li>Migrated Selenium &rarr; Cypress (TypeScript), reducing flakiness and
+                                        accelerating test development.</li>
+                                    <li>Standardized API documentation, reducing inter-team questions and improving
+                                        collaboration.</li>
+                                    <li>Resolved show-stopper bugs during critical release cycles, unblocking
+                                        API-first
+                                        initiatives.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ex-item">
+                            <div class="ex-dot" style="border-color:#1D9E75">
+                                <div class="ex-dot-inner" style="background:#1D9E75"></div>
+                            </div>
+                            <div class="ex-card">
+                                <div class="ex-card-head">
+                                    <span class="ex-role">Associate Software Engineer</span>
+                                    <span class="ex-date">Jul 2022 &mdash; Aug 2024</span>
+                                </div>
+                                <div class="ex-stats">
+                                    <div class="ex-stat">
+                                        <div class="ex-stat-val">18%</div>
+                                        <div class="ex-stat-label">users impacted (fix)</div>
+                                    </div>
+                                    <div class="ex-stat">
+                                        <div class="ex-stat-val">22.5%</div>
+                                        <div class="ex-stat-label">user base covered</div>
+                                    </div>
+                                </div>
+                                <ul class="ex-bullets">
+                                    <li>Fixed browser-specific bug affecting 18% of users, restoring functionality
+                                        for
+                                        international users.</li>
+                                    <li>Built automation coverage for a key product suite used by ~22.5% of the user
+                                        base.</li>
+                                    <li>Integrated deep linking across the product suite, collaborating with the
+                                        mobile
+                                        team.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ex-item">
+                            <div class="ex-dot" style="border-color:#5F5E5A">
+                                <div class="ex-dot-inner" style="background:#5F5E5A"></div>
+                            </div>
+                            <div class="ex-card">
+                                <div class="ex-card-head">
+                                    <span class="ex-role">Software Engineer Intern</span>
+                                    <span class="ex-date">May 2021 &mdash; Aug 2021</span>
+                                </div>
+                                <div class="ex-stats">
+                                    <div class="ex-stat">
+                                        <div class="ex-stat-val">15%</div>
+                                        <div class="ex-stat-label">page load improvement</div>
+                                    </div>
+                                    <div class="ex-stat">
+                                        <div class="ex-stat-val">2 bugs</div>
+                                        <div class="ex-stat-label">resolved</div>
+                                    </div>
+                                </div>
+                                <ul class="ex-bullets">
+                                    <li>Implemented application tracking via Google Analytics for data-driven
+                                        decision-making.</li>
+                                    <li>Resolved two critical bugs, improving page load times by 15%.</li>
+                                    <li>Analyzed stored procedure usage with senior engineers to support deprecation
+                                        strategy.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="projects" class="section">
                     <h2>Projects</h2>
+
                     <!-- #region project #1 -->
-                    <table class="project-table">
-                        <tbody>
-                            <tr>
-                                <td><a href="https://github.com/fsoto-GH/Accounting" target="_blank">
-                                        <h3>Personal Lending Tracker</h3>
-                                    </a></td>
-                            </tr>
-                            <tr>
-                                <td>Full-Stack Application | SQL, C#, RESTful API, React</td>
-                            </tr>
-                            <tr>
-                                <td class="project-description">
-                                    The Personal Lending Tracker started as a simple database-driven program to manage
-                                    loans, people, and transactions—essentially a more dynamic version of Excel.
-                                    Over time, this project has evolved into a full-stack application with various
-                                    technologies and concepts integrated along the way.
-                                    I regularly use this application, and I have a few more ideas on what to develop
-                                    down the line.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <ul class="aligned-list">
-                                        <li>Developed a financial education tool to help siblings learn about loans and
-                                            credit, evolving it from a database-driven
-                                            system to a full-stack application.
-                                        </li>
-                                        <li>Designed and implemented a SQL database with stored procedures and triggers
-                                            to manage loans, people, and
-                                            transactions, ensuring data consistency and integrity.
-                                        </li>
-                                        <li>Built a Windows Form application to improve usability, enabling intuitive
-                                            tracking and management of loans, payments,
-                                            and transaction history.
-                                        </li>
-                                        <li>Transitioned to an API-first approach, developing a RESTful API to expose
-                                            data and support future integrations,
-                                            following service layer and DAO design patterns.
-                                        </li>
-                                        <li>Created a React-based front end to provide a modern, interactive user
-                                            interface, implementing pagination, error
-                                            handling, and responsive design.
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="project-images">
-                                    <img class="project-image" src="images/accounting/app_view.png"
-                                        data-caption="An image of the first UI interface for my pesonal lending app, a Windows Form app."
-                                        alt="An image of the first UI interface for my pesonal lending app, a Windows Form app.">
-                                    <img class="project-image" src="images/accounting/web_view.png"
-                                        data-caption="An image of the most recent iteration on my personal lending app, a React-based web application. Featuring responsive design."
-                                        alt="An image of the most recent iteration on my personal lending app, a React-based web application.">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pj-card">
+                        <div class="pj-header">
+                            <div class="pj-header-left">
+                                <a class="pj-title" href="https://github.com/fsoto-GH/Accounting"
+                                    target="_blank">Personal Lending Tracker</a>
+                                <div class="pj-chips">
+                                    <span class="pj-chip pj-db">SQL</span>
+                                    <span class="pj-chip pj-lang">C#</span>
+                                    <span class="pj-chip pj-web">RESTful API</span>
+                                    <span class="pj-chip pj-web">React</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pj-body">
+                            <p class="pj-desc">Started as a DB-driven loan tracker, evolved into a full-stack app I
+                                actively use &mdash; Windows Form &rarr; RESTful API &rarr; React front end.</p>
+                            <ul class="pj-bullets">
+                                <li>Built a financial education tool, evolving it from a DB system to a full-stack
+                                    app.
+                                </li>
+                                <li>Designed SQL database with stored procedures and triggers for data consistency.
+                                </li>
+                                <li>Transitioned to API-first with a RESTful API following service layer and DAO
+                                    patterns.</li>
+                                <li>Created a React front end with pagination, error handling, and responsive
+                                    design.
+                                </li>
+                            </ul>
+                            <div class="pj-thumbs">
+                                <a data-fancybox="lending" href="images/accounting/app_view.png"
+                                    data-caption="First UI iteration &mdash; Windows Form app.">
+                                    <img class="pj-thumb" src="images/accounting/app_view.png" alt="Windows Form UI">
+                                </a>
+                                <a data-fancybox="lending" href="images/accounting/web_view.png"
+                                    data-caption="Latest iteration &mdash; React web app with responsive design.">
+                                    <img class="pj-thumb" src="images/accounting/web_view.png" alt="React web view">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- #endregion -->
 
                     <!-- #region project #2 -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="https://github.com/fsoto-GH/GanttChartMaker" target="_blank">
-                                        <h3>Gantt Chart Maker</h3>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Windows Form Application | C#</td>
-                            </tr>
-                            <tr>
-                                <td class="project-description">
-                                    During my Operating Systems course, I studied CPU scheduling algorithms and created
-                                    Gantt charts as part of the coursework.
-                                    Motivated by a desire to automate the process and validate my work, I developed this
-                                    application to deepen my understanding of scheduling algorithms and enhance my
-                                    skills in dynamic UI development.
-                                    The application not only served as a tool to verify my results but also enabled me
-                                    to explore execution time summaries and performance comparisons across different
-                                    scheduling methods.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <ul class="aligned-list">
-                                        <li>
-                                            Developed a dynamic UI using standard Windows Form libraries to provide an
-                                            interactive interface for simulating CPU scheduling algorithms.
-                                        </li>
-                                        <li>
-                                            Implemented key features, including support for arrival times, preemptive
-                                            scheduling modes, and customizable quantum settings, enabling flexible
-                                            execution and analysis of scheduling strategies.
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="project-images">
-                                    <img class="project-image" src="images/gantt_maker/gantt_sjf.png"
-                                        data-caption="An image of my Gantt Chart maker application, showcasing a non-preemptive, shortest job first algorithm."
-                                        alt="An image of my Gantt Chart maker application, showcasing a non-preemptive, shortest job first algorithm.">
-                                    <img class="project-image" src="images/gantt_maker/gantt_roundrobin.png"
-                                        data-caption="An image of my Gantt Chart maker application, showcasing round robin with a quantum of 2."
-                                        alt="An image of my Gantt Chart maker application, showcasing round robin with a quantum of 2.">
-                                    <img class="project-image" src="images/gantt_maker/gantt_fcfs.png"
-                                        data-caption="An image of my Gantt Chart maker application, showcasing a first come first serve algorithm."
-                                        alt="An image of my Gantt Chart maker application, showcasing a first cone first serve algorithm.">
-                                    <img class="project-image" src="images/gantt_maker/gantt_priority.png"
-                                        data-caption="An image of my Gantt Chart maker application, showcasing  a preemptive, priority scheduling algorithm."
-                                        alt="An image of my Gantt Chart maker application, showcasing  a preemptive, priority scheduling algorithm.">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pj-card">
+                        <div class="pj-header">
+                            <div class="pj-header-left">
+                                <a class="pj-title" href="https://github.com/fsoto-GH/GanttChartMaker"
+                                    target="_blank">Gantt Chart Maker</a>
+                                <div class="pj-chips">
+                                    <span class="pj-chip pj-lang">C#</span>
+                                    <span class="pj-chip pj-lang">Windows Forms</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pj-body">
+                            <p class="pj-desc">Automated Gantt chart generation for CPU scheduling algorithms
+                                &mdash;
+                                FCFS, SJF, Round Robin, Priority &mdash; built to validate OS coursework.</p>
+                            <ul class="pj-bullets">
+                                <li>Developed a dynamic UI for simulating CPU scheduling algorithms.</li>
+                                <li>Supports arrival times, preemptive modes, and configurable quantum settings.
+                                </li>
+                            </ul>
+                            <div class="pj-thumbs">
+                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_sjf.png"
+                                    data-caption="Non-preemptive Shortest Job First algorithm.">
+                                    <img class="pj-thumb" src="images/gantt_maker/gantt_sjf.png" alt="SJF">
+                                </a>
+                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_roundrobin.png"
+                                    data-caption="Round Robin with a quantum of 2.">
+                                    <img class="pj-thumb" src="images/gantt_maker/gantt_roundrobin.png"
+                                        alt="Round Robin">
+                                </a>
+                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_fcfs.png"
+                                    data-caption="First Come First Serve algorithm.">
+                                    <img class="pj-thumb" src="images/gantt_maker/gantt_fcfs.png" alt="FCFS">
+                                </a>
+                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_priority.png"
+                                    data-caption="Preemptive Priority scheduling algorithm.">
+                                    <img class="pj-thumb" src="images/gantt_maker/gantt_priority.png" alt="Priority">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- #endregion -->
+
                     <!-- #region project #3 -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="https://github.com/fsoto-GH/StockCheckerUI" target="_blank">
-                                        <h3>Item Stock Checker</h3>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cross-Platform Application | Python, Tkinter, Web Scraping</td>
-                            </tr>
-                            <tr>
-                                <td class="project-description">
-                                    This project was inspired by the challenges of building a personal gaming computer
-                                    during the GPU shortage caused by the COVID-19 pandemic and the bitcoin mining boom.
-                                    At the time, GPUs were difficult to find in stock due to high demand and automated
-                                    bots, and retailers like BestBuy implemented anti-bot mechanisms, making it a race
-                                    for availability. To address this, I developed a cross-platform desktop application
-                                    using Python and
-                                    Tkinter to streamline GPU stock tracking and automate portions of the checkout
-                                    process.
-                                    The app provided a graphical interface for checking real-time stock availability
-                                    from BestBuy, leveraging Python's web scraping libraries to navigate dynamic content
-                                    and stock updates.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <ul class="aligned-list">
-                                        <li>
-                                            Leveraged Python's web scraping libraries to automate stock checks and
-                                            assist in the checkout process, initially focused on BestBuy.
-                                        </li>
-                                        <li>
-                                            Addressed challenges like dynamic web content and bot detection mechanisms
-                                            to ensure robust performance.
-                                        </li>
-                                        <li>
-                                            Explored and implemented various notification methods, ranging from basic
-                                            audio alerts to advanced push notifications, ensuring timely updates.
-                                        </li>
-                                        <li>
-                                            Enhanced the application from a basic UI to a dynamic interface, enabling
-                                            users to configure polling intervals and select preferred launch modes for
-                                            improved flexibility and usability.
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="project-images">
-                                    <img class="project-image" src="images/stock_checker/stock_checker.png"
-                                        data-caption="An image of my item stock checker application. This showcases the configurable settings and displays three items in different availability states."
-                                        alt="An image of my item stock checker application. This showcases the configurable settings and displays three items in different availability states.">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pj-card">
+                        <div class="pj-header">
+                            <div class="pj-header-left">
+                                <a class="pj-title" href="https://github.com/fsoto-GH/StockCheckerUI"
+                                    target="_blank">Item Stock Checker</a>
+                                <div class="pj-chips">
+                                    <span class="pj-chip pj-lang">Python</span>
+                                    <span class="pj-chip pj-lang">Tkinter</span>
+                                    <span class="pj-chip pj-web">Web Scraping</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pj-body">
+                            <p class="pj-desc">Built during the GPU shortage to track BestBuy stock and automate
+                                checkout &mdash; tackled real bot-detection challenges with push notification
+                                support.
+                            </p>
+                            <ul class="pj-bullets">
+                                <li>Automated stock checks using Python web scraping, navigating bot detection.</li>
+                                <li>Implemented notifications from audio alerts to advanced push notifications.</li>
+                                <li>Added configurable polling intervals and flexible launch modes.</li>
+                            </ul>
+                            <div class="pj-thumbs">
+                                <a data-fancybox="stock" href="images/stock_checker/stock_checker.png"
+                                    data-caption="Stock checker app with configurable settings and availability states.">
+                                    <img class="pj-thumb" src="images/stock_checker/stock_checker.png"
+                                        alt="Stock Checker">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- #endregion -->
+
                     <!-- #region project #4 -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="https://github.com/fsoto-GH/StatementGenerator" target="_blank">
-                                        <h3>Statement Generator</h3>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Windows Form Application | C#, Python, Web Scraping</td>
-                            </tr>
-                            <tr>
-                                <td class="project-description">
-                                    This project was inspired by the need to simplify and automate the monthly statement
-                                    retrieval process for my parents, who are novice users. To address this, I designed
-                                    and developed a user-friendly Windows Form application that automated the process,
-                                    ensuring it was simple enough for anyone to operate.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <ul class="aligned-list">
-                                        <li>Created a clean and straightforward interface using C# to make the
-                                            application accessible to users with limited technical skills.</li>
-                                        <li>Enabled seamless retrieval and organization of monthly statements,
-                                            significantly reducing manual effort and ensuring consistency.</li>
-                                        <li>Explored and utilized new web scraping libraries, including BeautifulSoup
-                                            (bs4) and PyMuPDF (fitz), to handle diverse statement formats and user
-                                            interfaces effectively.</li>
-                                        <li>Standardized web scraping patterns across various statement types, enabling
-                                            easier implementation and scalability for new formats.</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="project-images">
-                                    <img class="project-image" src="images/statement_generator/app_view.png"
-                                        data-caption="An image of my statement generator application. Showcasing different statement types and actions."
-                                        alt="An image of my statement generator application. Showcasing different statement types and actions.">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pj-card">
+                        <div class="pj-header">
+                            <div class="pj-header-left">
+                                <a class="pj-title" href="https://github.com/fsoto-GH/StatementGenerator"
+                                    target="_blank">Statement Generator</a>
+                                <div class="pj-chips">
+                                    <span class="pj-chip pj-lang">C#</span>
+                                    <span class="pj-chip pj-lang">Python</span>
+                                    <span class="pj-chip pj-web">Web Scraping</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pj-body">
+                            <p class="pj-desc">Automated monthly statement retrieval for my parents &mdash; a
+                                Windows
+                                Form app simple enough for anyone to use.</p>
+                            <ul class="pj-bullets">
+                                <li>Built an accessible C# interface for non-technical users.</li>
+                                <li>Used BeautifulSoup and PyMuPDF to handle diverse statement formats.</li>
+                                <li>Standardized scraping patterns for easy scalability to new statement types.</li>
+                            </ul>
+                            <div class="pj-thumbs">
+                                <a data-fancybox="statement" href="images/statement_generator/app_view.png"
+                                    data-caption="Statement generator app showcasing different statement types and actions.">
+                                    <img class="pj-thumb" src="images/statement_generator/app_view.png"
+                                        alt="Statement Generator">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- #endregion -->
                 </div>
             </div>

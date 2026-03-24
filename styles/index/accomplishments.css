@@ -1,3 +1,7 @@
+/* ── accomplishments.css ────────────────────────────────────────────────────
+ * Accomplishments timeline, stat cards, map cards, and mobile layout.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
 #accomplishments {
     position: relative;
     margin-top: 1rem;
@@ -15,18 +19,18 @@
     background-color: #303030;
 }
 
-/* Each achievement */
-.achievement {
+/* Each accomplishment */
+.accomplishment {
     position: relative;
     margin-bottom: 1.5rem;
 }
 
-.achievement:last-child {
+.accomplishment:last-child {
     margin-bottom: 0;
 }
 
 /* Dot on the timeline */
-.achievement-dot {
+.accomplishment-dot {
     position: absolute;
     left: -28px;
     top: 5px;
@@ -40,55 +44,56 @@
     background-color: #181818;
 }
 
-.achievement-dot-inner {
+.accomplishment-dot-inner {
     width: 5px;
     height: 5px;
     border-radius: 50%;
 }
 
 /* Category colours */
-.achievement-dot.hiking {
+/* cycling: teal | running/run-art: blue | race: red | spartan: amber */
+.accomplishment-dot.cycling {
     border-color: #1D9E75;
 }
 
-.achievement-dot.hiking .achievement-dot-inner {
+.accomplishment-dot.cycling .accomplishment-dot-inner {
     background: #0F6E56;
 }
 
-.achievement-dot.hiking-plus {
-    border-color: #534AB7;
-}
-
-.achievement-dot.hiking-plus .achievement-dot-inner {
-    background: #3C3489;
-}
-
-.achievement-dot.cycling {
-    border-color: #D85A30;
-}
-
-.achievement-dot.cycling .achievement-dot-inner {
-    background: #993C1D;
-}
-
-.achievement-dot.running {
+.accomplishment-dot.running {
     border-color: #378ADD;
 }
 
-.achievement-dot.running .achievement-dot-inner {
+.accomplishment-dot.running .accomplishment-dot-inner {
     background: #185FA5;
 }
 
-.achievement-dot.run-art {
-    border-color: #BA7517;
+.accomplishment-dot.run-art {
+    border-color: #378ADD;
 }
 
-.achievement-dot.run-art .achievement-dot-inner {
-    background: #854F0B;
+.accomplishment-dot.run-art .accomplishment-dot-inner {
+    background: #185FA5;
+}
+
+.accomplishment-dot.race {
+    border-color: #A32D2D;
+}
+
+.accomplishment-dot.race .accomplishment-dot-inner {
+    background: #791F1F;
+}
+
+.accomplishment-dot.spartan {
+    border-color: #854F0B;
+}
+
+.accomplishment-dot.spartan .accomplishment-dot-inner {
+    background: #633806;
 }
 
 /* Card */
-.achievement-card {
+.accomplishment-card {
     background-color: #202020;
     border: 1px solid #303030;
     border-radius: 8px;
@@ -96,12 +101,12 @@
     transition: border-color 0.2s;
 }
 
-.achievement-card:hover {
+.accomplishment-card:hover {
     border-color: #444444;
 }
 
 /* Card header: title + badge */
-.achievement-header {
+.accomplishment-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -109,15 +114,23 @@
     margin-bottom: 0.5rem;
 }
 
-.achievement-header h3 {
+.accomplishment-header h3 {
     font-family: "Lexend", sans-serif;
     font-size: 0.95rem;
     font-weight: normal;
     color: #ffffff;
 }
 
-.achievement-badge {
-    font-family: "Noto Sans", serif;
+/* Dual badge layout */
+.accomplishment-badges {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+/* Badge chips */
+.accomplishment-badge {
+    font-family: "Lexend", sans-serif;
     font-size: 0.65rem;
     padding: 3px 8px;
     border-radius: 4px;
@@ -125,33 +138,44 @@
     flex-shrink: 0;
 }
 
-.achievement-badge.hiking {
-    background: #0b2e22;
-    color: #4ade80;
+.accomplishment-badge.cycling {
+    background-color: #0b2e22;
+    border: 1px solid #1D9E75;
+    color: #5DCAA5;
 }
 
-.achievement-badge.hiking-plus {
-    background: #1a1740;
-    color: #a78bfa;
+.accomplishment-badge.running {
+    background-color: #0a1e30;
+    border: 1px solid #378ADD;
+    color: #85B7EB;
 }
 
-.achievement-badge.cycling {
-    background: #2e1508;
-    color: #fb923c;
+.accomplishment-badge.run-art {
+    background-color: #0a1e30;
+    border: 1px solid #378ADD;
+    color: #85B7EB;
 }
 
-.achievement-badge.running {
-    background: #0a1e30;
-    color: #60a5fa;
+.accomplishment-badge.race {
+    background-color: #2d0a0a;
+    border: 1px solid #A32D2D;
+    color: #F09595;
 }
 
-.achievement-badge.run-art {
-    background: #2a1a04;
+.accomplishment-badge.spartan {
+    background-color: #2a1a04;
+    border: 1px solid #854F0B;
     color: #fbbf24;
 }
 
+.accomplishment-badge.tbd {
+    background-color: #2a2a28;
+    border: 1px solid #5F5E5A;
+    color: #B4B2A9;
+}
+
 /* Description */
-.achievement-desc {
+.accomplishment-desc {
     font-size: 0.85rem;
     color: #aaaaaa;
     line-height: 1.6;
@@ -161,32 +185,32 @@
 }
 
 /* Stat chips */
-.achievement-stats {
+.accomplishment-stats {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.achievement-stat {
+.accomplishment-stat {
     background-color: #181818;
     border-radius: 6px;
     padding: 5px 10px;
 }
 
-.achievement-stat-val {
+.accomplishment-stat-val {
     font-family: "Lexend", sans-serif;
     font-size: 0.85rem;
     color: #ffffff;
 }
 
-.achievement-stat-label {
+.accomplishment-stat-label {
     font-size: 0.65rem;
     color: #6b6b68;
     margin-top: 1px;
 }
 
 /* O(2^n) closer */
-.achievement-closer {
+.accomplishment-closer {
     margin-top: 2rem;
     border-top: 1px solid #303030;
     padding-top: 1.25rem;
@@ -195,15 +219,465 @@
     gap: 14px;
 }
 
-.achievement-closer-code {
+.accomplishment-closer-code {
     font-family: "Lexend", sans-serif;
     font-size: 1.2rem;
     color: #ffffff;
     white-space: nowrap;
 }
 
-.achievement-closer-text {
+.accomplishment-closer-text {
     font-size: 0.8rem;
     color: #aaaaaa;
     line-height: 1.6;
+}
+
+/* Month marker per entry */
+.accomplishment-month {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #555555;
+    margin: 0 0 8px -28px;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.accomplishment-month::before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 1px;
+    background: #444444;
+    flex-shrink: 0;
+}
+
+/* TBD / coming soon card */
+.accomplishment-card-tbd {
+    background-color: #181818;
+    border: 1px dashed #2a2a2a;
+    border-radius: 8px;
+    padding: 0.85rem 1.1rem;
+}
+
+.accomplishment-card-tbd .accomplishment-header h3 {
+    color: #444444;
+}
+
+.accomplishment-tbd-text {
+    font-size: 0.75rem;
+    color: #444444;
+    font-family: "Lexend", sans-serif;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* ── Map cards (Leaflet route + stats) ──────────────────────────────────── */
+
+.accomplishment-map-card {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 8px;
+    transition: border-color 0.2s;
+    position: relative;
+    z-index: 0;
+    max-width: 100%;
+}
+
+/* Ensure Leaflet tiles and controls stay below the navbar */
+.accomplishment-map-card .leaflet-pane,
+.accomplishment-map-card .leaflet-top,
+.accomplishment-map-card .leaflet-bottom {
+    z-index: 1 !important;
+}
+
+.accomplishment-map-card .leaflet-map-pane {
+    z-index: 1 !important;
+}
+
+.accomplishment-map-card:hover {
+    border-color: #505050;
+}
+
+/* ── Desktop layout (side by side) ── */
+.accomplishment-map-inner {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+}
+
+.accomplishment-map-mobile {
+    display: none;
+}
+
+.accomplishment-map-left {
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-right: 1px solid #303030;
+}
+
+.accomplishment-map-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.accomplishment-map-wrap {
+    flex: 1;
+}
+
+.accomplishment-map {
+    width: 100%;
+    height: 100%;
+    min-height: 140px;
+    cursor: pointer;
+}
+
+/* Strava stats list (desktop, below map) */
+.accomplishment-map-stats-list {
+    border-top: 1px solid #252525;
+    padding: 7px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.accomplishment-map-stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.accomplishment-map-stat-val {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.75rem;
+    color: #ffffff;
+}
+
+.accomplishment-map-stat-label {
+    font-size: 0.6rem;
+    color: #555555;
+}
+
+.accomplishment-map-footer {
+    padding: 6px 10px;
+    border-top: 1px solid #252525;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ── Shared inner elements ── */
+.accomplishment-map-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.accomplishment-map-name {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.accomplishment-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.accomplishment-tag {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.accomplishment-tag.tbd {
+    background-color: #2a2a28;
+    border: 1px solid #5F5E5A;
+    color: #B4B2A9;
+}
+
+.accomplishment-tag.accomplishment-tag-run {
+    background-color: #0a1e30;
+    border: 1px solid #378ADD;
+    color: #85B7EB;
+}
+
+.accomplishment-tag.accomplishment-tag-cycling {
+    background-color: #0b2e22;
+    border: 1px solid #1D9E75;
+    color: #5DCAA5;
+}
+
+.accomplishment-tag.accomplishment-tag-race {
+    background-color: #2d0a0a;
+    border: 1px solid #A32D2D;
+    color: #F09595;
+}
+
+/* Hide the standalone accomplishment-card when an activity card is present */
+.accomplishment:has(.accomplishment-map-card) .accomplishment-card {
+    display: none;
+}
+
+.accomplishment-map-desc {
+    font-size: 0.82rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    padding-top: 0 !important;
+    margin: 0;
+}
+
+/* Achievement stats copied into activity card — must match accomplishments.css exactly */
+.accomplishment-map-achieve-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.accomplishment-map-achieve-stats .accomplishment-stat {
+    background-color: #181818;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+.accomplishment-map-achieve-stats .accomplishment-stat-val {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.85rem;
+    color: #ffffff;
+}
+
+.accomplishment-map-achieve-stats .accomplishment-stat-label {
+    font-size: 0.65rem;
+    color: #6b6b68;
+    margin-top: 1px;
+}
+
+.accomplishment-map-strava-btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    color: #FC4C02;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.15s;
+}
+
+.accomplishment-map-strava-btn:hover {
+    opacity: 0.8;
+    color: #FC4C02;
+}
+
+/* ── Mobile layout (stacked) ── */
+@media (max-width: 600px) {
+    .accomplishment-map-inner {
+        display: none;
+    }
+
+    .accomplishment-map-mobile {
+        display: block;
+    }
+
+    .accomplishment-map-mobile-top {
+        padding: 0.9rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border-bottom: 1px solid #303030;
+    }
+
+    .accomplishment-map-mobile-map {
+        width: 100%;
+        height: 180px;
+        cursor: pointer;
+    }
+
+    .accomplishment-map-stats-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid #252525;
+    }
+
+    .accomplishment-map-stat-m {
+        padding: 7px 8px;
+        border-right: 1px solid #252525;
+    }
+
+    .accomplishment-map-stat-m:last-child {
+        border-right: none;
+    }
+
+    .accomplishment-map-stat-val-m {
+        font-family: "Lexend", sans-serif;
+        font-size: 0.75rem;
+        color: #ffffff;
+    }
+
+    .accomplishment-map-stat-label-m {
+        font-size: 0.58rem;
+        color: #555555;
+        margin-top: 1px;
+    }
+}
+
+/* ── Highlights toggle ───────────────────────────────────────────────────── */
+
+.accomplishments-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.acc-toggle {
+    position: relative;
+    width: 116px;
+    height: 28px;
+    background-color: #181818;
+    border: 1px solid #303030;
+    border-radius: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.acc-toggle-pill {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 22px;
+    width: 54px;
+    border-radius: 11px;
+    background-color: #854F0B;
+    transition: transform 0.25s ease, background-color 0.25s;
+}
+
+.acc-toggle.all .acc-toggle-pill {
+    transform: translateX(56px);
+    background-color: #0F6E56;
+}
+
+.acc-toggle-labels {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none;
+}
+
+.acc-toggle-label {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.acc-toggle-label.best {
+    color: #fbbf24;
+}
+
+.acc-toggle-label.all {
+    color: #444444;
+}
+
+.acc-toggle.all .acc-toggle-label.best {
+    color: #444444;
+}
+
+.acc-toggle.all .acc-toggle-label.all {
+    color: #5DCAA5;
+}
+
+/* HoF */
+
+.accomplishment-map-card.hof {
+    border-color: #854F0B;
+    background-color: #221a0d;
+}
+
+.accomplishment-map-card.hof:hover {
+    border-color: #fbbf24;
+}
+
+.accomplishment-hof-corner {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background: #2a1d00;
+    border: 1px solid #854F0B;
+    border-radius: 0 8px 0 6px;
+    padding: 4px 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.6rem;
+    color: #fbbf24;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background-color 0.15s, border-color 0.15s;
+    z-index: 2;
+}
+
+.accomplishment-hof-corner:hover {
+    background: #3d2800;
+    border-color: #fbbf24;
+    color: #fbbf24;
+}
+
+/* Push the title away from the corner badge, keep tags flush right */
+.accomplishment-map-head.hof .accomplishment-map-name {
+    padding-right: 90px;
+}
+
+/* Mobile: hide corner badge, show inline footer link instead */
+@media (max-width: 600px) {
+    .accomplishment-hof-corner {
+        display: none;
+    }
+
+    .accomplishment-map-card.hof .accomplishment-map-head.hof .accomplishment-map-name {
+        padding-right: 0;
+    }
+
+    .accomplishment-map-footer.hof {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .accomplishment-hof-footer-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-family: "Lexend", sans-serif;
+        font-size: 0.65rem;
+        color: #fbbf24;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .accomplishment-hof-footer-link:hover {
+        opacity: 0.8;
+        color: #fbbf24;
+    }
 }
