@@ -297,12 +297,14 @@
       );
       return;
     }
-
     var containers = document.querySelectorAll(
       ".accomplishment-map-card[data-activity]",
     );
 
-    if ("IntersectionObserver" in window) {
+    // only lazy load on 'more' view, as the best will be limited data points
+    let currentView =
+      localStorage.getItem("accomplishments-view") || "highlights";
+    if (currentView !== "highlights" && "IntersectionObserver" in window) {
       var observer = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
@@ -319,7 +321,7 @@
           });
         },
         {
-          rootMargin: "200px 0px", // start loading 200px before it enters the viewport
+          rootMargin: "25% 0px",
           threshold: 0,
         },
       );
