@@ -13,7 +13,7 @@ const smoothScrollRelativeLinks = () => {
         behavior: "smooth",
       });
 
-      document.location = `${this.getAttribute("href")}`;
+      window.history.pushState(null, null, `${this.getAttribute("href")}`);
     });
   });
 };

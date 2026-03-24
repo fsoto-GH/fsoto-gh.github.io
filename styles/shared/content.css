@@ -5,7 +5,7 @@
     --margin-right: 2rem;
     --margin-left: var(--margin-right);
     /* Size at which to collapse sidebar */
-    --page-break: 1020px;
+    --page-break: 1040px;
     box-sizing: content-box;
 }
 
@@ -178,7 +178,7 @@ body {
     }
 }
 
-@media (max-width: 1020px) {    
+@media (max-width: 1040px) {    
     #main {
         width: 100%;
         margin-left: 0;

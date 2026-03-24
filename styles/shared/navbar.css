@@ -102,13 +102,13 @@
 /* ── Breakpoints ─────────────────────────────────────────────────────────── */
 
 /* Large: sidebar visible, hamburger hidden */
-@media (min-width: 1020px) {
+@media (min-width: 1040px) {
     .hide-when-big   { display: none !important; }
     .hide-when-small { display: flex !important; }
 }
 
 /* Small: sidebar collapses, show hamburger, hide desktop links */
-@media (max-width: 1020px) {
+@media (max-width: 1040px) {
     .hide-when-small { display: none !important; }
 
     .nav-bar {

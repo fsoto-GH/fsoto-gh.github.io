@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* Close drawer if viewport resizes past mobile breakpoint */
   window.addEventListener("resize", function () {
-    if (window.innerWidth >= 1020 && open) {
+    if (window.innerWidth >= 1040 && open) {
       setOpen(false);
     }
   });
