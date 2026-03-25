@@ -301,45 +301,14 @@
       ".accomplishment-map-card[data-activity]",
     );
 
-    // only lazy load on 'more' view, as the best will be limited data points
-    let currentView =
-      localStorage.getItem("accomplishments-view") || "highlights";
-    if (currentView !== "highlights" && "IntersectionObserver" in window) {
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              var container = entry.target;
-              var id = container.dataset.activity;
-              if (ACTIVITIES_DATA[id]) {
-                renderActivity(container, id, ACTIVITIES_DATA[id]);
-              } else {
-                console.warn("activities.js: no entry found for id:", id);
-              }
-              observer.unobserve(container);
-            }
-          });
-        },
-        {
-          rootMargin: "25% 0px",
-          threshold: 0,
-        },
-      );
-
-      containers.forEach(function (container) {
-        observer.observe(container);
-      });
-    } else {
-      // Fallback for browsers without IntersectionObserver
-      containers.forEach(function (container) {
-        var id = container.dataset.activity;
-        if (ACTIVITIES_DATA[id]) {
-          renderActivity(container, id, ACTIVITIES_DATA[id]);
-        } else {
-          console.warn("activities.js: no entry found for id:", id);
-        }
-      });
-    }
+    containers.forEach(function (container) {
+      var id = container.dataset.activity;
+      if (ACTIVITIES_DATA[id]) {
+        renderActivity(container, id, ACTIVITIES_DATA[id]);
+      } else {
+        console.warn("activities.js: no entry found for id:", id);
+      }
+    });
 
     initToggle();
   }
