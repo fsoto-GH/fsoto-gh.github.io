@@ -69,7 +69,6 @@
     position: fixed;
     top: var(--nav-bar-height);
     left: 0;
-    width: 100%;
     background-color: #202020;
     border-bottom: 1px solid #303030;
     z-index: 199;
@@ -102,18 +101,37 @@
 /* ── Breakpoints ─────────────────────────────────────────────────────────── */
 
 /* Large: sidebar visible, hamburger hidden */
-@media (min-width: 1040px) {
-    .hide-when-big   { display: none !important; }
-    .hide-when-small { display: flex !important; }
+@media (min-width: 1200px) {
+    .hide-when-big {
+        display: none !important;
+    }
+
+    .hide-when-small {
+        display: flex !important;
+    }
 }
 
 /* Small: sidebar collapses, show hamburger, hide desktop links */
-@media (max-width: 1040px) {
-    .hide-when-small { display: none !important; }
+@media (max-width: 1200px) {
+    .hide-when-small {
+        display: none !important;
+    }
 
+    #mobile-menu {
+        width: calc(100% - var(--margin-right) - var(--profile-width) - 1px);
+        margin-left: calc(var(--margin-right) + var(--profile-width) + 1px);
+    }
+}
+
+@media (max-width: 1040px) {
     .nav-bar {
         background-color: #202020;
         margin-left: 0 !important;
         width: 100% !important;
+    }
+
+    #mobile-menu {
+        width: 100% !important;
+        margin-left: 0;
     }
 }

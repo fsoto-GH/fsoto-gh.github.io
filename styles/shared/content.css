@@ -192,3 +192,37 @@ body {
         padding: 0;
     }
 }
+
+
+#back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #202020;
+    border: 1px solid #303030;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555555;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, border-color 0.15s, color 0.15s, background-color 0.15s;
+    z-index: 199;
+}
+ 
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+ 
+#back-to-top:hover {
+    border-color: #505050;
+    color: #ffffff;
+    background-color: #2a2a2a;
+}

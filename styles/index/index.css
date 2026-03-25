@@ -1,0 +1,97 @@
+.wn-list {
+    position: relative;
+    padding-left: 28px;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.wn-list::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background-color: #303030;
+}
+
+.wn-item {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.wn-item:last-child {
+    margin-bottom: 0;
+}
+
+.wn-dot {
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid;
+    background-color: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wn-dot-inner {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+}
+
+.wn-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.wn-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin-bottom: 3px;
+}
+
+.wn-desc {
+    font-size: 0.78rem;
+    color: #555555;
+    line-height: 1.5;
+}
+
+.wn-tag {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.58rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.wn-tag-wip {
+    background-color: #0a1e30;
+    border: 1px solid #378ADD;
+    color: #85B7EB;
+}
+
+.wn-tag-new {
+    background-color: #0b2e22;
+    border: 1px solid #1D9E75;
+    color: #5DCAA5;
+}
+
+.wn-tag-fkt {
+    background-color: #2a1d00;
+    border: 1px solid #854F0B;
+    color: #fbbf24;
+}
