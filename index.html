@@ -93,7 +93,7 @@
         <div id="contact">
             <div id="profile">
                 <div id="profile-about">
-                    <img src="images/ultramarathon_selfie.JPG" alt="A selfie of myself on my first ultramarathon."
+                    <img src="images/prof-selfie.png" alt="A selfie of myself on my first ultramarathon."
                         class="profile-photo">
                     <table id="personal-info">
                         <tbody>
@@ -220,13 +220,13 @@
                     <p class="no-top">
                         I tend to go further than planned. A century became 400 miles. An Everest became a ROAM. A
                         first ultra-endurance race became a chase for 2nd place. In a world where finishing feels
-                        like enough, I keep asking what's next — and that's what I bring to engineering.
+                        like enough, I keep asking what's next&mdash;and that's what I bring to engineering.
                     </p>
 
                     <div id="accomplishments-section" class="section">
                         <div class="accomplishments-section-head">
                             <h2>Accomplishments</h2>
-                            <div class="acc-toggle" id="accomplishments-toggle">
+                            <div class="acc-toggle" id="accomplishments-toggle" tabindex="0" role="button">
                                 <div class="acc-toggle-pill"></div>
                                 <div class="acc-toggle-labels">
                                     <span class="acc-toggle-label best">Best</span>
@@ -817,14 +817,22 @@
                             </div>
                         </div>
                         <div class="pj-body">
-                            <p class="pj-desc">Built during the GPU shortage to track BestBuy stock and automate
-                                checkout &mdash; tackled real bot-detection challenges with push notification
-                                support.
+                            <p class="pj-desc">
+                                Built during the GPU shortage to track Best Buy inventory and automate purchase
+                                readiness, navigating real-world bot detection and high-demand stock drops.
                             </p>
+
                             <ul class="pj-bullets">
-                                <li>Automated stock checks using Python web scraping, navigating bot detection.</li>
-                                <li>Implemented notifications from audio alerts to advanced push notifications.</li>
-                                <li>Added configurable polling intervals and flexible launch modes.</li>
+                                <li>Developed a Python Tkinter application to monitor item stock in near real-time with
+                                    a lightweight, configurable desktop interface.</li>
+                                <li>Implemented web scraping logic resilient to bot-detection mechanisms, enabling
+                                    reliable tracking during high-traffic drops.</li>
+                                <li>Designed a flexible polling system with configurable intervals and launch modes for
+                                    continuous or targeted monitoring.</li>
+                                <li>Integrated notification systems ranging from audio alerts to push notifications to
+                                    enable rapid response to stock availability.</li>
+                                <li>Successfully used the tool to secure a GPU during a live Best Buy drop, validating
+                                    real-world effectiveness under constrained conditions.</li>
                             </ul>
                             <div class="pj-thumbs">
                                 <a data-fancybox="stock" href="images/stock_checker/stock_checker.png"
@@ -851,13 +859,22 @@
                             </div>
                         </div>
                         <div class="pj-body">
-                            <p class="pj-desc">Automated monthly statement retrieval for my parents &mdash; a
-                                Windows
-                                Form app simple enough for anyone to use.</p>
+                            <p class="pj-desc">
+                                Built to simplify bill management for non-technical users by automating statement
+                                retrieval across multiple service providers through a unified desktop interface.
+                            </p>
+
                             <ul class="pj-bullets">
-                                <li>Built an accessible C# interface for non-technical users.</li>
-                                <li>Used BeautifulSoup and PyMuPDF to handle diverse statement formats.</li>
-                                <li>Standardized scraping patterns for easy scalability to new statement types.</li>
+                                <li>Developed a Windows Forms application (C#) to provide a simple, accessible interface
+                                    for automating statement downloads.</li>
+                                <li>Engineered Python-based web scraping workflows using Selenium, BeautifulSoup, and
+                                    Requests to handle diverse provider authentication flows and page structures.</li>
+                                <li>Supported multiple services (e.g., ComEd, Xfinity, Amazon Synchrony) with reusable
+                                    scraping patterns for scalable onboarding of new providers.</li>
+                                <li>Automated PDF retrieval and processing, consolidating statements into a consistent
+                                    and user-friendly format.</li>
+                                <li>Designed the system around real-world usage, reducing manual effort for recurring
+                                    financial tasks and improving reliability for non-technical users.</li>
                             </ul>
                             <div class="pj-thumbs">
                                 <a data-fancybox="statement" href="images/statement_generator/app_view.png"
@@ -883,13 +900,22 @@
                             </div>
                         </div>
                         <div class="pj-body">
-                            <p class="pj-desc">Automated Gantt chart generation for CPU scheduling algorithms
-                                &mdash;
-                                FCFS, SJF, Round Robin, Priority &mdash; built to validate OS coursework.</p>
+                            <p class="pj-desc">
+                                Built to simulate and validate CPU scheduling algorithms by generating Gantt charts and
+                                performance metrics through an interactive desktop application.
+                            </p>
+
                             <ul class="pj-bullets">
-                                <li>Developed a dynamic UI for simulating CPU scheduling algorithms.</li>
-                                <li>Supports arrival times, preemptive modes, and configurable quantum settings.
-                                </li>
+                                <li>Developed a Windows Forms application to visualize CPU scheduling behavior across
+                                    algorithms including FCFS, SJF, Round Robin, and Priority.</li>
+                                <li>Implemented scheduling logic supporting arrival times, preemptive modes, and
+                                    configurable quantum settings to model real-world execution scenarios.</li>
+                                <li>Generated Gantt charts and execution summaries to validate algorithm correctness and
+                                    compare performance characteristics.</li>
+                                <li>Designed a dynamic UI for configuring processes and visualizing scheduling outcomes
+                                    in real time.</li>
+                                <li>Used as a validation tool for OS coursework, enabling faster iteration and deeper
+                                    understanding of scheduling trade-offs.</li>
                             </ul>
                             <div class="pj-thumbs">
                                 <a data-fancybox="gantt" href="images/gantt_maker/gantt_sjf.png"

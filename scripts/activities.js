@@ -280,10 +280,19 @@
       localStorage.setItem("accomplishments-view", view);
     }
 
-    toggle.addEventListener("click", function () {
+    const triggerToggleState = function () {
       var current =
         localStorage.getItem("accomplishments-view") || "highlights";
       setView(current === "highlights" ? "all" : "highlights");
+    };
+
+    toggle.addEventListener("click", triggerToggleState);
+    toggle.addEventListener("keydown", (event) => {
+      // support tabs/accessibility
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggle.click();
+      }
     });
 
     var saved = localStorage.getItem("accomplishments-view") || "highlights";
