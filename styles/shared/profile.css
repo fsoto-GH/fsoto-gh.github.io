@@ -1,6 +1,6 @@
 /* Profile main */
 #contact {
-    height: calc(100% - var(--nav-bar-height));
+    height: 100%;
     background-color: #202020;
     border-right: 1px solid #303030;
     display: flex;
@@ -9,6 +9,7 @@
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     position: fixed;
+    top: var(--nav-bar-height);   /* ← add this */
     width: var(--profile-width);
     padding-left: var(--margin-left);
     min-width: var(--profile-width);

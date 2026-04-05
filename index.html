@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Manifest for Web Apps -->
-    <link rel="manifest" href="favicon_io/manifest.json" crossorigin="use-credentials">
+    <link rel="manifest" href="favicon_io/manifest.json">
 
     <!-- FancyBox -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
@@ -51,10 +51,11 @@
 </head>
 
 <body>
-    <!-- Navigation Bar -->
     <nav class="nav-bar">
-        <a href="#contact">
-            <img src="favicon_io/favicon-32x32.png" alt="My website logo.">
+        <!-- Logo + name -->
+        <a class="nav-logo" href="#contact">
+            <img src="favicon_io/favicon-32x32.png" alt="Site logo">
+            Fernando J. Soto
         </a>
 
         <!-- Desktop links -->
@@ -67,7 +68,7 @@
             <li><a href="#projects">Projects</a></li>
         </ul>
 
-        <!-- Hamburger button (mobile only) -->
+        <!-- Hamburger (mobile) -->
         <button id="hamburger-icon" class="hide-when-big" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
                 <rect id="bar1" x="1" y="4" width="20" height="2" rx="1" fill="#fff" />
@@ -305,7 +306,8 @@
                                     <p class="accomplishment-desc no-top">
                                         My first ever race&mdash;and my first time seeing a real hill. Fought from the
                                         back of the pack all the way to 2nd place, on 2 hours of sleep, in a city that
-                                        had never once prepared me for actual elevation. <a href="pages/blog/mishigami-2025.html">(blog)</a>
+                                        had never once prepared me for actual elevation. <a
+                                            href="pages/blog/mishigami-2025.html">Read my Mishigami 2025 race recap</a>!
                                     </p>
                                     <div class="accomplishment-stats">
                                         <div class="accomplishment-stat">
