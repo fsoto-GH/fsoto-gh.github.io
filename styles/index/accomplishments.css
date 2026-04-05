@@ -1,7 +1,4 @@
-/* ── accomplishments.css ────────────────────────────────────────────────────
- * Accomplishments timeline, stat cards, map cards, and mobile layout.
- * ─────────────────────────────────────────────────────────────────────────── */
-
+/* ── accomplishments.css ────────────────────────────────────────────────────* Accomplishments timeline, stat cards, map cards, and mobile layout.* ─────────────────────────────────────────────────────────────────────────── */
 #accomplishments {
     position: relative;
     margin-top: 1rem;
@@ -277,7 +274,6 @@
 }
 
 /* ── Map cards (Leaflet route + stats) ──────────────────────────────────── */
-
 .accomplishment-map-card {
     background-color: #202020;
     border: 1px solid #303030;
@@ -287,7 +283,9 @@
     transition: border-color 0.2s;
     position: relative;
     z-index: 0;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* Ensure Leaflet tiles and controls stay below the navbar */
@@ -371,6 +369,26 @@
     border-top: 1px solid #252525;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.accomplishment-map-footer.has-blog {
+    justify-content: space-between;
+}
+
+.accomplishment-map-blog-btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    color: #aaaaaa;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.accomplishment-map-blog-btn:hover {
+    color: #ffffff;
 }
 
 /* ── Shared inner elements ── */
@@ -541,7 +559,6 @@
 }
 
 /* ── Highlights toggle ───────────────────────────────────────────────────── */
-
 .accomplishments-section-head {
     display: flex;
     align-items: center;
@@ -613,7 +630,6 @@
 }
 
 /* HoF */
-
 .accomplishment-map-card.hof {
     border-color: #854F0B;
     background-color: #221a0d;

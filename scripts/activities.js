@@ -17,183 +17,218 @@
     return "overview";
   }
 
+  /** Create an element with optional className and children (strings become text nodes). */
+  function node(tag, className, ...children) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    for (const child of children) {
+      if (typeof child === "string") {
+        el.appendChild(document.createTextNode(child));
+      } else if (child) {
+        el.appendChild(child);
+      }
+    }
+    return el;
+  }
+
+  /** Create an <a> with className, href, text, and optional target. */
+  function link(className, href, text, target) {
+    const a = node("a", className, text);
+    a.href = href;
+    if (target) a.target = target;
+    return a;
+  }
+
+  /** Clone an element's child nodes into a new wrapper. */
+  function cloneInto(tag, className, source) {
+    const wrap = node(tag, className);
+    for (const child of source.childNodes) {
+      wrap.appendChild(child.cloneNode(true));
+    }
+    return wrap;
+  }
+
   function renderActivity(container, id, activity) {
-    var tagsHtml = activity.tags
-      .map(function (t) {
-        return (
-          '<span class="accomplishment-tag ' +
-          t.cls +
-          '">' +
-          t.label +
-          "</span>"
+    const isHof = container.classList.contains("hof");
+    const blogUrl = container.dataset.blogUrl;
+    const headClass = "accomplishment-map-head" + (isHof ? " hof" : "");
+    const footerClass =
+      "accomplishment-map-footer" + (blogUrl ? " has-blog" : "");
+
+    // ── Shared builders ──
+
+    function buildTags() {
+      const wrap = node("div", "accomplishment-tags");
+      for (const t of activity.tags) {
+        wrap.appendChild(node("span", "accomplishment-tag " + t.cls, t.label));
+      }
+      return wrap;
+    }
+
+    function buildHead() {
+      return node(
+        "div",
+        headClass,
+        node("span", "accomplishment-map-name", activity.name),
+        buildTags(),
+      );
+    }
+
+    function buildFooter() {
+      const footer = node("div", footerClass);
+      if (blogUrl) {
+        footer.appendChild(
+          link("accomplishment-map-blog-btn", blogUrl, "Read the full story →"),
         );
-      })
-      .join("");
+      }
+      footer.appendChild(
+        link(
+          "accomplishment-map-strava-btn",
+          activity.stravaUrl,
+          "View on Strava",
+          "_blank",
+        ),
+      );
+      return footer;
+    }
 
-    var actStatsHtml = activity.actStats
-      .map(function (s) {
-        return (
-          '<div class="accomplishment-map-stat-item">' +
-          '<span class="accomplishment-map-stat-label">' +
-          s.label +
-          "</span>" +
-          '<span class="accomplishment-map-stat-val">' +
-          s.val +
-          "</span>" +
-          "</div>"
-        );
-      })
-      .join("");
+    function buildMapDiv(mapId, className) {
+      const div = document.createElement("div");
+      div.className = className;
+      div.id = mapId;
+      div.style.background = activity.mapBg;
+      return div;
+    }
 
-    var actStatsMobileHtml = activity.actStats
-      .map(function (s) {
-        return (
-          '<div class="accomplishment-map-stat-m">' +
-          '<div class="accomplishment-map-stat-val-m">' +
-          s.val +
-          "</div>" +
-          '<div class="accomplishment-map-stat-label-m">' +
-          s.label +
-          "</div>" +
-          "</div>"
-        );
-      })
-      .join("");
+    // ── Desktop ──
 
-    var stravaBtn =
-      '<a class="accomplishment-map-strava-btn" href="' +
-      activity.stravaUrl +
-      '" target="_blank">' +
-      "View on Strava</a>";
+    const left = node(
+      "div",
+      "accomplishment-map-left",
+      buildHead(),
+      node("div", "accomplishment-map-desc-slot"),
+      node("div", "accomplishment-map-achieve-stats-slot"),
+    );
 
-    container.innerHTML =
-      // Desktop: left content + right map
-      '<div class="accomplishment-map-inner">' +
-      '<div class="accomplishment-map-left">' +
-      '<div class="accomplishment-map-head' +
-      (container.classList.contains("hof") ? " hof" : "") +
-      '">' +
-      '<span class="accomplishment-map-name">' +
-      activity.name +
-      "</span>" +
-      '<div class="accomplishment-tags">' +
-      tagsHtml +
-      "</div>" +
-      "</div>" +
-      '<div class="accomplishment-map-desc-slot"></div>' +
-      '<div class="accomplishment-map-achieve-stats-slot"></div>' +
-      "</div>" +
-      '<div class="accomplishment-map-right">' +
-      '<div class="accomplishment-map-wrap">' +
-      '<div class="accomplishment-map" id="map-' +
-      id +
-      '" style="background:' +
-      activity.mapBg +
-      '"></div>' +
-      "</div>" +
-      '<div class="accomplishment-map-stats-list">' +
-      actStatsHtml +
-      "</div>" +
-      '<div class="accomplishment-map-footer">' +
-      stravaBtn +
-      "</div>" +
-      "</div>" +
-      "</div>" +
-      // Mobile: stacked (description + achieve stats above map)
-      '<div class="accomplishment-map-mobile">' +
-      '<div class="accomplishment-map-mobile-top">' +
-      '<div class="accomplishment-map-head' +
-      (container.classList.contains("hof") ? " hof" : "") +
-      '">' +
-      '<span class="accomplishment-map-name">' +
-      activity.name +
-      "</span>" +
-      '<div class="accomplishment-tags">' +
-      tagsHtml +
-      "</div>" +
-      "</div>" +
-      '<div class="accomplishment-map-desc-slot-m"></div>' +
-      '<div class="accomplishment-map-achieve-stats-slot-m"></div>' +
-      "</div>" +
-      '<div class="accomplishment-map-mobile-map" id="map-m-' +
-      id +
-      '" style="background:' +
-      activity.mapBg +
-      '"></div>' +
-      '<div class="accomplishment-map-stats-mobile">' +
-      actStatsMobileHtml +
-      "</div>" +
-      '<div class="accomplishment-map-footer">' +
-      stravaBtn +
-      "</div>" +
-      "</div>";
+    const statsList = node("div", "accomplishment-map-stats-list");
+    for (const s of activity.actStats) {
+      statsList.appendChild(
+        node(
+          "div",
+          "accomplishment-map-stat-item",
+          node("span", "accomplishment-map-stat-label", s.label),
+          node("span", "accomplishment-map-stat-val", s.val),
+        ),
+      );
+    }
 
-    // Inject HoF corner badge after innerHTML is set
-    var hofUrl = container.dataset.hofUrl;
-    if (container.classList.contains("hof") && hofUrl) {
-      // Desktop: corner badge
-      var badge = document.createElement("a");
-      badge.className = "accomplishment-hof-corner";
-      badge.href = hofUrl;
-      badge.target = "_blank";
-      badge.textContent = "★ Hall of Fame";
-      container.appendChild(badge);
+    const right = node(
+      "div",
+      "accomplishment-map-right",
+      node(
+        "div",
+        "accomplishment-map-wrap",
+        buildMapDiv("map-" + id, "accomplishment-map"),
+      ),
+      statsList,
+      buildFooter(),
+    );
 
-      // Mobile: footer link alongside Strava
-      var mobileFooter = container.querySelector(
+    container.appendChild(node("div", "accomplishment-map-inner", left, right));
+
+    // ── Mobile ──
+
+    const mobileTop = node(
+      "div",
+      "accomplishment-map-mobile-top",
+      buildHead(),
+      node("div", "accomplishment-map-desc-slot-m"),
+      node("div", "accomplishment-map-achieve-stats-slot-m"),
+    );
+
+    const statsMobile = node("div", "accomplishment-map-stats-mobile");
+    for (const s of activity.actStats) {
+      statsMobile.appendChild(
+        node(
+          "div",
+          "accomplishment-map-stat-m",
+          node("div", "accomplishment-map-stat-val-m", s.val),
+          node("div", "accomplishment-map-stat-label-m", s.label),
+        ),
+      );
+    }
+
+    const mobile = node(
+      "div",
+      "accomplishment-map-mobile",
+      mobileTop,
+      buildMapDiv("map-m-" + id, "accomplishment-map-mobile-map"),
+      statsMobile,
+      buildFooter(),
+    );
+
+    container.appendChild(mobile);
+
+    // ── HoF badge ──
+
+    const hofUrl = container.dataset.hofUrl;
+    if (isHof && hofUrl) {
+      container.appendChild(
+        link("accomplishment-hof-corner", hofUrl, "★ Hall of Fame", "_blank"),
+      );
+
+      const mobileFooter = container.querySelector(
         ".accomplishment-map-mobile .accomplishment-map-footer",
       );
       if (mobileFooter) {
         mobileFooter.classList.add("hof");
-        var mobileLink = document.createElement("a");
-        mobileLink.className = "accomplishment-hof-footer-link";
-        mobileLink.href = hofUrl;
-        mobileLink.target = "_blank";
-        mobileLink.textContent = "★ Hall of Fame";
-        mobileFooter.insertBefore(mobileLink, mobileFooter.firstChild);
+        mobileFooter.insertBefore(
+          link(
+            "accomplishment-hof-footer-link",
+            hofUrl,
+            "★ Hall of Fame",
+            "_blank",
+          ),
+          mobileFooter.firstChild,
+        );
       }
     }
 
-    // Copy description and achieve stats from the parent accomplishment card
-    // into both the desktop and mobile slots
-    var achCard = container.closest(".accomplishment");
+    // ── Copy description & achieve stats from parent card ──
+
+    const achCard = container.closest(".accomplishment");
     if (achCard) {
-      var desc = achCard.querySelector(".accomplishment-desc");
-      var stats = achCard.querySelector(".accomplishment-stats");
+      const desc = achCard.querySelector(".accomplishment-desc");
+      const stats = achCard.querySelector(".accomplishment-stats");
 
       if (desc) {
-        container.querySelector(".accomplishment-map-desc-slot").innerHTML =
-          '<p class="accomplishment-map-desc">' + desc.innerHTML + "</p>";
-        container.querySelector(".accomplishment-map-desc-slot-m").innerHTML =
-          '<p class="accomplishment-map-desc">' + desc.innerHTML + "</p>";
+        for (const slot of container.querySelectorAll(
+          ".accomplishment-map-desc-slot, .accomplishment-map-desc-slot-m",
+        )) {
+          slot.appendChild(cloneInto("p", "accomplishment-map-desc", desc));
+        }
         desc.style.display = "none";
       }
 
       if (stats) {
-        container.querySelector(
-          ".accomplishment-map-achieve-stats-slot",
-        ).innerHTML =
-          '<div class="accomplishment-map-achieve-stats">' +
-          stats.innerHTML +
-          "</div>";
-        container.querySelector(
-          ".accomplishment-map-achieve-stats-slot-m",
-        ).innerHTML =
-          '<div class="accomplishment-map-achieve-stats">' +
-          stats.innerHTML +
-          "</div>";
+        for (const slot of container.querySelectorAll(
+          ".accomplishment-map-achieve-stats-slot, .accomplishment-map-achieve-stats-slot-m",
+        )) {
+          slot.appendChild(
+            cloneInto("div", "accomplishment-map-achieve-stats", stats),
+          );
+        }
         stats.style.display = "none";
       }
     }
 
-    // Init desktop map
+    // Init maps
     initMap("map-" + id, activity);
-    // Init mobile map
     initMap("map-m-" + id, activity);
   }
 
   function initMap(mapId, activity) {
-    var map = L.map(mapId, {
+    const map = L.map(mapId, {
       zoomControl: false,
       attributionControl: false,
       dragging: false,
@@ -207,13 +242,13 @@
       { maxZoom: 19 },
     ).addTo(map);
 
-    var polyline = L.polyline(activity.points.overview, {
+    const polyline = L.polyline(activity.points.overview, {
       color: activity.color,
       weight: 2.5,
       opacity: 0.9,
     }).addTo(map);
 
-    var full = activity.points.full;
+    const full = activity.points.full;
 
     L.circleMarker(full[0], {
       radius: 5,
@@ -225,26 +260,26 @@
 
     L.circleMarker(full[full.length - 1], {
       radius: 5,
-      color: activity.startColor,
-      fillColor: activity.startColor,
+      color: "#FC4C02",
+      fillColor: "#FC4C02",
       fillOpacity: 1,
       weight: 0,
     }).addTo(map);
 
-    var bounds = polyline.getBounds();
+    const bounds = polyline.getBounds();
     map.fitBounds(bounds, { padding: [12, 12] });
 
-    var currentTier = "overview";
-    map.on("zoomend", function () {
-      var newTier = getTier(map.getZoom());
+    let currentTier = "overview";
+    map.on("zoomend", () => {
+      const newTier = getTier(map.getZoom());
       if (newTier !== currentTier) {
         polyline.setLatLngs(activity.points[newTier]);
         currentTier = newTier;
       }
     });
 
-    var interactive = false;
-    document.getElementById(mapId).addEventListener("click", function () {
+    let interactive = false;
+    document.getElementById(mapId).addEventListener("click", () => {
       if (!interactive) {
         map.dragging.enable();
         map.scrollWheelZoom.enable();
@@ -256,7 +291,7 @@
 
     // Re-fit map when container resizes (fixes mobile zoom/tile misalignment)
     if (typeof ResizeObserver !== "undefined") {
-      var ro = new ResizeObserver(function () {
+      const ro = new ResizeObserver(() => {
         map.invalidateSize();
         if (!interactive) {
           map.fitBounds(bounds, { padding: [12, 12] });
@@ -267,35 +302,26 @@
   }
 
   function initToggle() {
-    var toggle = document.getElementById("accomplishments-toggle");
-    var extended = document.querySelectorAll(".accomplishment-extended");
+    const toggle = document.getElementById("accomplishments-toggle");
+    const extended = document.querySelectorAll(".accomplishment-extended");
     if (!toggle) return;
 
-    function setView(view) {
-      var isHighlights = view === "highlights";
-      extended.forEach(function (el) {
-        el.style.display = isHighlights ? "none" : "";
+    const setView = (view) => {
+      const isHighlights = view === "highlights";
+      extended.forEach((item) => {
+        item.style.display = isHighlights ? "none" : "";
       });
       toggle.classList.toggle("all", !isHighlights);
       localStorage.setItem("accomplishments-view", view);
-    }
-
-    const triggerToggleState = function () {
-      var current =
-        localStorage.getItem("accomplishments-view") || "highlights";
-      setView(current === "highlights" ? "all" : "highlights");
     };
 
-    toggle.addEventListener("click", triggerToggleState);
-    toggle.addEventListener("keydown", (event) => {
-      // support tabs/accessibility
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggle.click();
-      }
+    toggle.addEventListener("click", () => {
+      const current =
+        localStorage.getItem("accomplishments-view") || "highlights";
+      setView(current === "highlights" ? "all" : "highlights");
     });
 
-    var saved = localStorage.getItem("accomplishments-view") || "highlights";
+    const saved = localStorage.getItem("accomplishments-view") || "highlights";
     setView(saved);
   }
 
@@ -306,12 +332,13 @@
       );
       return;
     }
-    var containers = document.querySelectorAll(
+
+    const containers = document.querySelectorAll(
       ".accomplishment-map-card[data-activity]",
     );
 
-    containers.forEach(function (container) {
-      var id = container.dataset.activity;
+    containers.forEach((container) => {
+      const id = container.dataset.activity;
       if (ACTIVITIES_DATA[id]) {
         renderActivity(container, id, ACTIVITIES_DATA[id]);
       } else {
