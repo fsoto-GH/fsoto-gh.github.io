@@ -168,6 +168,7 @@
     #contact {
         display: flex !important;
         position: relative !important;
+        top: 0 !important;
         width: 100% !important;
         justify-content: space-around;
         padding-left: 0 !important;

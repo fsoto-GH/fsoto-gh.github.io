@@ -14,7 +14,7 @@
  *   points      — { overview, mid, full } LOD tiers ([lat, lon] arrays)
  * ─────────────────────────────────────────────────────────────────────────── */
 
-var ACTIVITIES_DATA = {
+const ACTIVITIES_DATA = {
   "ultra-run": {
     name: "Ultra-Marathon",
     stravaUrl: "https://www.strava.com/activities/12785966983",

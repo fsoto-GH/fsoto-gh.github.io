@@ -1,15 +1,15 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", function () {
-  var btn = document.getElementById("hamburger-icon");
-  var menu = document.getElementById("mobile-menu");
-  var links = document.querySelectorAll(".mobile-link");
-  var bar1 = document.getElementById("bar1");
-  var bar2 = document.getElementById("bar2");
-  var bar3 = document.getElementById("bar3");
-  var open = false;
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("hamburger-icon");
+  const menu = document.getElementById("mobile-menu");
+  const links = document.querySelectorAll(".mobile-link");
+  const bar1 = document.getElementById("bar1");
+  const bar2 = document.getElementById("bar2");
+  const bar3 = document.getElementById("bar3");
+  let open = false;
 
-  function setOpen(state) {
+  const setOpen = (state) => {
     open = state;
     menu.classList.toggle("is-open", open);
     btn.setAttribute("aria-expanded", open);
@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
       bar2.style.opacity = "1";
       bar3.style.transform = "";
     }
-  }
+  };
 
-  btn.addEventListener("click", function () {
+  btn.addEventListener("click", () => {
     setOpen(!open);
   });
 
-  links.forEach(function (link) {
-    link.addEventListener("click", function () {
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
       setOpen(false);
     });
   });
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* Close drawer if viewport resizes past mobile breakpoint */
-  window.addEventListener("resize", function () {
+  window.addEventListener("resize", () => {
     if (window.innerWidth >= 1040 && open) {
       setOpen(false);
     }
