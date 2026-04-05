@@ -7,6 +7,7 @@
     /* Size at which to collapse sidebar */
     --page-break: 1040px;
     box-sizing: content-box;
+    --border: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -16,12 +17,16 @@
 
 body {
     background-color: #181818;
-    color: #ffffff;
+    color: #aaaaaa;
     font-size: 1rem;
     font-family: "Noto Sans", serif;
     font-optical-sizing: auto;
     font-weight: 350;
     font-style: normal;
+}
+
+.container {
+    padding-top: var(--nav-bar-height);
 }
 
 /* Right Section: main Area */
@@ -48,7 +53,6 @@ body {
 
 #main #content {
     padding-left: 2rem;
-    padding-top: var(--nav-bar-height);
 }
 
 #main #content h1 {
@@ -58,6 +62,7 @@ body {
 }
 
 #main #content h2 {
+    color: #ffffff;
     margin-bottom: .8rem;
 }
 
@@ -65,7 +70,8 @@ body {
     width: 100%;
 }
 
-#work-experience table:not(:last-child), #projects table:not(:last-child) {
+#work-experience table:not(:last-child),
+#projects table:not(:last-child) {
     margin-bottom: 1rem;
 }
 
@@ -176,9 +182,13 @@ body {
     .project-image {
         max-width: min(70%, 800px);
     }
+
+    .container {
+        padding-top: var(--nav-bar-height);
+    }
 }
 
-@media (max-width: 1040px) {    
+@media (max-width: 1040px) {
     #main {
         width: 100%;
         margin-left: 0;
@@ -215,12 +225,12 @@ body {
     transition: opacity 0.25s, border-color 0.15s, color 0.15s, background-color 0.15s;
     z-index: 199;
 }
- 
+
 #back-to-top.visible {
     opacity: 1;
     pointer-events: auto;
 }
- 
+
 #back-to-top:hover {
     border-color: #505050;
     color: #ffffff;

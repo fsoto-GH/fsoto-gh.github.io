@@ -1,6 +1,6 @@
 /* Profile main */
 #contact {
-    height: 100%;
+    height: calc(100% - var(--nav-bar-height));
     background-color: #202020;
     border-right: 1px solid #303030;
     display: flex;
@@ -26,8 +26,12 @@
     padding: 0 2rem 2rem 0;
 }
 
+#profile-about {
+    margin-top: 1.4rem;
+
+}
+
 #profile .profile-photo {
-    margin-top: var(--nav-bar-height);
     border-radius: 10%;
 }
 
