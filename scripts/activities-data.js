@@ -628,6 +628,7 @@ var ACTIVITIES_DATA = {
   mishigami: {
     name: "Mishigami 2025",
     stravaUrl: "https://www.strava.com/activities/15134576837",
+    blogUrl: "pages/blog/mishigami-2025.html",
     tags: [
       { label: "cycling", cls: "accomplishment-tag-cycling" },
       { label: "race", cls: "accomplishment-tag-race" },

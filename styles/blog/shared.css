@@ -20,6 +20,48 @@
     --profile-width: 0px;
 }
 
+a {
+    color: #fff;
+}
+
+/* Tables */
+.blog-table {
+    background-color: #202020;
+    color: #888;
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.blog-table thead {
+    padding-bottom: 0.5rem;
+    color: #bbb;
+}
+
+.blog-table th {
+    padding: 0.4rem 0;
+        border-bottom: 1px dashed #bbb;
+
+}
+
+.blog-table td {
+    line-height: 1.85rem;
+}
+
+.blog-table td,
+.blog-table a {
+    color: #aaaaaa;
+}
+
+.l {
+    text-align: left;
+}
+
+.r {
+    text-align: right;
+}
+
 /* ── Page layout ─────────────────────────────────────────────────────────── */
 #blog-main {
     max-width: 760px;
@@ -260,7 +302,7 @@
 .blog-section h3 {
     font-family: "Lexend", sans-serif;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: bold;
     /* font-weight: normal in content.css */
     color: #aaaaaa;
     margin-top: 1.4rem;
