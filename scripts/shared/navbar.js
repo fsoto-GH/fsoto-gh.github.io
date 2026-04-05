@@ -37,6 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  /* Back-to-top */
+  const btt = document.getElementById("back-to-top");
+  window.addEventListener(
+    "scroll",
+    () => {
+      btt.classList.toggle("visible", window.scrollY > 300);
+    },
+    { passive: true },
+  );
+
+  btt.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
   /* Close drawer if viewport resizes past mobile breakpoint */
   window.addEventListener("resize", function () {
     if (window.innerWidth >= 1040 && open) {

@@ -1,0 +1,550 @@
+/* ── styles/blog/shared.css ──────────────────────────────────────────────────
+ * Shared styles for all blog pages.
+ * Load order: content.css → navbar.css → this file.
+ *
+ * Font size reference (from content.css / index.html):
+ *   body:            1rem / font-weight 350   (Noto Sans)
+ *   #main h1:        1.6rem                   (Lexend)
+ *   #main h2:        browser default ~1.5rem  (Lexend, no explicit size set)
+ *   #main h3:        1rem / font-weight normal (Lexend)
+ *   #main p:         1rem                     (Noto Sans 350)
+ *   .accomplishment-stat-val:  0.85rem        (Lexend)
+ *   .accomplishment-stat-label: 0.65rem       (Lexend)
+ *   .accomplishment-desc:       0.85rem       (Noto Sans)
+ *   .accomplishment-badge:      0.65rem       (Lexend)
+ *   nav links:       0.82rem                  (Lexend)
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── No sidebar on blog pages ────────────────────────────────────────────── */
+:root {
+    --profile-width: 0px;
+}
+
+/* ── Page layout ─────────────────────────────────────────────────────────── */
+#blog-main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: calc(var(--nav-bar-height) + 2.5rem) 2rem 5rem;
+    animation: fadeUp 0.4s 0.05s ease both;
+}
+
+/* ── Reading progress bar ────────────────────────────────────────────────── */
+#read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background-color: #1D9E75;
+    z-index: 300;
+    transition: width 0.08s linear;
+    pointer-events: none;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+.blog-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.blog-date {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    /* same scale as .accomplishment-badge */
+    color: #555555;
+    letter-spacing: 0.06em;
+}
+
+/* Blog title — matches #main #content h1 (1.6rem Lexend) */
+.blog-title {
+    font-family: "Lexend", sans-serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+}
+
+/* Blog subtitle — matches .accomplishment-desc (0.85rem Noto Sans) */
+.blog-subtitle {
+    font-family: "Noto Sans", serif;
+    font-size: 0.85rem;
+    font-weight: 350;
+    color: #aaaaaa;
+    font-style: italic;
+    line-height: 1.6;
+    padding-top: 0 !important;
+    margin-bottom: 0;
+}
+
+/* ── Tag chips — exact tokens from accomplishments.css ───────────────────── */
+.blog-tag {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    /* .accomplishment-badge */
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.blog-tag.cycling {
+    background-color: #0b2e22;
+    border: 1px solid #1D9E75;
+    color: #5DCAA5;
+}
+
+.blog-tag.race {
+    background-color: #2d0a0a;
+    border: 1px solid #A32D2D;
+    color: #F09595;
+}
+
+.blog-tag.running {
+    background-color: #0a1e30;
+    border: 1px solid #378ADD;
+    color: #85B7EB;
+}
+
+.blog-tag.spartan {
+    background-color: #2a1a04;
+    border: 1px solid #854F0B;
+    color: #fbbf24;
+}
+
+/* Placement/result badge — amber, distinct from spartan */
+.blog-tag.result {
+    background-color: #2a1a04;
+    border: 1px solid #854F0B;
+    color: #fbbf24;
+}
+
+/* ── Stat strip — matches accomplishment-stat exactly ────────────────────── */
+.blog-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid #303030;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.5rem 0 2rem;
+}
+
+.blog-stat {
+    background-color: #202020;
+    /* .accomplishment-stat */
+    padding: 5px 10px;
+    /* .accomplishment-stat */
+    text-align: center;
+    border-right: 1px solid #303030;
+}
+
+.blog-stat:last-child {
+    border-right: none;
+}
+
+/* .accomplishment-stat-val */
+.blog-stat-val {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #ffffff;
+    display: block;
+    line-height: 1.3;
+}
+
+/* .accomplishment-stat-label */
+.blog-stat-label {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    color: #6b6b68;
+    display: block;
+    margin-top: 1px;
+}
+
+/* ── Divider ─────────────────────────────────────────────────────────────── */
+.blog-hr {
+    border: none;
+    border-top: 1px solid #303030;
+    margin: 2rem 0;
+}
+
+/* ── TOC ─────────────────────────────────────────────────────────────────── */
+.blog-toc {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2.25rem;
+    animation: fadeUp 0.4s 0.1s ease both;
+}
+
+.blog-toc-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    /* .accomplishment-stat-label scale */
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #555555;
+    margin-bottom: 0.7rem;
+}
+
+/* Single column — reads naturally top-to-bottom */
+.blog-toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.38rem;
+}
+
+.blog-toc li {
+    counter-increment: toc;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.blog-toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    color: #444444;
+    min-width: 20px;
+    flex-shrink: 0;
+}
+
+.blog-toc a {
+    font-family: "Noto Sans", serif;
+    font-size: 0.85rem;
+    /* .accomplishment-desc scale */
+    font-weight: 350;
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.blog-toc a:hover {
+    color: #ffffff;
+}
+
+/* ── Chapter label ───────────────────────────────────────────────────────── */
+.ch {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #555555;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+/* ── Section scroll offset ───────────────────────────────────────────────── */
+.blog-section {
+    scroll-margin-top: calc(var(--nav-bar-height) + 1.5rem);
+}
+
+/* ── Section h2 — matches #main #content h2 (browser default ~1.5rem, Lexend)
+   We set it explicitly to 1.5rem for consistency across browsers. ────────── */
+.blog-section h2 {
+    font-family: "Lexend", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.9rem;
+    line-height: 1.3;
+}
+
+/* Sub-headings — matches #main h3 (1rem Lexend font-weight normal) */
+.blog-section h3 {
+    font-family: "Lexend", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    /* font-weight: normal in content.css */
+    color: #aaaaaa;
+    margin-top: 1.4rem;
+    margin-bottom: 0.45rem;
+}
+
+/* ── Body prose — matches #main p (1rem Noto Sans 350) ──────────────────── */
+.blog-section p {
+    font-family: "Noto Sans", serif;
+    font-size: 1rem;
+    font-weight: 350;
+    color: #aaaaaa;
+    line-height: 1.85rem;
+    /* matches #main line-height */
+    padding-top: 1rem;
+    /* matches #main p padding-top */
+}
+
+.blog-section p:first-of-type {
+    padding-top: 0;
+}
+
+.blog-section p em {
+    color: #cccccc;
+    font-style: italic;
+}
+
+/* Drop cap — scaled from 1rem body, so 3× gives visual weight */
+.drop-cap::first-letter {
+    font-family: "Lexend", sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    float: left;
+    line-height: 0.82;
+    margin-right: 0.1em;
+    margin-top: 0.2em;
+    color: #ffffff;
+}
+
+/* ── Mile marker pills ───────────────────────────────────────────────────── */
+.mi {
+    display: inline-flex;
+    align-items: center;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background-color: #202020;
+    border: 1px solid #303030;
+    color: #888;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+/* ── Pull quote ──────────────────────────────────────────────────────────── */
+.blog-quote {
+    border-left: 2px solid #1D9E75;
+    margin: 1.4rem 0;
+    padding: 0.1rem 0 0.1rem 1.1rem;
+}
+
+/* Override the section p rules for the quote */
+.blog-quote p {
+    font-family: "Noto Sans", serif;
+    font-style: italic;
+    font-size: 1rem !important;
+    font-weight: 350 !important;
+    color: #ffffff !important;
+    padding-top: 0 !important;
+}
+
+/* ── Learnings list ──────────────────────────────────────────────────────── */
+.learning {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #252525;
+}
+
+.learning:last-child {
+    border-bottom: none;
+}
+
+/* Title — .accomplishment-stat-val scale */
+.learning-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+}
+
+/* Body — .accomplishment-desc scale */
+.learning-body {
+    font-family: "Noto Sans", serif;
+    font-size: 0.85rem;
+    font-weight: 350;
+    color: #888888;
+    line-height: 1.6;
+}
+
+/* ── Epilogue card ───────────────────────────────────────────────────────── */
+.blog-epilogue {
+    margin-top: 2.25rem;
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    padding: 1.4rem 1.75rem;
+    text-align: center;
+}
+
+/* Epilogue text — .accomplishment-desc scale */
+.blog-epilogue p {
+    font-family: "Noto Sans", serif;
+    font-size: 0.85rem;
+    font-weight: 350;
+    color: #aaaaaa;
+    font-style: italic;
+    line-height: 1.6;
+    padding-top: 0 !important;
+}
+
+.blog-epilogue p+p {
+    padding-top: 0.4rem !important;
+}
+
+/* ── Photo layouts ───────────────────────────────────────────────────────── */
+
+.blog-photo-card {
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.25rem 0;
+    transition: border-color 0.2s;
+}
+
+.blog-photo-card:hover {
+    border-color: #444444;
+}
+
+.blog-photo-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-photo-caption {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.65rem;
+    color: #555555;
+    text-align: center;
+    margin-top: 0.5rem;
+    letter-spacing: 0.04em;
+}
+
+/* A: Full-width banner */
+.blog-photo-full img {
+    max-height: 380px;
+    object-fit: cover;
+}
+
+/* B: Inline left */
+.blog-photo-left {
+    float: left;
+    width: 42%;
+    margin: 0.25rem 1.25rem 0.75rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.blog-photo-left img {
+    max-height: 260px;
+}
+
+.blog-photo-clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* C: Inline right */
+.blog-photo-right {
+    float: right;
+    width: 42%;
+    margin: 0.25rem 0 0.75rem 1.25rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.blog-photo-right img {
+    max-height: 260px;
+}
+
+/* D: Two-up grid */
+.blog-photo-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 1.25rem 0;
+}
+
+.blog-photo-2col .blog-photo-card {
+    margin: 0;
+}
+
+.blog-photo-2col img {
+    max-height: 220px;
+}
+
+/* E: Three-up grid */
+.blog-photo-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 1.25rem 0;
+}
+
+.blog-photo-3col .blog-photo-card {
+    margin: 0;
+}
+
+.blog-photo-3col img {
+    max-height: 180px;
+}
+
+/* F: Hero left + stacked right */
+.blog-photo-hero-stack {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 10px;
+    margin: 1.25rem 0;
+}
+
+.blog-photo-hero-stack .blog-photo-card {
+    margin: 0;
+}
+
+.blog-photo-hero-stack .blog-photo-stack-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.blog-photo-hero-stack .blog-photo-stack-col .blog-photo-card {
+    flex: 1;
+}
+
+.blog-photo-hero-stack img {
+    max-height: 220px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    #blog-main {
+        padding: calc(var(--nav-bar-height) + 1.5rem) 1.25rem 4rem;
+    }
+
+    .blog-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .blog-stat:nth-child(2) {
+        border-right: none;
+    }
+
+    .blog-stat:nth-child(3),
+    .blog-stat:nth-child(4) {
+        border-top: 1px solid #303030;
+    }
+
+    .blog-photo-left,
+    .blog-photo-right {
+        float: none;
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+
+    .blog-photo-2col,
+    .blog-photo-3col,
+    .blog-photo-hero-stack {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-photo-hero-stack .blog-photo-stack-col {
+        flex-direction: row;
+    }
+}

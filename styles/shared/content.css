@@ -1,10 +1,11 @@
+/* ── content.css ─────────────────────────────────────────────────────────── */
+
 :root {
     --profile-width: 375px;
     --content-min-width: 550px;
     --nav-bar-height: 3rem;
     --margin-right: 2rem;
     --margin-left: var(--margin-right);
-    /* Size at which to collapse sidebar */
     --page-break: 1040px;
     box-sizing: content-box;
 }
@@ -24,7 +25,14 @@ body {
     font-style: normal;
 }
 
-/* Right Section: main Area */
+/* ── Profile sidebar ─────────────────────────────────────────────────────── */
+/* Sidebar sits below the nav bar (which is now full-width) */
+#contact {
+    top: var(--nav-bar-height);
+    /* push below the full-width nav */
+}
+
+/* ── Right section: main area ────────────────────────────────────────────── */
 #main {
     flex-direction: column;
     background-color: #181818;
@@ -32,10 +40,12 @@ body {
     min-width: var(--content-min-width);
     line-height: 1.4rem;
     padding-right: var(--margin-right);
+    position: relative;
 }
 
 #main p {
     padding-top: 1rem;
+    color: #aaa;
 }
 
 #main p.no-top {
@@ -49,6 +59,7 @@ body {
 #main #content {
     padding-left: 2rem;
     padding-top: var(--nav-bar-height);
+    animation: fadeUp 0.4s 0.05s ease both;
 }
 
 #main #content h1 {
@@ -65,7 +76,8 @@ body {
     width: 100%;
 }
 
-#work-experience table:not(:last-child), #projects table:not(:last-child) {
+#work-experience table:not(:last-child),
+#projects table:not(:last-child) {
     margin-bottom: 1rem;
 }
 
@@ -123,7 +135,6 @@ body {
     padding-top: 1rem;
 }
 
-
 .project-images {
     display: flex;
     flex-wrap: nowrap;
@@ -148,52 +159,7 @@ body {
     margin-left: 40px;
 }
 
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 768px) {
-
-    /* Styles for phones */
-    .project-image {
-        max-width: 90%;
-    }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 1032px) {
-    .project-image {
-        max-width: 90%;
-    }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1200px) {
-    .project-image {
-        max-width: 55%;
-    }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .project-image {
-        max-width: min(70%, 800px);
-    }
-}
-
-@media (max-width: 1040px) {    
-    #main {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    #welcome {
-        margin-top: 0 !important;
-    }
-
-    #main #content {
-        padding: 0;
-    }
-}
-
-
+/* ── Back to top ─────────────────────────────────────────────────────────── */
 #back-to-top {
     position: fixed;
     bottom: 1.5rem;
@@ -215,14 +181,54 @@ body {
     transition: opacity 0.25s, border-color 0.15s, color 0.15s, background-color 0.15s;
     z-index: 199;
 }
- 
+
 #back-to-top.visible {
     opacity: 1;
     pointer-events: auto;
 }
- 
+
 #back-to-top:hover {
     border-color: #505050;
     color: #ffffff;
     background-color: #2a2a2a;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .project-image {
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1032px) {
+    .project-image {
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .project-image {
+        max-width: 55%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .project-image {
+        max-width: min(70%, 800px);
+    }
+}
+
+@media (max-width: 1040px) {
+    #main {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #welcome {
+        margin-top: 0 !important;
+    }
+
+    #main #content {
+        padding: 0;
+    }
 }

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mishigami 2025 | Fernando J. Soto</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Manifest for Web Apps -->
+    <link rel="manifest" href="favicon_io/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="16x16" href="../../favicon_io/favicon-16x16.png" type="image/png">
+    <link rel="icon" sizes="32x32" href="../../favicon_io/favicon-32x32.png" type="image/png">
+
+    <!-- Apple Touch Icon for iOS devices -->
+    <link rel="apple-touch-icon" href="../../favicon_io/apple-touch-icon.png">
+
+    <!-- Icons for Progressive Web Apps -->
+    <link rel="icon" sizes="192x192" href="../../favicon_io/android-chrome-192x192.png" type="image/png">
+    <link rel="icon" sizes="512x512" href="../../favicon_io/android-chrome-512x512.png" type="image/png">
+
+    <!-- Google Fonts — same as main site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared styles (order matters) -->
+    <link rel="stylesheet" href="../../styles/shared/content.css">
+    <link rel="stylesheet" href="../../styles/shared/navbar.css">
+    <link rel="stylesheet" href="../../styles/blog/shared.css">
+
+    <!-- Custom styles and Scripts -->
+    <script src="../../scripts/shared/navbar.js"></script>
+    <script src="../../scripts/pages/blog/shared.js"></script>
+</head>
+
+<body>
+
+    <div id="read-progress"></div>
+
+    <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
+    <nav class="nav-bar">
+        <!-- Logo + name -->
+        <a class="nav-logo" href="../../index.html">
+            <img src="../../favicon_io/favicon-32x32.png" alt="Site logo">
+            Fernando J. Soto
+        </a>
+
+        <!-- Desktop links — blog-specific -->
+        <ul id="links" class="hide-when-small">
+
+        </ul>
+
+        <!-- Back link (desktop) + hamburger (mobile) -->
+        <a class="nav-back hide-when-small" href="../../index.html#accomplishments-section">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M10 12L6 8l4-4" />
+            </svg>
+            Back to portfolio
+        </a>
+        <button id="hamburger-icon" class="hide-when-big" aria-label="Open menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+                <rect id="bar1" x="1" y="4" width="20" height="2" rx="1" fill="#fff" />
+                <rect id="bar2" x="1" y="10" width="20" height="2" rx="1" fill="#fff" />
+                <rect id="bar3" x="1" y="16" width="20" height="2" rx="1" fill="#fff" />
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <div id="mobile-menu" aria-hidden="true">
+        <ul>
+            <li><a href="../../index.html" class="mobile-link">← Portfolio</a></li>
+        </ul>
+    </div>
+
+    <!-- ── Content ───────────────────────────────────────────────────────────── -->
+    <div id="blog-main">
+
+        <!-- Hero -->
+        <div class="blog-eyebrow">
+            <span class="blog-tag cycling">cycling</span>
+            <span class="blog-tag race">race</span>
+            <span class="blog-tag result">2nd place</span>
+            <span class="blog-date">Jul 2025</span>
+        </div>
+        <h1 class="blog-title">Mishigami 2025</h1>
+        <p class="blog-subtitle">1,121 miles around Lake Michigan&mdash;my first bike race, my first ultra-endurance
+            race, and a completely reasonable life choice.</p>
+
+        <!-- Stats -->
+        <div class="blog-stats">
+            <div class="blog-stat">
+                <span class="blog-stat-val">1,121.11 mi</span>
+                <span class="blog-stat-label">Distance</span>
+            </div>
+            <div class="blog-stat">
+                <span class="blog-stat-val">91:31:41</span>
+                <span class="blog-stat-label">Elapsed time</span>
+            </div>
+            <div class="blog-stat">
+                <span class="blog-stat-val">22,689 ft</span>
+                <span class="blog-stat-label">Elevation gain</span>
+            </div>
+            <div class="blog-stat">
+                <span class="blog-stat-val">2nd</span>
+                <span class="blog-stat-label">Overall</span>
+            </div>
+        </div>
+
+        <!-- TOC -->
+        <div class="blog-toc">
+            <div class="blog-toc-title">Contents</div>
+            <ol>
+                <li><a href="#prologue">The ride that changed everything</a></li>
+                <li><a href="#ch1">The spark&mdash;and the midnight idea</a></li>
+                <li><a href="#ch2">The buildup&mdash;gear &amp; training</a></li>
+                <li><a href="#ch3">Race prep&mdash;controlled chaos</a></li>
+                <li><a href="#ch4">Day 1&mdash;the chase north</a></li>
+                <li><a href="#ch5">Day 2&mdash;the Garmin crisis and the big sleep</a></li>
+                <li><a href="#ch6">Day 3&mdash;the duel, the gas station floor, the breakdown</a></li>
+                <li><a href="#ch7">Day 4&mdash;the final push</a></li>
+                <li><a href="#ch8">What I learned</a></li>
+            </ol>
+        </div>
+
+        <!-- ── Prologue ──────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="prologue">
+            <span class="ch">Prologue</span>
+            <h2>The ride that changed everything</h2>
+
+            <!--
+            PHOTO EXAMPLE — Layout A: Full-width banner
+            Drop a wide landscape shot here (e.g. route map, start line crowd).
+            Remove the comment block and swap src when you have the image.
+
+        <div class="blog-photo-card blog-photo-full">
+            <img src="../../images/mishigami/start-line.jpg" alt="Start line at Mishigami 2025">
+        </div>
+        <p class="blog-photo-caption">The start line, 5am, July 12th — about 30 riders ready to go.</p>
+        -->
+
+            <p class="drop-cap">In 2024, my proudest ride was a ridiculous, day-long adventure across four states. I
+                mapped a 400-mile loop touching Illinois, Indiana, Michigan, and Wisconsin just to see how far I could
+                go in 24 hours. That ride lit something in me.</p>
+            <p>Every year, I try to complete my age in cycling centuries before my birthday. In 2024, I hit 25 before
+                turning 25. For 2025, I wanted something equally poetic and equally unhinged.</p>
+            <p>My first idea: run 26 marathons before my 26th birthday. Clever, right? 26 marathons for 26(.2) years.
+                But cycling is my real obsession, and I still wanted a big bike goal. So I posted on Reddit looking for
+                other cyclists with equally questionable judgment. Someone replied: <em>"Have you heard of the Mishigami
+                    Challenge? Or the Chicago Randonneurs?"</em></p>
+            <p>I looked it up. 1,121 miles around Lake Michigan. Self-supported. No crew. No sleep unless you find it
+                yourself.</p>
+            <p>The marathon goal was quietly shelved.</p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 1 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch1">
+            <span class="ch">Chapter 1</span>
+            <h2>The spark&mdash;and the midnight idea</h2>
+            <p>I went to the first Chicago Randonneurs meeting and met the 2024 winners, Tim Falkenberg and Sarah Rice.
+                Hearing their stories made the distance feel both terrifying and magnetic. They talked about the route,
+                the weather, the sleep deprivation, the hallucinations, the strategy&mdash;and the FKT.</p>
+            <p>The fastest known time.</p>
+            <p>That phrase stuck like a splinter. A few nights later&mdash;around midnight, when all my genius ideas
+                seem to appear&mdash;I thought: <em>wouldn't it be funny if I tried to break the FKT?</em></p>
+            <p>I opened Strava and pulled every ride over 100km from 2024. I calculated moving speed, elapsed pace,
+                downtime ratio. I wanted to know if the FKT was even remotely realistic. That's when the uncertainty
+                kicked in.</p>
+            <p>I had never been more than 70 miles away from home on bike. I hadn't touched my bike all winter. My first
+                100km ride
+                of 2025 left me exhausted. My first 100-miler of 2025 left me dead.</p>
+            <p>But the idea had already taken root. And once it did, there was no going back.</p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 2 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch2">
+            <span class="ch">Chapter 2</span>
+            <h2>The buildup&mdash;gear experiments and rebuilt fitness</h2>
+            <p>My average power had dropped about 12% from 2024. In Chicago's flat terrain, power translates directly to
+                speed&mdash;so rebuilding my ceiling was priority one. The spring became one long experiment, split
+                between training and gear.</p>
+
+            <h3>Gear</h3>
+
+            <!--
+            PHOTO EXAMPLE — Layout C: Inline right, text wraps left
+            Good for a single gear/equipment shot alongside descriptive text.
+
+        <div class="blog-photo-card blog-photo-right">
+            <img src="../../images/mishigami/bike-setup.jpg" alt="Roubaix with aero bars and three-bottle setup">
+        </div>
+        <p class="blog-photo-caption">The Roubaix loaded up for race day.</p>
+        -->
+            <p>I went from 28mm to 32mm tires for comfort and tried the GP5000 S TR for lower rolling resistance. In
+                training, I ran 32mm GP5000 S TR tires front and rear. For race day, I kept the 32mm setup but switched
+                to a GP5000 S TR in the front and a GP5000 AS TR in the rear. I'd gone through two S-variant rear tires
+                from punctures during prep, but never the AS. Eliminating mechanical delays mattered more than marginal
+                gains, so I chose the more durable rear tire while still taking the slight rolling-resistance advantage
+                up front.</p>
+
+            <p>I learned to wax my chain&mdash;spoiler: it worked beautifully; my drivetrain was spotless at the finish
+                line.
+                I mounted aero bars for the first time, which gave me extra positions but required real brain training
+                to actually use in windy conditions instead of defaulting to the hoods. And I tested a third-bottle
+                setup to stretch my refuel intervals to around 180km, reducing stops and keeping my elapsed pace more
+                consistent.</p>
+            <p>A key distinction between me and a lot of other riders was how light I packed. Plenty of people carried
+                multiple kits, top-tube bags, frame bags, even full handlebar setups. I focused on being minimal. In my
+                400-mile ride, I basically carried tools and two bottles and survived just fine—so I knew that
+                if I needed more during the race, it was probably worth taking a real stop rather than hauling extra
+                weight for 1,100 miles.</p>
+
+            <div class="blog-photo-clearfix"></div>
+
+            <h3>Training blocks</h3>
+            <p>My structure alternated high-volume weeks with recovery weeks capped by one long effort&mdash;three
+                100km rides one week, a single 300km the next. As race day got closer, I shifted toward fatigue
+                resistance: riding long, back-to-back days to train my body to keep working under exhaustion.</p>
+            <p>The two key blocks were what I called <em>Metric Century Week</em> (seven consecutive days of 100km
+                rides) and <em>American Century Week</em> (seven consecutive days of 100-mile rides). Those hurt the
+                right way.</p>
+            <p>I also tried a 400-mile training ride to simulate race conditions. A tornado and hailstorm warning ended
+                that one. The longest I completed was about 300 miles at roughly 19.5 hours. Going beyond 24 hours
+                straight remained unknown territory heading into race day.</p>
+            <p>On nutrition, the big discovery was Trolli Gummy Worms&mdash;easy to pack, easy on my stomach,
+                excellent race fuel. I never fully locked down a complete strategy, but I at least learned what upset my
+                gut.</p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 3 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch3">
+            <span class="ch">Chapter 3</span>
+            <h2>Race prep&mdash;controlled chaos</h2>
+
+            <!--
+            PHOTO EXAMPLE — Layout D: Side-by-side two-up
+            Good for before/after, or two related shots (e.g. bike maintenance day).
+
+        <div class="blog-photo-2col">
+            <div class="blog-photo-card">
+                <img src="../../images/mishigami/maintenance-chain.jpg" alt="Waxing the chain">
+            </div>
+            <div class="blog-photo-card">
+                <img src="../../images/mishigami/maintenance-tires.jpg" alt="New tubeless tires mounted">
+            </div>
+        </div>
+        <p class="blog-photo-caption">July 10th: full mechanic mode. New chain, new tires, fresh rotors.</p>
+        -->
+
+            <p>Race day was July 12th. Two days before, the anxiety hit. Not the "I'm nervous" kind. The "I'm about to
+                ride farther than I've ever been from home and if something breaks 300 miles away, I'm cooked" kind.</p>
+            <p>I only own one bike: a gloss-red Specialized Roubaix Comp 2022. I spent all of July 10th doing
+                maintenance&mdash;learning to wax a chain, installing a new chain, servicing the wheel hub, mounting
+                new tubeless tires, charging every electronic component I owned, replacing brake rotors and pads. A
+                full-day mechanic's exam.</p>
+            <p>July 11th was the pre-race meeting. We got our official cycling caps. I was number 19. As soon as it
+                ended, I rushed to Menards because I'd completely forgotten reflective stickers. Got home, stuck them
+                on, sat down to sleep&mdash;and realized I hadn't packed my bike bags.</p>
+            <p>What followed was a midnight packing spiral: electrolytes, tools, chargers, nutrition, spare parts. By
+                the time I felt reasonably good about it, it was 3am. I needed to wake up at 5am.</p>
+            <p>Those were the best two hours of sleep of my life, in the sense that they were the only two hours before
+                a four-day race.</p>
+            <p>I drove to the start, unloaded everything, and immediately discovered my saddle bag sagged so badly the
+                radar was nearly touching the tire. I arrived with no time to spare, scrambled for some pre-race photos,
+                and stepped outside to find about 30 riders ready to go.</p>
+            <p>Before I could think about positioning, I noticed my tracker wasn't on. I stopped a few seconds after the
+                start to fix it. By the time it was working, every rider had disappeared. I was dead last. Three miles
+                behind the next person. Great start.</p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 4 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch4">
+            <span class="ch">Chapter 4</span>
+            <h2>Day 1&mdash;the chase north</h2>
+
+            <!--
+            PHOTO EXAMPLE — Layout F: Hero left + stacked right
+            Great for a main scene shot with two detail/context shots alongside.
+
+        <div class="blog-photo-hero-stack">
+            <div class="blog-photo-card">
+                <img src="../../images/mishigami/lakefront-trail.jpg" alt="Lakefront Trail at dawn">
+            </div>
+            <div class="blog-photo-stack-col">
+                <div class="blog-photo-card">
+                    <img src="../../images/mishigami/dot-tracker.jpg" alt="Race dot tracker showing position">
+                </div>
+                <div class="blog-photo-card">
+                    <img src="../../images/mishigami/road-rash.jpg" alt="Road rash from the Kim incident">
+                </div>
+            </div>
+        </div>
+        <p class="blog-photo-caption">Left: Lakefront Trail at dawn. Top right: the dot tracker — I was last. Bottom right: the Kim incident.</p>
+        -->
+
+            <p>The Lakefront Trail gave me a chance to ease in and slowly work back toward the pack. The first rider I
+                caught was Kim, a fellow Chicago Randonneur. We chatted on the way toward Michigan until a small
+                collision between us sent me embarrassingly to the ground&mdash;road rash on the shoulder, bruised
+                ego, nothing major.</p>
+            <p>I said farewell to Kim to stay on pace and put my head down. My fear going in was blowing up too early.
+                So I held my plan: controlled effort, consistent pace, let the race come to me. It worked.</p>
+            <p><span class="mi">Mile 114</span> I caught Tim Falkenberg&mdash;the 2024 winner&mdash;dealing with
+                stomach issues.</p>
+            <p><span class="mi">Mile 130</span> I overtook Peter Monko and Andrew Backer. Suddenly I was in podium
+                territory. Only Isaac Scott and Justin Grant were ahead, running neck and neck about 15 miles up the
+                road. My theory: their pace wasn't sustainable, or that if it was, I wouldn't be able to match it
+                anyway. I held mine and waited.</p>
+            <p>One thing I didn't account for: a generous tailwind pushing us north the whole way. In hindsight, I
+                should have pushed a little harder to bank time. Lesson filed.</p>
+            <p><span class="mi">Mile 200</span> I stopped at Las Brisas in Sheboygan for a full sit-down meal. This was
+                a mistake. A delicious mistake, but a mistake. The hour-long stop&mdash;which included a frozen
+                margarita, frozen not on the rocks, which takes significantly longer to finish&mdash;cost me five
+                positions. Sarah Rice, who had been 10 miles back, caught up. Rookie move number one.</p>
+            <p><span class="mi">Mile ~250</span> Riders started clustering and resting. I rode alongside Sarah Rice and
+                Peter Monko into Green Bay. My strategy from the start had been to ride all the way to St. Ignace
+                without sleeping&mdash;straight through the night. So while others took proper rest, I kept moving and
+                bumped myself up to 4th.</p>
+            <p><span class="mi">Mile 300</span> Isaac and Andrew took extended breaks. I moved into 2nd, with only
+                Justin ahead.</p>
+            <p><span class="mi">Mile 340</span> Twenty-three hours in, chilly and dewy and sleepy, I pulled over near a
+                secluded road by what I can only describe as a weird brick shed, used my saddle bag as a pillow on the
+                wet grass, and took what was supposed to be a 15-minute power nap. It turned into 20. Still counts.</p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 5 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch5">
+            <span class="ch">Chapter 5</span>
+            <h2>Day 2&mdash;the Garmin crisis and the big sleep</h2>
+            <p><span class="mi">Mile 434</span> I stopped at a NAPA AutoCare Center and used their outdoor vending
+                machine with my, one and only, $5 bill. That Dr. Pepper, cold against the scorching sun after 30 hours
+                of
+                riding, was one of the best drinks of my life.</p>
+            <p><span class="mi">Mile 450</span> My Garmin was dying. I had two battery banks—one that used USB-A cables
+                and one that used USB-C&mdash;but my Garmin charges via Micro-B. The only Micro-B cable I had was USB-A
+                to
+                Micro-B, and the USB-A bank was already dead. No way to charge it. No Garmin meant no navigation and no
+                Strava proof of the race. And if all those USB terms were confusing, the short version is: I basically
+                had no way to charge my Garmin.</p>
+            <p><span class="mi">Mile 466</span> While eating pepperoni pizza at a rest stop, I had a eureka moment: buy
+                a new battery bank at a gas station and gamble on it having enough charge to reach the hotel. It worked.
+            </p>
+            <p>The final stretch to St. Ignace was a slow grind&mdash;subtle uphill, racing sunset, genuinely worried
+                my headlight would die. I made it to the hotel just before the Mackinac Bridge crossing.</p>
+            <p>Forty hours in on two hours of sleep, I was hallucinating. I planned to stay three to four hours. I
+                showered, looked at the bed, and made a different decision: I gave up on podium and slept without an
+                alarm. Midnight to 8am.</p>
+            <p>I woke up expecting disaster. I was still in 4th. Andrew was 20 miles ahead. Isaac was 45. Justin over
+                100.</p>
+            <div class="blog-quote">
+                <p>"Twenty miles? We can totally close that."</p>
+            </div>
+            <p>I ate breakfast, packed up, and started fighting the headwind south. Then came the hills. Real hills.
+                Chicago is flat&mdash;I rarely see anything above 5%. Heading down from the UP, I hit my first ever
+                10% grade and a 452-foot climb. With fatigued legs, I had to figure out on the fly how to pace a real
+                climb using a 33T chainring I'd never properly used. Welcome to the course.</p>
+            <p><span class="mi">Mile 638</span> Just past Charlevoix, I caught Andrew Backer on a slight climb. I was so
+                locked in I didn't realize it was a fellow racer until I reloaded the tracker.</p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 6 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch6">
+            <span class="ch">Chapter 6</span>
+            <h2>Day 3&mdash;the duel, the gas station floor, and the breakdown</h2>
+            <p><span class="mi">Mile 770</span> I finally met Isaac at Frankfort in a spiky climbing section. We
+                chatted, truced for a bit. He mentioned he'd be stopping at Manistee to sleep. I&mdash;in what I now
+                recognize as a classic rookie mistake&mdash;openly shared my strategy: no sleep, straight to the end.
+            </p>
+            <p>We split just before Manistee. I relaxed. Then I reached Ludington and checked the tracker.</p>
+            <p>His dot was still moving. He hadn't slept. He was chasing me.</p>
+            <p><span class="mi">Mile ~830</span> Ludington was supposed to be a quick stop at Wesco. But their
+                tap-to-pay wasn't working. I had no physical card. My last cash was $2.50. It was 1am in a small town
+                with nothing else open.</p>
+            <p>So I did what any reasonable, extremely sweaty, sleep-deprived cyclist lying on a gas station floor would
+                do: I asked strangers to pay for my food and offered to Zelle them back. A man fueling up his car helped
+                me out&mdash;apparently I looked too disheveled to be making it up. What should have been 10 minutes
+                became an hour. Isaac closed his gap from 15 miles to 5.</p>
+            <p>My rear derailleur battery also died during this stop. I swapped it with the front battery. I hadn't
+                brought the charger. Filed under things I won't forget next time.</p>
+            <p>Isaac chased until he finally rested at a hotel in Pentwater. I pushed another 5 miles, found a bench
+                around mile 860, and intended a 30-minute nap. The cold stretched it to an hour. I went to Burger King,
+                got pancakes, poured every packet of syrup on them, and told myself this was excellent carbohydrate
+                loading. It might have been. It definitely made me happy.</p>
+            <p>The second day south was the hardest. Brutal headwind, a genuine heat wave, sun without mercy. I also
+                discovered that you can sunburn your lips. I did not previously know this. I’m Mexican and, before 2024,
+                I rarely spent long hours in direct sun, so sunburns and sunscreen were never really part of my life.
+            </p>
+            <p><span class="mi">Mile 909</span> My sleep-deprived brain turned into a driveway instead of the actual
+                turn. I U-turned, hit sand, went down on my left forearm. Another bruise. Getting into the aero bars
+                became painful for the rest of the race.</p>
+            <p><span class="mi">Mile 982</span> I broke. A five-mile stretch of nothing but trees. Low on water. Heat.
+                Wind. Bruised arm. Isaac closing in from about 30 miles back. I stopped. I shed a few tears. I seriously
+                considered calling it.</p>
+            <p>I'd already more than doubled my personal distance record. I was bruised and severely sleep-deprived. But
+                I pedaled to the next rest stop. Slowly, but I pedaled.</p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 7 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch7">
+            <span class="ch">Chapter 7</span>
+            <h2>Day 4&mdash;the final push</h2>
+            <p><span class="mi">Mile 1,001</span> Near Benton Harbor, a boat crossing blocked the road just as I stopped
+                at a gas station. Isaac was 25 miles back. I took it as a sign, sat down, and got a proper power nap. I
+                woke up feeling, somehow, revived. Isaac was 20 miles back. About 120 miles left.</p>
+            <div class="blog-quote">
+                <p>"Easy work."</p>
+            </div>
+            <p>For the next 40 miles I raised my average speed by a full mile per hour. I wanted a buffer&mdash;a gap
+                large enough that I could afford another nap if needed. It grew from 20 to 30 to 40 to a maximum of
+                about 45 miles.</p>
+            <p>With 20 miles left, I played one final psychological move&mdash;payback for the fake Manistee
+                sleep&mdash;and took a deliberate 20-minute nap to give Isaac false hope. When I woke up, my derailleur
+                battery was critical.</p>
+            <p>I rolled onto the Lakefront Trail slowly, trying to actually absorb what I'd just done. Then I noticed
+                cameras. A car following me. I was confused&mdash;I hadn't told many people about the race. My family
+                is small. My parents run a flower shop and work long hours. I wasn't expecting anyone at 1:30am on a
+                Wednesday.</p>
+            <p>It was Jack Peck, the event organizer, and Victor Hilitski, the photographer. They had been waiting for
+                me. I had never had anyone at a finish line before. It meant more than I expected.</p>
+
+            <!--
+            PHOTO EXAMPLE — Layout E: Three-up grid
+            Great for a finish-line sequence or a set of milestone shots.
+
+        <div class="blog-photo-3col">
+            <div class="blog-photo-card">
+                <img src="../../images/mishigami/finish-approach.jpg" alt="Approaching the finish on the Lakefront Trail">
+            </div>
+            <div class="blog-photo-card">
+                <img src="../../images/mishigami/finish-line.jpg" alt="Crossing the finish line">
+            </div>
+            <div class="blog-photo-card">
+                <img src="../../images/mishigami/finish-with-jack.jpg" alt="With Jack Peck at the finish">
+            </div>
+        </div>
+        <p class="blog-photo-caption">The last 9 miles. The finish. Jack and Victor waiting at 1:30am.</p>
+        -->
+
+            <p>I finished the last miles, got a little lost downtown, found the finish, and hit pause on my Garmin as it
+                died. My derailleur battery died at exactly the same moment.</p>
+            <p>Almost scripted. A few minutes longer on that last nap, and I might not have made it with a working
+                device or the ability to shift gears. But I made it.</p>
+            <p style="color:#ffffff;">2nd place overall. 1,121 miles. My first bike race. My first ultra-endurance race.
+            </p>
+        </div>
+
+        <div class="blog-hr"></div>
+
+        <!-- ── Ch 8 ───────────────────────────────────────────────────────────── -->
+        <div class="blog-section" id="ch8">
+            <span class="ch">Chapter 8</span>
+            <h2>What I learned</h2>
+
+            <div class="learning">
+                <div class="learning-title">Do a full race-day setup ride</div>
+                <div class="learning-body">I adjusted my sagging saddle bag on race morning. A loaded bike rides
+                    completely differently&mdash;do at least one long ride in full kit before race day.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Carry the right cables and banks</div>
+                <div class="learning-body">I nearly lost GPS navigation due to mismatched ports. Know every charging
+                    port on every device and bring cables for all of them. USB-C to Micro-B is not something you find at
+                    a UP gas station.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Pack shifter chargers</div>
+                <div class="learning-body">I didn't anticipate electronic shifters dying and had to swap front and rear
+                    batteries. On the hilly Wisconsin section, I needed both. Pack the chargers.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Gas stations over restaurants</div>
+                <div class="learning-body">Sit-down meals are unpredictable and usually require a second stop for road
+                    food anyway. Gas stations are more efficient. Unless their tap-to-pay is broken.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Carry physical cash or a card</div>
+                <div class="learning-body">At 1am in a small town, running low on water, with tap-to-pay
+                    failing&mdash;this is not a situation you want to be in without a backup. I asked strangers for
+                    money while lying
+                    on a floor. Bring cash.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Mind the time zones</div>
+                <div class="learning-body">The Mishigami route crosses time zones. If you're planning rest stops around
+                    business hours, being off by an hour in a small town could mean a closed door at the worst moment.
+                </div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Bring a layer for the night</div>
+                <div class="learning-body">Even with warm days, riding near Lake Michigan at night gets cold. My naps
+                    kept stretching because I was shivering. One light insulating layer would have bought back real
+                    time.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Sunscreen your lips</div>
+                <div class="learning-body">Apparently this is a thing. I know now.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Consider a hydration vest for the return leg</div>
+                <div class="learning-body">The southbound stretch is hot and windy. A vest would have let me carry more
+                    water and stay cooler with ice. I made many inefficient stops just to avoid running dry.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Test your kit before race day</div>
+                <div class="learning-body">New bib in a smaller size based on the size chart&mdash;painful. Unresolved
+                    hot foot. Persistent finger and toe numbness. A proper pre-race setup check would have helped.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Chain waxing: absolutely worth it</div>
+                <div class="learning-body">Drivetrain looked spotless and ran silent at the finish, well past the
+                    expected re-wax interval. Only caveat: carry drip lube if you hit rainy days.</div>
+            </div>
+            <div class="learning">
+                <div class="learning-title">Break ultra-long routes into segments</div>
+                <div class="learning-body">The Edge 830 screen became very unresponsive after ~36 hours of continuous
+                    recording. Save periodically and avoid running a single massive file. As fun as a 1,000-mile file
+                    would've been, losing the whole thing would've been brutal. You can always stitch it together
+                    afterward.</div>
+            </div>
+        </div>
+
+        <div class="blog-epilogue">
+            <p>Maybe I'm making a mistake by sharing all of this so openly.</p>
+            <p>But hey&mdash;see you at the 2026 Mishigami Challenge!</p>
+        </div>
+
+    </div><!-- /blog-main -->
+
+    <a id="back-to-top" href="#" aria-label="Back to top" title="Back to top">&#8593;</a>
+</body>
+
+</html>

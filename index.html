@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Manifest for Web Apps -->
-    <link rel="manifest" href="favicon_io/manifest.json" crossorigin="use-credentials">
+    <link rel="manifest" href="favicon_io/manifest.json">
 
     <!-- FancyBox -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
@@ -51,10 +51,11 @@
 </head>
 
 <body>
-    <!-- Navigation Bar -->
     <nav class="nav-bar">
-        <a href="#contact">
-            <img src="favicon_io/favicon-32x32.png" alt="My website logo.">
+        <!-- Logo + name -->
+        <a class="nav-logo" href="#contact">
+            <img src="favicon_io/favicon-32x32.png" alt="Site logo">
+            Fernando J. Soto
         </a>
 
         <!-- Desktop links -->
@@ -67,7 +68,7 @@
             <li><a href="#projects">Projects</a></li>
         </ul>
 
-        <!-- Hamburger button (mobile only) -->
+        <!-- Hamburger (mobile) -->
         <button id="hamburger-icon" class="hide-when-big" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
                 <rect id="bar1" x="1" y="4" width="20" height="2" rx="1" fill="#fff" />
@@ -305,7 +306,8 @@
                                     <p class="accomplishment-desc no-top">
                                         My first ever race&mdash;and my first time seeing a real hill. Fought from the
                                         back of the pack all the way to 2nd place, on 2 hours of sleep, in a city that
-                                        had never once prepared me for actual elevation.
+                                        had never once prepared me for actual elevation. <a
+                                            href="pages/blog/mishigami-2025.html">Read my Mishigami 2025 race recap</a>!
                                     </p>
                                     <div class="accomplishment-stats">
                                         <div class="accomplishment-stat">
@@ -811,6 +813,41 @@
                 </div>
                 <div id="projects" class="section">
                     <h2>Projects</h2>
+                    <!-- #region Cycling Pacing Calculator -->
+                    <div class="pj-card">
+                        <div class="pj-header">
+                            <div class="pj-header-left">
+                                <a class="pj-title" href="https://github.com/fsoto-GH/CyclingPacingCalculator"
+                                    target="_blank">Cycling Pacing Calculator</a>
+                                <div class="pj-chips">
+                                    <span class="pj-chip pj-lang">Python</span>
+                                    <span class="pj-chip pj-web">REST API</span>
+                                    <span class="pj-chip pj-tool">Docker</span>
+                                    <span class="pj-chip pj-web">FastAPI</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pj-body">
+                            <p class="pj-desc">
+                                A Dockerized pacing API and Python package for modeling multi-day
+                                ultra-endurance cycling strategies — decay rates, sleep windows,
+                                sub-splits, and speed floors. Built to plan Mishigami 2025, where
+                                I finished 2nd place.
+                            </p>
+                            <ul class="pj-bullets">
+                                <li>Designed a pacing model that accounts for speed decay, configurable
+                                    sleep windows, down-time ratios, and per-segment sub-splits —
+                                    producing a full elapsed time breakdown across multi-day events.</li>
+                                <li>Exposed the calculator as a versioned Dockerized REST API with
+                                    Swagger documentation, enabling programmatic consumption by
+                                    external tools and services.</li>
+                                <li>Packaged the core logic as a standalone Python library, decoupled
+                                    from the API, with a printer utility for human-readable output
+                                    and runnable examples including my Mishigami race plan.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
 
                     <!-- #region Personal Lending Tracker -->
                     <div class="pj-card">
@@ -938,62 +975,6 @@
                                     data-caption="Statement generator app showcasing different statement types and actions.">
                                     <img loading="lazy" class="pj-thumb" src="images/statement_generator/app_view.png"
                                         alt="Statement Generator">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- #endregion -->
-
-                    <!-- #region Gantt Chart Maker -->
-                    <div class="pj-card">
-                        <div class="pj-header">
-                            <div class="pj-header-left">
-                                <a class="pj-title" href="https://github.com/fsoto-GH/GanttChartMaker"
-                                    target="_blank">Gantt Chart Maker</a>
-                                <div class="pj-chips">
-                                    <span class="pj-chip pj-lang">C#</span>
-                                    <span class="pj-chip pj-lang">Windows Forms</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pj-body">
-                            <p class="pj-desc">
-                                Built to simulate and validate CPU scheduling algorithms by generating Gantt charts and
-                                performance metrics through an interactive desktop application.
-                            </p>
-
-                            <ul class="pj-bullets">
-                                <li>Developed a Windows Forms application to visualize CPU scheduling behavior across
-                                    algorithms including FCFS, SJF, Round Robin, and Priority.</li>
-                                <li>Implemented scheduling logic supporting arrival times, preemptive modes, and
-                                    configurable quantum settings to model real-world execution scenarios.</li>
-                                <li>Generated Gantt charts and execution summaries to validate algorithm correctness and
-                                    compare performance characteristics.</li>
-                                <li>Designed a dynamic UI for configuring processes and visualizing scheduling outcomes
-                                    in real time.</li>
-                                <li>Used as a validation tool for OS coursework, enabling faster iteration and deeper
-                                    understanding of scheduling trade-offs.</li>
-                            </ul>
-                            <div class="pj-thumbs">
-                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_sjf.png"
-                                    data-caption="Non-preemptive Shortest Job First algorithm.">
-                                    <img loading="lazy" class="pj-thumb" src="images/gantt_maker/gantt_sjf.png"
-                                        alt="SJF">
-                                </a>
-                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_roundrobin.png"
-                                    data-caption="Round Robin with a quantum of 2.">
-                                    <img class="pj-thumb" src="images/gantt_maker/gantt_roundrobin.png"
-                                        alt="Round Robin">
-                                </a>
-                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_fcfs.png"
-                                    data-caption="First Come First Serve algorithm.">
-                                    <img loading="lazy" class="pj-thumb" src="images/gantt_maker/gantt_fcfs.png"
-                                        alt="FCFS">
-                                </a>
-                                <a data-fancybox="gantt" href="images/gantt_maker/gantt_priority.png"
-                                    data-caption="Preemptive Priority scheduling algorithm.">
-                                    <img loading="lazy" class="pj-thumb" src="images/gantt_maker/gantt_priority.png"
-                                        alt="Priority">
                                 </a>
                             </div>
                         </div>

@@ -9,6 +9,7 @@
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     position: fixed;
+    top: var(--nav-bar-height);   /* ← add this */
     width: var(--profile-width);
     padding-left: var(--margin-left);
     min-width: var(--profile-width);
@@ -26,8 +27,12 @@
     padding: 0 2rem 2rem 0;
 }
 
+#profile-about {
+    margin-top: 1.4rem;
+
+}
+
 #profile .profile-photo {
-    margin-top: var(--nav-bar-height);
     border-radius: 10%;
 }
 

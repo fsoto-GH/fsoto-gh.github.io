@@ -37,6 +37,10 @@ const backToTopButton = () => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  document.querySelectorAll(".accomplishment").forEach((el, i) => {
+    el.style.animation = `fadeUp 0.4s ${0.05 + i * 0.06}s ease both`;
+  });
 };
 
 document.addEventListener("DOMContentLoaded", function () {

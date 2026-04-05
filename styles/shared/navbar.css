@@ -1,37 +1,71 @@
-/* ── navbar.css ────────────────────────────────────────────────────────────── */
+/* ── navbar.css ─────────────────────────────────────────────────────────────
+ * Shared nav for portfolio (index.html) and blog pages.
+ * The nav is always full-width. On the portfolio page the profile sidebar
+ * and main content shift right; on blog pages there is no sidebar offset.
+ * ────────────────────────────────────────────────────────────────────────── */
 
+/* ── Animation ─────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Base nav ───────────────────────────────────────────────────────────── */
 .nav-bar {
     position: fixed;
     top: 0;
     left: 0;
-    overflow: visible;
     height: var(--nav-bar-height);
+
+    /* Always full-width — no sidebar offset on either page */
+    width: 100%;
+    margin-left: 0;
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
-    margin-left: calc(var(--margin-right) + var(--profile-width) + 1px);
     box-sizing: border-box;
-    width: calc(100% - var(--margin-right) - var(--profile-width) - 1px);
     background-color: #181818;
+    border-bottom: 1px solid #303030;
     z-index: 200;
+    overflow: visible;
 }
 
-.nav-bar a {
+/* ── Logo / name (left slot) ────────────────────────────────────────────── */
+.nav-logo {
     display: flex;
     align-items: center;
+    gap: 10px;
     text-decoration: none;
-    font-weight: bold;
-    color: #b0b0b0;
-    transition: color 0.3s;
-}
-
-.nav-bar a:hover {
     color: #ffffff;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    white-space: nowrap;
+    transition: color 0.2s;
 }
 
-/* Desktop link list */
+.nav-logo:hover {
+    color: #b0b0b0;
+}
+
+.nav-logo img {
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* ── Desktop link list (centre / right) ─────────────────────────────────── */
 .nav-bar ul {
     display: flex;
     align-items: center;
@@ -40,7 +74,45 @@
     gap: 2rem;
 }
 
-/* Hamburger button */
+.nav-bar a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #b0b0b0;
+    transition: color 0.2s;
+}
+
+.nav-bar a:hover {
+    color: #ffffff;
+}
+
+/* ── "Back to portfolio" link (blog pages only) ─────────────────────────── */
+.nav-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.78rem;
+    color: #666666;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.nav-back:hover {
+    color: #ffffff;
+}
+
+.nav-back svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/* ── Hamburger button ───────────────────────────────────────────────────── */
 #hamburger-icon {
     background: none;
     border: none;
@@ -63,12 +135,15 @@
     transform-origin: center center;
 }
 
-/* Mobile drawer */
+/* ── Mobile drawer ──────────────────────────────────────────────────────── */
 #mobile-menu {
     display: none;
     position: fixed;
     top: var(--nav-bar-height);
     left: 0;
+    width: 100%;
+    /* always full-width, no sidebar offset */
+    margin-left: 0;
     background-color: #202020;
     border-bottom: 1px solid #303030;
     z-index: 199;
@@ -89,7 +164,8 @@
     color: #b0b0b0;
     text-decoration: none;
     font-family: "Lexend", sans-serif;
-    font-weight: bold;
+    font-size: 0.82rem;
+    font-weight: 400;
     transition: color 0.2s, background-color 0.2s;
 }
 
@@ -98,9 +174,9 @@
     background-color: #2a2a2a;
 }
 
-/* ── Breakpoints ─────────────────────────────────────────────────────────── */
+/* ── Breakpoints ────────────────────────────────────────────────────────── */
 
-/* Large: sidebar visible, hamburger hidden */
+/* Large: show desktop links, hide hamburger */
 @media (min-width: 1200px) {
     .hide-when-big {
         display: none !important;
@@ -111,27 +187,9 @@
     }
 }
 
-/* Small: sidebar collapses, show hamburger, hide desktop links */
+/* Small: hide desktop links, show hamburger */
 @media (max-width: 1200px) {
     .hide-when-small {
         display: none !important;
-    }
-
-    #mobile-menu {
-        width: calc(100% - var(--margin-right) - var(--profile-width) - 1px);
-        margin-left: calc(var(--margin-right) + var(--profile-width) + 1px);
-    }
-}
-
-@media (max-width: 1040px) {
-    .nav-bar {
-        background-color: #202020;
-        margin-left: 0 !important;
-        width: 100% !important;
-    }
-
-    #mobile-menu {
-        width: 100% !important;
-        margin-left: 0;
     }
 }
