@@ -1,6 +1,11 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
+  /* FancyBox */
+  if (typeof Fancybox !== "undefined") {
+    Fancybox.bind("[data-fancybox]");
+  }
+
   /* Reading progress */
   const bar = document.getElementById("read-progress");
   window.addEventListener(

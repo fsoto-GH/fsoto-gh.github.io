@@ -316,6 +316,12 @@ a {
     scroll-margin-top: calc(var(--nav-bar-height) + 1.5rem);
 }
 
+.blog-section::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 /* ── Section h2 — matches #main #content h2 (browser default ~1.5rem, Lexend)
    We set it explicitly to 1.5rem for consistency across browsers. ────────── */
 .blog-section h2 {
@@ -471,6 +477,11 @@ a {
     border-color: #444444;
 }
 
+.blog-photo-left .blog-photo-card,
+.blog-photo-right .blog-photo-card {
+    margin: 0;
+}
+
 .blog-photo-card img {
     display: block;
     width: 100%;
@@ -478,13 +489,24 @@ a {
     object-fit: cover;
 }
 
+.blog-photo-card iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 0;
+    border-radius: 8px;
+}
+
 .blog-photo-caption {
-    font-family: "Lexend", sans-serif;
-    font-size: 0.65rem;
-    color: #555555;
-    text-align: center;
-    margin-top: 0.5rem;
-    letter-spacing: 0.04em;
+    border-left: 2px solid #1D9E75;
+    padding: 0.15rem 0 0.15rem 0.6rem;
+    margin-top: 0.25rem;
+    font-family: "Noto Sans", serif;
+    font-size: 0.7rem;
+    font-weight: 350;
+    font-style: italic;
+    color: #666666;
+    line-height: 1.4;
 }
 
 /* A: Full-width banner */
@@ -523,6 +545,10 @@ a {
 
 .blog-photo-right img {
     max-height: 260px;
+}
+
+.blog-photo-auto img {
+    max-height: none;
 }
 
 /* D: Two-up grid */
@@ -583,10 +609,97 @@ a {
     max-height: 220px;
 }
 
+/* ── Inline photo wrapper (text + image, grid on desktop, stacked on mobile) */
+.blog-photo-inline {
+    display: grid;
+    grid-template-columns: 1fr 42%;
+    gap: 0 1.25rem;
+    align-items: start;
+    margin-top: 1rem;
+}
+
+/* ── Float photo wrapper (multiple paragraphs wrap around image) */
+.blog-photo-wrap {
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.blog-photo-wrap .blog-photo-left {
+    float: left;
+    width: 42%;
+    margin: 0 1.25rem 0.75rem 0;
+}
+
+.blog-photo-wrap .blog-photo-right {
+    float: right;
+    width: 42%;
+    margin: 0 0 0.75rem 1.25rem;
+}
+
+.blog-photo-inline > p {
+    grid-column: 1;
+}
+
+.blog-photo-inline .blog-photo-left,
+.blog-photo-inline .blog-photo-right {
+    grid-row: 1 / -1;
+    float: none;
+    width: auto;
+    margin: 0;
+}
+
+.blog-photo-inline .blog-photo-right {
+    grid-column: 2;
+}
+
+.blog-photo-inline .blog-photo-left {
+    grid-column: 1;
+}
+
+.blog-photo-inline:has(.blog-photo-left) {
+    grid-template-columns: 42% 1fr;
+}
+
+.blog-photo-inline:has(.blog-photo-left) > p {
+    grid-column: 2;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
     #blog-main {
         padding: calc(var(--nav-bar-height) + 1.5rem) 1.25rem 4rem;
+    }
+
+    .blog-photo-inline {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog-photo-inline .blog-photo-left,
+    .blog-photo-inline .blog-photo-right {
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .blog-photo-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog-photo-wrap .blog-photo-left,
+    .blog-photo-wrap .blog-photo-right {
+        float: none;
+        width: 100%;
+        margin: 1rem 0;
+        order: 2;
+    }
+
+    .blog-photo-wrap > p:first-of-type {
+        order: 1;
+    }
+
+    .blog-photo-wrap > p ~ p {
+        order: 3;
     }
 
     .blog-stats {
