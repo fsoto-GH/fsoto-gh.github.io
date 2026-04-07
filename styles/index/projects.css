@@ -59,11 +59,45 @@
 .pj-chip.pj-tool { background-color: #2a2a28; border-color: #5F5E5A; color: #B4B2A9; }
 .pj-chip.pj-test { background-color: #0a1e30; border-color: #378ADD; color: #85B7EB; }
 
+.pj-cta-divider {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pj-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: #7dd3a8 !important;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.pj-cta svg {
+    transition: transform 0.15s;
+}
+
+.pj-cta:hover {
+    color: #ffffff;
+}
+
+.pj-cta:hover svg {
+    transform: translate(2px, -2px);
+}
+
 .pj-chevron {
     display: none;
 }
 
 .pj-body {
+    display: flex;
+    flex-direction: column;
     padding: 0 1.25rem 1.25rem;
     border-top: 1px solid #2a2a2a;
     margin-top: 0.75rem;

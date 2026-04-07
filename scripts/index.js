@@ -24,5 +24,4 @@ const smoothScrollRelativeLinks = () => {
 document.addEventListener("DOMContentLoaded", function () {
   bindPictures();
   smoothScrollRelativeLinks();
-  backToTopButton();
 });
