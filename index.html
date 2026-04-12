@@ -834,31 +834,54 @@
                                 <a class="pj-title" href="https://github.com/fsoto-GH/CyclingPacingCalculator"
                                     target="_blank">Cycling Pacing Calculator</a>
                                 <div class="pj-chips">
+                                    <span class="pj-chip pj-lang">TypeScript</span>
+                                    <span class="pj-chip pj-web">React</span>
                                     <span class="pj-chip pj-lang">Python</span>
-                                    <span class="pj-chip pj-web">REST API</span>
-                                    <span class="pj-chip pj-tool">Docker</span>
                                     <span class="pj-chip pj-web">FastAPI</span>
+                                    <span class="pj-chip pj-tool">Docker</span>
                                 </div>
                             </div>
                         </div>
                         <div class="pj-body">
                             <p class="pj-desc">
-                                A Dockerized pacing API and Python package for modeling multi-day
-                                ultra-endurance cycling strategies&mdash;decay rates, sleep windows,
-                                sub-splits, and speed floors. Built to plan Mishigami 2025, where
-                                I finished 2nd place.
+                                A fully offline React/TypeScript planning tool and Dockerized FastAPI
+                                service for modeling multi-day ultra-endurance cycling strategies&mdash;GPX
+                                analysis, terrain metrics, pacing, and map rendering all run in-browser
+                                with no backend required. Built to plan Mishigami 2025, where I finished
+                                2nd place as the first Illinoisan to finish sub-four days.
                             </p>
                             <ul class="pj-bullets">
-                                <li>Designed a pacing model that accounts for speed decay, configurable
-                                    sleep windows, down-time ratios, and per-segment sub-splits&mdash;producing a full
-                                    elapsed
-                                    time breakdown across multi-day events.</li>
-                                <li>Exposed the calculator as a versioned Dockerized REST API with
-                                    Swagger documentation, enabling programmatic consumption by
-                                    external tools and services.</li>
-                                <li>Packaged the core logic as a standalone Python library, decoupled
-                                    from the API, with a printer utility for human-readable output
-                                    and runnable examples including my Mishigami race plan.</li>
+                                <li>Engineered a GPX processing pipeline that decimates tracks of 100k+
+                                    points to a configurable render resolution, then dynamically re-samples
+                                    at higher fidelity on zoom&mdash;avoiding aliasing artifacts at high
+                                    magnification while keeping the DOM lean enough to handle full-course
+                                    data without a backend.</li>
+                                <li>Computed per-split terrain metrics (elevation gain/loss, average grade,
+                                    steep distance %) directly from raw GPS coordinates&mdash;data used in
+                                    real race planning that contributed to a 2nd-place finish at the
+                                    Mishigami Challenge, the first sub-four-day finish by an Illinoisan.</li>
+                                <li>Built a fully offline-capable app with full form state persisted to
+                                    localStorage and raw GPX binary to IndexedDB, keyed by filename.
+                                    Cross-session hydration merges saved states with current defaults
+                                    rather than rejecting them, keeping the app forward-compatible as
+                                    features evolve.</li>
+                                <li>Designed the pacing engine as a standalone, independently testable
+                                    package with its own DTOs and models&mdash;then wrapped it in a
+                                    FastAPI service with a single POST endpoint, making the same logic
+                                    available as both an in-browser port and a server-side fallback
+                                    selectable via <code>?engine=api</code>.</li>
+                                <li>Integrated OpenStreetMap's Overpass and Nominatim APIs&mdash;no key
+                                    required&mdash;to query nearby amenities and resolve GPS coordinates
+                                    to city labels, feeding a configurable Auto-Name system that
+                                    batch-generates human-readable segment names from templates like
+                                    <code>{start} &rarr; {end}</code>. Requests are debounced to respect
+                                    rate limits without any server intermediary.</li>
+                                <li>Built a React context signal pattern using a
+                                    <code>{ segIdx, splitIdx, rev }</code> object with a monotonic
+                                    <code>rev</code> field to drive cross-component navigation&mdash;guaranteeing
+                                    re-fire even when the target index is unchanged&mdash;powering
+                                    &ldquo;Go to split&rdquo; map pin interactions, auto-paging pagination,
+                                    and scroll-to-expand form behavior from a single state shape.</li>
                             </ul>
                             <div class="pj-cta-divider">
                                 <a class="pj-cta" href="pages/cycling/calculator?example=mishigami-2025" target="_blank">
