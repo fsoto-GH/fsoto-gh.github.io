@@ -875,16 +875,56 @@
                                     to city labels, feeding a configurable Auto-Name system that
                                     batch-generates human-readable segment names from templates like
                                     <code>{start} &rarr; {end}</code>. Requests are debounced to respect
-                                    rate limits without any server intermediary.</li>
+                                    rate limits without any server intermediary.
+                                </li>
                                 <li>Built a React context signal pattern using a
                                     <code>{ segIdx, splitIdx, rev }</code> object with a monotonic
                                     <code>rev</code> field to drive cross-component navigation&mdash;guaranteeing
                                     re-fire even when the target index is unchanged&mdash;powering
                                     &ldquo;Go to split&rdquo; map pin interactions, auto-paging pagination,
-                                    and scroll-to-expand form behavior from a single state shape.</li>
+                                    and scroll-to-expand form behavior from a single state shape.
+                                </li>
                             </ul>
+                            <div class="pj-thumbs">
+                                <a data-fancybox="cycling"
+                                    href="images/projects/cycling_pacing_calculator/calculator_corse_settings.png"
+                                    data-caption="Course settings&mdash;configure GPX route, segments, and scheduling options.">
+                                    <img loading="lazy" class="pj-thumb"
+                                        src="images/projects/cycling_pacing_calculator/calculator_corse_settings.png"
+                                        alt="Course settings panel">
+                                </a>
+                                <a data-fancybox="cycling"
+                                    href="images/projects/cycling_pacing_calculator/segment_split_options.png"
+                                    data-caption="Segment and split options&mdash;define pacing, decay rates, and sub-split strategies. Split view endpoint and find nearby rest stops.">
+                                    <img loading="lazy" class="pj-thumb"
+                                        src="images/projects/cycling_pacing_calculator/segment_split_options.png"
+                                        alt="Segment and split options">
+                                </a>
+                                <a data-fancybox="cycling"
+                                    href="images/projects/cycling_pacing_calculator/course_map.png"
+                                    data-caption="Interactive course map with GPX track rendering and terrain visualization.">
+                                    <img loading="lazy" class="pj-thumb"
+                                        src="images/projects/cycling_pacing_calculator/course_map.png"
+                                        alt="Interactive course map">
+                                </a>
+                                <a data-fancybox="cycling"
+                                    href="images/projects/cycling_pacing_calculator/course_map_trans_am_2026.png"
+                                    data-caption="Trans Am 2026 course map&mdash;4,200+ miles, 17 segments with variable splits, 52k track points decimated in-browser. Highlights per-segment coloring, split elevation profiles, and large GPX handling.">
+                                    <img loading="lazy" class="pj-thumb"
+                                        src="images/projects/cycling_pacing_calculator/course_map_trans_am_2026.png"
+                                        alt="Trans Am 2026 course map with segment coloring and elevation profile">
+                                </a>
+                                <a data-fancybox="cycling"
+                                    href="images/projects/cycling_pacing_calculator/calculation_results.png"
+                                    data-caption="Calculation results&mdash;per-split time estimates, rest stop windows, and finish projections.">
+                                    <img loading="lazy" class="pj-thumb"
+                                        src="images/projects/cycling_pacing_calculator/calculation_results.png"
+                                        alt="Calculation results">
+                                </a>
+                            </div>
                             <div class="pj-cta-divider">
-                                <a class="pj-cta" href="pages/cycling/calculator?example=mishigami-2025" target="_blank">
+                                <a class="pj-cta" href="pages/cycling/calculator?example=mishigami-2025"
+                                    target="_blank">
                                     Go to Live Demo
                                     <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
                                         <path
@@ -894,33 +934,6 @@
                                             d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z">
                                         </path>
                                     </svg>
-                                </a>
-                            </div>
-                            <div class="pj-thumbs">
-                                <a data-fancybox="cycling" href="images/projects/cycling_pacing_calculator/calculator_corse_settings.png"
-                                    data-caption="Course settings&mdash;configure GPX route, segments, and scheduling options.">
-                                    <img loading="lazy" class="pj-thumb" src="images/projects/cycling_pacing_calculator/calculator_corse_settings.png"
-                                        alt="Course settings panel">
-                                </a>
-                                <a data-fancybox="cycling" href="images/projects/cycling_pacing_calculator/segment_split_options.png"
-                                    data-caption="Segment and split options&mdash;define pacing, decay rates, and sub-split strategies. Split view endpoint and find nearby rest stops.">
-                                    <img loading="lazy" class="pj-thumb" src="images/projects/cycling_pacing_calculator/segment_split_options.png"
-                                        alt="Segment and split options">
-                                </a>
-                                <a data-fancybox="cycling" href="images/projects/cycling_pacing_calculator/course_map.png"
-                                    data-caption="Interactive course map with GPX track rendering and terrain visualization.">
-                                    <img loading="lazy" class="pj-thumb" src="images/projects/cycling_pacing_calculator/course_map.png"
-                                        alt="Interactive course map">
-                                </a>
-                                <a data-fancybox="cycling" href="images/projects/cycling_pacing_calculator/course_map_trans_am_2026.png"
-                                    data-caption="Trans Am 2026 course map&mdash;4,200+ miles, 17 segments with variable splits, 52k track points decimated in-browser. Highlights per-segment coloring, split elevation profiles, and large GPX handling.">
-                                    <img loading="lazy" class="pj-thumb" src="images/projects/cycling_pacing_calculator/course_map_trans_am_2026.png"
-                                        alt="Trans Am 2026 course map with segment coloring and elevation profile">
-                                </a>
-                                <a data-fancybox="cycling" href="images/projects/cycling_pacing_calculator/calculation_results.png"
-                                    data-caption="Calculation results&mdash;per-split time estimates, rest stop windows, and finish projections.">
-                                    <img loading="lazy" class="pj-thumb" src="images/projects/cycling_pacing_calculator/calculation_results.png"
-                                        alt="Calculation results">
                                 </a>
                             </div>
                         </div>
