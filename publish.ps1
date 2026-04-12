@@ -3,8 +3,10 @@
     Build and publish the Cycling Pacing Calculator to the GitHub Pages repo.
 
 .DESCRIPTION
-    Runs `npm run build`, then copies the generated JS/CSS assets and updates
-    the corresponding index.html in the target directory.
+    Runs `npm run build`, copies ALL generated assets from the build output
+    directory, then reads the Vite-generated static\index.html to extract
+    <script> and <link> tags and injects them into the target index.html's
+    #region/#endregion block.
 
     Default  → publishes to calculator\latest  (latest/bleeding-edge version)
     -u flag  → publishes to calculator\         (stable version)
@@ -57,24 +59,8 @@ try {
 }
 Write-Host "==> Build succeeded." -ForegroundColor Green
 
-# ── Locate generated files ────────────────────────────────────────────────────
-
-$jsFile  = Get-ChildItem "$BuildAssets\index-*.js"  | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-$cssFile = Get-ChildItem "$BuildAssets\index-*.css" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-
-if (-not $jsFile)  { throw "No index-*.js found in $BuildAssets" }
-if (-not $cssFile) { throw "No index-*.css found in $BuildAssets" }
-
-Write-Host ""
-Write-Host "==> Detected build artifacts:" -ForegroundColor Cyan
-Write-Host "    JS : $($jsFile.Name)"
-Write-Host "    CSS: $($cssFile.Name)"
-
 # ── Validate target paths ─────────────────────────────────────────────────────
 
-if (-not (Test-Path $TargetAssets)) {
-    throw "Target assets directory does not exist: $TargetAssets"
-}
 if (-not (Test-Path $TargetIndex)) {
     throw "Target index.html does not exist: $TargetIndex"
 }
@@ -84,35 +70,65 @@ if (-not (Test-Path $TargetIndex)) {
 Write-Host ""
 Write-Host "==> Copying assets to $TargetAssets ..." -ForegroundColor Cyan
 
-# Remove old hashed JS/CSS files in the target directory before copying new ones.
-$oldJs  = Get-ChildItem "$TargetAssets\index-*.js"  -ErrorAction SilentlyContinue
-$oldCss = Get-ChildItem "$TargetAssets\index-*.css" -ErrorAction SilentlyContinue
-foreach ($f in (@($oldJs) + @($oldCss))) {
-    Remove-Item $f.FullName -Force
-    Write-Host "    Removed $($f.Name)"
+# Clean out old assets. Stable mode preserves subdirectories (e.g. latest\).
+if ($u) {
+    Get-ChildItem $TargetAssets -File -ErrorAction SilentlyContinue | Remove-Item -Force
+} else {
+    if (Test-Path $TargetAssets) {
+        Remove-Item $TargetAssets -Recurse -Force
+    }
+    New-Item -ItemType Directory -Path $TargetAssets | Out-Null
 }
 
-Copy-Item $jsFile.FullName  -Destination $TargetAssets -Force
-Copy-Item $cssFile.FullName -Destination $TargetAssets -Force
-Write-Host "    Copied $($jsFile.Name)"
-Write-Host "    Copied $($cssFile.Name)"
+# Copy all build output files.
+$buildFiles = Get-ChildItem "$BuildAssets" -File
+foreach ($f in $buildFiles) {
+    Copy-Item $f.FullName -Destination $TargetAssets -Force
+    Write-Host "    Copied $($f.Name)"
+}
 
-# ── Update index.html ─────────────────────────────────────────────────────────
+Write-Host "==> Copied $($buildFiles.Count) asset(s)." -ForegroundColor Green
+
+# ── Extract Vite tags from source index.html ──────────────────────────────────
+
+$SourceIndex = "$ProjectRoot\static\index.html"
+$sourceHtml  = Get-Content $SourceIndex -Raw -Encoding UTF8
+
+# Match <script> and <link> tags that reference ./assets/ (Vite build output).
+$viteTags = [regex]::Matches($sourceHtml, '<(?:script|link)\b[^>]*(?:src|href)="\.\/assets\/[^"]*"[^>]*>(?:</script>)?') |
+    ForEach-Object { $_.Value }
+
+if ($viteTags.Count -eq 0) {
+    throw "No Vite asset tags found in $SourceIndex"
+}
+
+# Rewrite ./assets/ paths to the target base URL and indent with 4 spaces.
+$rewrittenTags = $viteTags | ForEach-Object {
+    "    " + ($_ -replace '\./assets/', "$AssetUrlBase/")
+}
+
+Write-Host ""
+Write-Host "==> Extracted $($viteTags.Count) Vite tag(s) from source index.html:" -ForegroundColor Cyan
+foreach ($tag in $rewrittenTags) { Write-Host $tag }
+
+# ── Update target index.html #region block ────────────────────────────────────
 
 Write-Host ""
 Write-Host "==> Updating $TargetIndex ..." -ForegroundColor Cyan
 
 $html = Get-Content $TargetIndex -Raw -Encoding UTF8
 
-# Replace the script src (matches any previous hashed filename)
-$html = $html -replace '(?<=<script[^>]+\ssrc=")[^"]*index-[^"]+\.js(?=")', "$AssetUrlBase/$($jsFile.Name)"
-# Replace the stylesheet href
-$html = $html -replace '(?<=<link[^>]+\shref=")[^"]*index-[^"]+\.css(?=")', "$AssetUrlBase/$($cssFile.Name)"
+$regionBlock = @(
+    "    <!-- #region React/Vite Build Stuff -->"
+    $rewrittenTags
+    "    <!-- #endregion -->"
+) -join "`n"
+
+$html = $html -replace '(?s)[ \t]*<!-- #region React/Vite Build Stuff -->.*?<!-- #endregion -->', $regionBlock
 
 Set-Content $TargetIndex -Value $html -Encoding UTF8 -NoNewline
 
-Write-Host "    src  → $AssetUrlBase/$($jsFile.Name)"
-Write-Host "    href → $AssetUrlBase/$($cssFile.Name)"
+Write-Host "==> index.html updated." -ForegroundColor Green
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 

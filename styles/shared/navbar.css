@@ -36,7 +36,7 @@
     box-sizing: border-box;
     background-color: #181818;
     border-bottom: 1px solid #303030;
-    z-index: 200;
+    z-index: 1000000;
     overflow: visible;
 }
 
@@ -146,7 +146,7 @@
     margin-left: 0;
     background-color: #202020;
     border-bottom: 1px solid #303030;
-    z-index: 199;
+    z-index: 1000000;
 }
 
 #mobile-menu.is-open {
