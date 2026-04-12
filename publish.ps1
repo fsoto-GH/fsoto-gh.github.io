@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Build and publish the Cycling Pacing Calculator to the GitHub Pages repo.
+    Build and publish the Ultra Cycling Planner to the GitHub Pages repo.
 
 .DESCRIPTION
     Runs `npm run build`, copies ALL generated assets from the build output
