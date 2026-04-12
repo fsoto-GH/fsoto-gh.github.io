@@ -9,7 +9,7 @@
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     position: fixed;
-    top: var(--nav-bar-height);   /* ← add this */
+    top: var(--nav-bar-height);
     width: var(--profile-width);
     padding-left: var(--margin-left);
     min-width: var(--profile-width);

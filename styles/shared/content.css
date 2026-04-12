@@ -10,6 +10,10 @@
     box-sizing: content-box;
 }
 
+html {
+    scroll-padding-top: var(--nav-bar-height);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -97,7 +101,7 @@ body {
 }
 
 #main .section {
-    scroll-margin-top: calc(var(--nav-bar-height) + 2rem);
+    scroll-margin-top: 2rem;
     margin-top: 2rem;
 }
 
