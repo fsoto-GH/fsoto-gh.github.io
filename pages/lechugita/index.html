@@ -86,10 +86,8 @@
             const container = document.getElementById('confetti');
             const PIECE_COUNT = 15;
 
-            function createPiece() {
+            function createPiece(isTimecard = false) {
                 const img = document.createElement('img');
-                // ~15% chance it's a timecard ("her favorite!")
-                const isTimecard = Math.random() < 0.15;
                 img.src = isTimecard
                     ? timecard
                     : images[Math.floor(Math.random() * images.length)];
@@ -131,6 +129,9 @@
 
             // Create lettuce confetti
             for (let i = 0; i < PIECE_COUNT; i++) createPiece();
+
+            for (let i = 0; i < 3; i++) createPiece(true); // Add a few timecards
+
             // Create emoji confetti
             for (let i = 0; i < 15; i++) createEmoji();
 
