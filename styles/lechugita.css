@@ -321,6 +321,16 @@ html, body {
     50%      { transform: translateY(-4px); }
 }
 
+/* ── Not-today screen ───────────────────────────────────────────────────── */
+.not-today-screen .subtitle {
+    color: #d8f3dc;
+}
+
+.not-today-screen .subtitle strong {
+    color: #fff;
+    font-weight: 900;
+}
+
 @keyframes bounce-in {
     from { opacity: 0; transform: scale(0) rotate(-20deg); }
     to   { opacity: 1; transform: scale(1) rotate(0); }
