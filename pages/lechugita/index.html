@@ -5,11 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, Lechugita!</title>
+
+    <!-- OG metadata -->
+    <meta property="og:title" content="Urgent: A Lettuce Has Escaped">
+    <meta property="og:description" content="Authorities report a small lettuce with excellent dance moves was last seen doing bachata near your location. If found, do not approach — she bites.">
+    <meta property="og:image" content="../../images/lettuce/l1.webp">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="../../styles/lechugita.css">
 </head>
 
 <body>
-    <!-- Lettuce confetti layer -->
+    <!-- Disco spotlight background -->
+    <div class="disco-bg">
+        <div class="disco-spot"></div>
+        <div class="disco-spot"></div>
+        <div class="disco-spot"></div>
+        <div class="disco-spot"></div>
+    </div>
+
+    <!-- Lettuce + emoji confetti layer -->
     <div class="confetti-container" id="confetti"></div>
 
     <!-- Center message -->
@@ -18,13 +33,17 @@
         <p class="subtitle">a.k.a. Charlotte</p>
         <div class="nicknames">
             <span class="nickname">Lettuce</span>
-            <span class="nickname">Char-lettuce</span>
             <span class="nickname">Charlettuce</span>
             <span class="nickname">Charlechugita</span>
             <span class="nickname">Lechuga</span>
             <span class="nickname">Lechugita</span>
         </div>
-        <img class="hero-lettuce" src="../../images/lettuce/l1.webp" alt="Lettuce">
+        <img class="hero-lettuce" id="hero" src="../../images/lettuce/l1.webp" alt="Dancing Lettuce">
+        <div class="ribbon">
+            <p>Who knew a bachata class would turn into such a meaningful friendship. I'm really glad I met you — you bring such great energy <em>(especially when there's salsa <span class="emoji-dance">💃</span>)</em>.</p>
+            <p>Hope this year is full of dancing, laughs, and special moments… and plenty of time with Goose <span class="emoji-dance">🐶</span></p>
+            <p class="ribbon-sign">Feliz cumpleaños, Charlotte <span class="emoji-dance">✨</span><span class="emoji-dance">🕺</span></p>
+        </div>
     </div>
 
     <script>
@@ -38,40 +57,91 @@
                 '../../images/lettuce/l7.png',
             ];
 
+            const timecard = '../../images/lettuce/tc.png';
+
+            const emojis = ['💃', '🕺', '🎵', '🎶', '🥬', '🎉', '🪇', '✨', '⏰'];
+
             const container = document.getElementById('confetti');
             const PIECE_COUNT = 30;
 
             function createPiece() {
                 const img = document.createElement('img');
-                img.src = images[Math.floor(Math.random() * images.length)];
+                // ~15% chance it's a timecard ("her favorite!")
+                const isTimecard = Math.random() < 0.15;
+                img.src = isTimecard
+                    ? timecard
+                    : images[Math.floor(Math.random() * images.length)];
                 img.alt = '';
                 img.className = 'confetti-piece';
+                if (isTimecard) img.classList.add('confetti-timecard');
                 img.style.left = `${Math.random() * 100}%`;
 
-                const duration = 4 + Math.random() * 5;   // 4-9s fall
-                const wobble  = 2 + Math.random() * 3;    // 2-5s wobble cycle
-                const delay   = Math.random() * 8;        // stagger start
+                const duration = 4 + Math.random() * 5;
+                const wobble = 2 + Math.random() * 3;
+                const delay = Math.random() * 8;
 
-                img.style.animationDuration  = `${duration}s, ${wobble}s`;
-                img.style.animationDelay     = `${delay}s, ${delay}s`;
-                img.style.width = `${40 + Math.random() * 50}px`;
+                img.style.animationDuration = `${duration}s, ${wobble}s`;
+                img.style.animationDelay = `${delay}s, ${delay}s`;
+                img.style.width = isTimecard
+                    ? `${90 + Math.random() * 50}px`
+                    : `${40 + Math.random() * 50}px`;
                 img.style.opacity = '0';
 
                 container.appendChild(img);
             }
 
+            function createEmoji() {
+                const span = document.createElement('span');
+                span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                span.className = 'confetti-emoji';
+                span.style.left = `${Math.random() * 100}%`;
+
+                const duration = 5 + Math.random() * 6;
+                const spin = 3 + Math.random() * 3;
+                const delay = Math.random() * 10;
+
+                span.style.animationDuration = `${duration}s, ${spin}s`;
+                span.style.animationDelay = `${delay}s, ${delay}s`;
+                span.style.opacity = '0';
+
+                container.appendChild(span);
+            }
+
+            // Create lettuce confetti
             for (let i = 0; i < PIECE_COUNT; i++) createPiece();
+            // Create emoji confetti
+            for (let i = 0; i < 15; i++) createEmoji();
 
             // Continuously recycle pieces so confetti never stops
             setInterval(() => {
-                const pieces = container.querySelectorAll('.confetti-piece');
-                if (pieces.length < PIECE_COUNT + 5) createPiece();
+                const pieces = container.children;
+                if (pieces.length < PIECE_COUNT + 20) {
+                    Math.random() > 0.4 ? createPiece() : createEmoji();
+                }
                 // Remove old off-screen pieces to keep DOM light
-                pieces.forEach(p => {
+                Array.from(pieces).forEach(p => {
                     const rect = p.getBoundingClientRect();
                     if (rect.top > window.innerHeight + 50) p.remove();
                 });
             }, 3000);
+
+            // Hero lettuce: start bachata sway after entrance animation
+            const hero = document.getElementById('hero');
+            hero.addEventListener('animationend', function handler() {
+                hero.removeEventListener('animationend', handler);
+                hero.classList.add('dancing');
+            });
+
+            // Click = salsa spin!
+            hero.addEventListener('click', () => {
+                hero.classList.remove('dancing');
+                hero.classList.add('spin');
+                hero.addEventListener('animationend', function handler() {
+                    hero.removeEventListener('animationend', handler);
+                    hero.classList.remove('spin');
+                    hero.classList.add('dancing');
+                });
+            });
         })();
     </script>
 </body>
