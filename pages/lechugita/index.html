@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Lechugita!</title>
+    <link rel="stylesheet" href="../../styles/lechugita.css">
+</head>
+
+<body>
+    <!-- Lettuce confetti layer -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- Center message -->
+    <div class="message-container">
+        <h1 class="title">Happy Birthday,<br>Lechugita!</h1>
+        <p class="subtitle">a.k.a. Charlotte</p>
+        <div class="nicknames">
+            <span class="nickname">Lettuce</span>
+            <span class="nickname">Char-lettuce</span>
+            <span class="nickname">Charlettuce</span>
+            <span class="nickname">Charlechugita</span>
+            <span class="nickname">Lechuga</span>
+            <span class="nickname">Lechugita</span>
+        </div>
+        <img class="hero-lettuce" src="../../images/lettuce/l1.webp" alt="Lettuce">
+    </div>
+
+    <script>
+        (() => {
+            const images = [
+                '../../images/lettuce/l1.webp',
+                '../../images/lettuce/l2.png',
+                '../../images/lettuce/l3.png',
+                '../../images/lettuce/l5.webp',
+                '../../images/lettuce/l6.webp',
+                '../../images/lettuce/l7.png',
+            ];
+
+            const container = document.getElementById('confetti');
+            const PIECE_COUNT = 30;
+
+            function createPiece() {
+                const img = document.createElement('img');
+                img.src = images[Math.floor(Math.random() * images.length)];
+                img.alt = '';
+                img.className = 'confetti-piece';
+                img.style.left = `${Math.random() * 100}%`;
+
+                const duration = 4 + Math.random() * 5;   // 4-9s fall
+                const wobble  = 2 + Math.random() * 3;    // 2-5s wobble cycle
+                const delay   = Math.random() * 8;        // stagger start
+
+                img.style.animationDuration  = `${duration}s, ${wobble}s`;
+                img.style.animationDelay     = `${delay}s, ${delay}s`;
+                img.style.width = `${40 + Math.random() * 50}px`;
+                img.style.opacity = '0';
+
+                container.appendChild(img);
+            }
+
+            for (let i = 0; i < PIECE_COUNT; i++) createPiece();
+
+            // Continuously recycle pieces so confetti never stops
+            setInterval(() => {
+                const pieces = container.querySelectorAll('.confetti-piece');
+                if (pieces.length < PIECE_COUNT + 5) createPiece();
+                // Remove old off-screen pieces to keep DOM light
+                pieces.forEach(p => {
+                    const rect = p.getBoundingClientRect();
+                    if (rect.top > window.innerHeight + 50) p.remove();
+                });
+            }, 3000);
+        })();
+    </script>
+</body>
+
+</html>
