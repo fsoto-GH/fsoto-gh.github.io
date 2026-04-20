@@ -36,7 +36,7 @@
     box-sizing: border-box;
     background-color: #181818;
     border-bottom: 1px solid #303030;
-    z-index: 10001;
+    z-index: 10001; /* Below reading progress bar (10002) and lightbox (10003) */
     overflow: visible;
 }
 
@@ -146,7 +146,7 @@
     margin-left: 0;
     background-color: #202020;
     border-bottom: 1px solid #303030;
-    z-index: 10001;
+    z-index: 10001; /* Below reading progress bar (10002) and lightbox (10003) */
 }
 
 #mobile-menu.is-open {

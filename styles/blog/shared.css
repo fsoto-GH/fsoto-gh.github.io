@@ -107,7 +107,7 @@ a {
     height: 2px;
     width: 0%;
     background-color: #1D9E75;
-    z-index: 300;
+    z-index: 10002; /* Above nav bar, below lightbox */
     transition: width 0.08s linear;
     pointer-events: none;
 }
