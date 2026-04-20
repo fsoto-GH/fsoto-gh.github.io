@@ -186,6 +186,10 @@ body {
     z-index: 199;
 }
 
+.fancybox__container {
+    z-index: 10002 !important; /* Navbar is 10001, so this ensures the lightbox appears above it */
+}
+
 #back-to-top.visible {
     opacity: 1;
     pointer-events: auto;
