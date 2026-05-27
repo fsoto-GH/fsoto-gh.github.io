@@ -46,61 +46,83 @@
         rel="stylesheet">
 
     <!-- #region React/Vite Build Stuff -->
-    <script type="module" crossorigin src="../assets/latest/index-fBrY7HLJ.js"></script>
+    <script type="module" crossorigin src="../assets/latest/index-Dd5CyP1i.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/latest/vendor-react-RejEcos5.js">
     <link rel="modulepreload" crossorigin href="../assets/latest/vendor-leaflet-BjyMn2hX.js">
     <link rel="modulepreload" crossorigin href="../assets/latest/vendor-tz-UjXLHgLE.js">
     <link rel="stylesheet" crossorigin href="../assets/latest/vendor-leaflet-CIGW-MKW.css">
-    <link rel="stylesheet" crossorigin href="../assets/latest/index-BHviBZ6X.css">
+    <link rel="stylesheet" crossorigin href="../assets/latest/index-CobKtjN4.css">
     <!-- #endregion -->
 
-    <!-- Shared styles -->
-    <link rel="stylesheet" href="../../../../styles/shared/content.css">
-    <link rel="stylesheet" href="../../../../styles/shared/navbar.css">
-
-    <!-- Shared scripts -->
-    <script src="../../../../scripts/shared/navbar.js"></script>
-    
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/216ac45999.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* ── Back to top ─────────────────────────────────────────────────────────── */
+        #back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #202020;
+            border: 1px solid #303030;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555555;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s, border-color 0.15s, color 0.15s, background-color 0.15s;
+            z-index: 199;
+        }
+
+        .fancybox__container {
+            z-index: 10003 !important;
+            /* Navbar is 10001, so this ensures the lightbox appears above it */
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #back-to-top:hover {
+            border-color: #505050;
+            color: #ffffff;
+            background-color: #2a2a2a;
+        }
+    </style>
 </head>
 
 <body>
-
-    <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
-    <nav class="nav-bar">
-        <a class="nav-logo" href="../../../../index.html">
-            <img src="../../../../favicon_io/favicon-32x32.png" alt="Site logo">
-            Fernando J. Soto
-        </a>
-
-        <ul id="links" class="hide-when-small"></ul>
-
-        <a class="nav-back hide-when-small" href="../../../../index.html">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M10 12L6 8l4-4" />
-            </svg>
-            Back to portfolio
-        </a>
-        <button id="hamburger-icon" class="hide-when-big" aria-label="Open menu" aria-expanded="false">
-            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
-                <rect id="bar1" x="1" y="4" width="20" height="2" rx="1" fill="#fff" />
-                <rect id="bar2" x="1" y="10" width="20" height="2" rx="1" fill="#fff" />
-                <rect id="bar3" x="1" y="16" width="20" height="2" rx="1" fill="#fff" />
-            </svg>
-        </button>
-    </nav>
-
-    <!-- Mobile drawer -->
-    <div id="mobile-menu" aria-hidden="true">
-        <ul>
-            <li><a href="../../../../index.html" class="mobile-link">← Portfolio</a></li>
-        </ul>
-    </div>
-
-    <div id="root" style="padding-top: var(--nav-bar-height);"></div>
-
+    <div id="root"></div>
     <a id="back-to-top" href="#" aria-label="Back to top" title="Back to top">&#8593;</a>
+    <script>
+        var btt = document.getElementById("back-to-top");
+        var threshold = 300;
+
+        window.addEventListener(
+            "scroll",
+            function () {
+                btt.classList.toggle("visible", window.scrollY > threshold);
+            },
+            { passive: true },
+        );
+
+        btt.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        document.querySelectorAll(".accomplishment").forEach((el, i) => {
+            el.style.animation = `fadeUp 0.4s ${0.05 + i * 0.06}s ease both`;
+        });
+    </script>
 </body>
 
 </html>

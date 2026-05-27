@@ -17,6 +17,25 @@
     -webkit-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    scrollbar-color: #404040 #202020;
+    scrollbar-width: thin;
+}
+
+#contact::-webkit-scrollbar {
+    width: 6px;
+}
+
+#contact::-webkit-scrollbar-track {
+    background: #202020;
+}
+
+#contact::-webkit-scrollbar-thumb {
+    background-color: #404040;
+    border-radius: 3px;
+}
+
+#contact::-webkit-scrollbar-thumb:hover {
+    background-color: #555555;
 }
 
 #profile {
