@@ -1,128 +1,22 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ultra Cycling Planner | Fernando J. Soto</title>
-    <meta name="description"
-        content="Plan multi-day cycling events with detailed pacing, rest stops, and time estimates. Define segments and splits with custom speeds, decay rates, and timezone-aware scheduling." />
-    <link rel="canonical" href="https://fsoto-gh.github.io/pages/cycling/calculator/latest" />
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Ultra Cycling Planner | Fernando J. Soto" />
-    <meta property="og:description"
-        content="Plan multi-day cycling events with detailed pacing, rest stops, and time estimates. Supports custom speeds, decay rates, sub-split strategies, and rest stop open hours." />
-    <meta property="og:url" content="https://fsoto-gh.github.io/pages/cycling/calculator/latest" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Fernando J. Soto" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="author" content="Fernando J. Soto" />
-    <meta name="keywords"
-        content="cycling, ultra cycling planner, pacing calculator, multi-day cycling, rest stops, time estimates, ultra-endurance, bike event planner" />
-    <meta name="version" content="1.0.0" />
-
-    <!-- Manifest for Web Apps -->
-    <link rel="manifest" href="../../../../favicon_io/manifest.json" />
-
-    <!-- Favicon -->
-    <link rel="icon" href="../../../../favicon_io/favicon.ico" type="image/x-icon" />
-    <link rel="icon" sizes="16x16" href="../../../../favicon_io/favicon-16x16.png" type="image/png" />
-    <link rel="icon" sizes="32x32" href="../../../../favicon_io/favicon-32x32.png" type="image/png" />
-
-    <!-- Apple Touch Icon for iOS devices -->
-    <link rel="apple-touch-icon" href="../../../../favicon_io/apple-touch-icon.png" />
-
-    <!-- Icons for Progressive Web Apps -->
-    <link rel="icon" sizes="192x192" href="../../../../favicon_io/android-chrome-192x192.png" type="image/png" />
-    <link rel="icon" sizes="512x512" href="../../../../favicon_io/android-chrome-512x512.png" type="image/png" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lexend&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-
-    <!-- #region React/Vite Build Stuff -->
-    <script type="module" crossorigin src="./assets/index-Dd5CyP1i.js"></script>
+    <title>Ultra Cycling Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/216ac45999.js" crossorigin="anonymous"></script>
+    <script type="module" crossorigin src="./assets/index-BWAHhQff.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-react-RejEcos5.js">
     <link rel="modulepreload" crossorigin href="./assets/vendor-leaflet-BjyMn2hX.js">
     <link rel="modulepreload" crossorigin href="./assets/vendor-tz-UjXLHgLE.js">
     <link rel="stylesheet" crossorigin href="./assets/vendor-leaflet-CIGW-MKW.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-CobKtjN4.css">
-    <!-- #endregion -->
-
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/216ac45999.js" crossorigin="anonymous"></script>
-
-    <style>
-        /* ── Back to top ─────────────────────────────────────────────────────────── */
-        #back-to-top {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: #202020;
-            border: 1px solid #303030;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #555555;
-            font-size: 14px;
-            text-decoration: none;
-            cursor: pointer;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s, border-color 0.15s, color 0.15s, background-color 0.15s;
-            z-index: 199;
-        }
-
-        .fancybox__container {
-            z-index: 10003 !important;
-            /* Navbar is 10001, so this ensures the lightbox appears above it */
-        }
-
-        #back-to-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        #back-to-top:hover {
-            border-color: #505050;
-            color: #ffffff;
-            background-color: #2a2a2a;
-        }
-    </style>
-</head>
-
-<body>
+    <link rel="stylesheet" crossorigin href="./assets/index-C5x_AoGd.css">
+  </head>
+  <body>
     <div id="root"></div>
-    <a id="back-to-top" href="#" aria-label="Back to top" title="Back to top">&#8593;</a>
-    <script>
-        var btt = document.getElementById("back-to-top");
-        var threshold = 300;
-
-        window.addEventListener(
-            "scroll",
-            function () {
-                btt.classList.toggle("visible", window.scrollY > threshold);
-            },
-            { passive: true },
-        );
-
-        btt.addEventListener("click", function (e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        document.querySelectorAll(".accomplishment").forEach((el, i) => {
-            el.style.animation = `fadeUp 0.4s ${0.05 + i * 0.06}s ease both`;
-        });
-    </script>
-</body>
-
+  </body>
 </html>
