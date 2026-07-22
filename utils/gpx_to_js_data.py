@@ -23,8 +23,8 @@ import re
 import sys
 import os
 
-gpx_path = r"S:\Downloads\First_Spartan_Beast_21k_Race_ (1).gpx"
-use_all_points = not True
+gpx_path = r"S:\Downloads\Mishigami_2026.gpx"
+use_all_points = False
 
 if not os.path.exists(gpx_path):
     print(f"Error: file not found: {gpx_path}", file=sys.stderr)
