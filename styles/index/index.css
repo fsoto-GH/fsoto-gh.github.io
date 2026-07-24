@@ -95,3 +95,42 @@
     border: 1px solid #854F0B;
     color: #fbbf24;
 }
+
+.blogs-links {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+#main .blogs-link-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    background-color: #202020;
+    text-decoration: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+#main .blogs-link-card:hover {
+    border-color: #4a4a4a;
+    background-color: #242424;
+}
+
+.blogs-link-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.86rem;
+    color: #f0f0f0;
+}
+
+.blogs-link-meta {
+    font-size: 0.66rem;
+    color: #8a8a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}

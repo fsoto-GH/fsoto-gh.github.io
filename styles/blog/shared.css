@@ -482,11 +482,20 @@ a {
     margin: 0;
 }
 
-.blog-photo-card img {
+.blog-photo-card img,
+.blog-photo-card video {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.blog-photo-card video:fullscreen,
+.blog-photo-card video:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
 }
 
 .blog-photo-card iframe {
@@ -509,10 +518,64 @@ a {
     line-height: 1.4;
 }
 
+.photo-credit {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.64rem;
+    color: #555555;
+    font-style: normal;
+    line-height: 1.35;
+}
+
+.photo-credit a {
+    color: #6f6f6f;
+    text-decoration: none;
+}
+
+.photo-credit a:hover {
+    color: #9a9a9a;
+    text-decoration: underline;
+}
+
 /* A: Full-width banner */
 .blog-photo-full img {
     max-height: 380px;
     object-fit: cover;
+}
+
+.blog-photo-full video {
+    max-height: 380px;
+    object-fit: cover;
+}
+
+/* Portrait media variant (9:16) */
+.blog-photo-portrait .blog-photo-card {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-photo-portrait .blog-photo-card video,
+.blog-photo-portrait .blog-photo-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    max-height: none;
+    object-fit: cover;
+}
+
+.blog-photo-portrait .blog-photo-caption {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-photo-portrait video:fullscreen,
+.blog-photo-portrait video:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
 }
 
 /* B: Inline left */
@@ -567,6 +630,23 @@ a {
     max-height: 220px;
 }
 
+.blog-photo-2col video:fullscreen,
+.blog-photo-2col video:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+/* Fine-tune crop focus for specific thumbnails */
+img.bike-focus-shift {
+    object-position: center 60%;
+}
+
+.bike-photo-stack-item + .bike-photo-stack-item {
+    margin-top: 0.8rem;
+}
+
 /* E: Three-up grid */
 .blog-photo-3col {
     display: grid;
@@ -579,8 +659,57 @@ a {
     margin: 0;
 }
 
-.blog-photo-3col img {
-    max-height: 180px;
+/* Keep 3-up captions outside the bordered media frame for consistency. */
+.blog-photo-3col .blog-photo-card {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+    transition: none;
+}
+
+.blog-photo-3col .blog-photo-card > a {
+    display: block;
+    aspect-ratio: 4 / 3;
+    background-color: #202020;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.blog-photo-3col .blog-photo-card:hover > a {
+    border-color: #444444;
+}
+
+.blog-photo-3col .blog-photo-card > a > img,
+.blog-photo-3col .blog-photo-card > a > video {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+}
+
+.blog-photo-3col .blog-photo-caption {
+    margin-top: 0.3rem;
+    font-size: 0.66rem;
+    line-height: 1.35;
+}
+
+.blog-photo-3col .photo-credit {
+    font-size: 0.58rem;
+}
+
+/* G: Finishers gallery (3-up desktop, 2-up mobile) */
+.blog-photo-finishers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 1.25rem 0;
+}
+
+.blog-photo-finishers .blog-photo-card {
+    margin: 0;
 }
 
 /* F: Hero left + stacked right */
@@ -634,6 +763,61 @@ a {
     float: right;
     width: 42%;
     margin: 0 0 0.75rem 1.25rem;
+}
+
+/* Compact two-up video block used in Reflections. */
+/* Add a media query so that small devices set width to 100% */
+.blog-photo-wrap .blog-photo-right.blog-photo-reflections-pair {
+    width: 55%;
+    max-width: 560px;
+}
+
+@media (max-width: 600px) {
+    .blog-photo-wrap .blog-photo-right.blog-photo-reflections-pair {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+
+.blog-photo-reflections-pair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.blog-photo-reflections-pair-grid .blog-photo-card {
+    margin: 0;
+}
+
+.blog-photo-reflections-pair-grid .blog-photo-card video {
+    aspect-ratio: 9 / 16;
+    max-height: none;
+}
+
+/* Instagram embed: wider column and darker container to fit page theme */
+.blog-photo-wrap .blog-photo-right.blog-instagram {
+    width: 50%;
+    max-width: 520px;
+}
+
+.blog-instagram .instagram-media,
+.blog-instagram iframe.instagram-media-rendered {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+}
+
+.blog-instagram .instagram-media {
+    background: #171717 !important;
+    border: 1px solid #2f2f2f !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+}
+
+.blog-instagram iframe.instagram-media-rendered {
+    border-radius: 10px;
+    margin: 0 !important;
 }
 
 .blog-photo-inline > p {
@@ -739,6 +923,10 @@ a {
     .blog-photo-3col,
     .blog-photo-hero-stack {
         grid-template-columns: 1fr;
+    }
+
+    .blog-photo-finishers {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .blog-photo-hero-stack .blog-photo-stack-col {

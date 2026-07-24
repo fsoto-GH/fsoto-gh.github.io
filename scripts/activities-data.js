@@ -6629,6 +6629,7 @@ const ACTIVITIES_DATA = {
   "mishigami-2026": {
     name: "Mishigami 2026",
     stravaUrl: "https://www.strava.com/activities/19324336853",
+    blogUrl: "pages/blog/mishigami-2026.html",
     tags: [
       { label: "cycling", cls: "accomplishment-tag-cycling" },
       { label: "race", cls: "accomplishment-tag-race" },
