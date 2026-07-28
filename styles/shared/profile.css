@@ -170,6 +170,7 @@
 
 @media (max-width: 1040px) {
     #contact {
+        height: auto;
         min-height: 100dvh;
     }
 
