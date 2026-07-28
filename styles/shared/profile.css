@@ -1,6 +1,7 @@
 /* Profile main */
 #contact {
-    height: 100%;
+    height: calc(100vh - var(--nav-bar-height));
+    height: calc(100dvh - var(--nav-bar-height));
     background-color: #202020;
     border-right: 1px solid #303030;
     display: flex;
@@ -142,10 +143,7 @@
 }
 
 #profile #profile-resume {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-items: flex-end;
+    display: block;
     width: 100%;
 }
 
@@ -156,6 +154,7 @@
 
 #profile .secondary-text {
     color: #cccccc;
+    overflow-wrap: anywhere;
 }
 
 #profile h4,
