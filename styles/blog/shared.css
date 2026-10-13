@@ -91,6 +91,24 @@ a {
     text-align: right;
 }
 
+/* Compact appendix-style lists rendered as tables */
+.blog-table-list {
+    margin: 0.6rem 0 1.25rem;
+}
+
+.blog-table-list td {
+    vertical-align: top;
+}
+
+.blog-table-list td:first-child {
+    color: #ffffff;
+}
+
+.blog-table .col-fit {
+    width: 1%;
+    white-space: nowrap;
+}
+
 /* ── Page layout ─────────────────────────────────────────────────────────── */
 #blog-main {
     max-width: 760px;
@@ -213,6 +231,10 @@ a {
 
 .blog-stat:last-child {
     border-right: none;
+}
+
+.blog-stats-5 {
+    grid-template-columns: repeat(5, 1fr);
 }
 
 /* .accomplishment-stat-val */
@@ -390,6 +412,19 @@ a {
     color: #888;
     margin-right: 3px;
     vertical-align: middle;
+    line-height: 1.75;
+    overflow: hidden;
+}
+
+/* Race placing as the second segment of a mile chip */
+.mi-pos {
+    display: flex;
+    align-items: center;
+    margin: -2px -7px -2px 7px;
+    padding: 0 7px;
+    background-color: #0f2a22;
+    border-left: 1px solid #1b3a2f;
+    color: #5DCAA5;
 }
 
 /* ── Pull quote ──────────────────────────────────────────────────────────── */
@@ -407,6 +442,44 @@ a {
     font-weight: 350 !important;
     color: #ffffff !important;
     padding-top: 0 !important;
+}
+
+/* ── Jersey mantra ──────────────────────────────────────────────────────── */
+.blog-mantra {
+    border-left: 2px solid #555555;
+    margin: 1.4rem 0;
+    padding: 0.25rem 0 0.25rem 1.1rem;
+}
+
+.blog-mantra p {
+    padding-top: 0;
+    color: #888888;
+    font-family: "Noto Sans", serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.55;
+    text-transform: uppercase;
+}
+
+.blog-mantra .mantra-stanza + .mantra-stanza,
+.blog-mantra .mantra-emphasis {
+    margin-top: 0.85rem;
+}
+
+.blog-mantra .mantra-emphasis {
+    color: #cccccc;
+    font-weight: 700;
+}
+
+.blog-mantra cite {
+    display: block;
+    margin-top: 0.85rem;
+    color: #666666;
+    font-family: "Noto Sans", serif;
+    font-size: 0.65rem;
+    font-style: normal;
+    line-height: 1.4;
+    text-transform: uppercase;
 }
 
 /* ── Learnings list ──────────────────────────────────────────────────────── */
@@ -591,6 +664,13 @@ a {
     max-height: 260px;
 }
 
+.blog-photo-left img.blog-photo-natural,
+.blog-photo-right img.blog-photo-natural {
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+}
+
 .blog-photo-clearfix::after {
     content: '';
     display: table;
@@ -765,32 +845,37 @@ img.bike-focus-shift {
     margin: 0 0 0.75rem 1.25rem;
 }
 
-/* Compact two-up video block used in Reflections. */
+/* Compact two-up video block used in Reflections and DPRT. */
 /* Add a media query so that small devices set width to 100% */
-.blog-photo-wrap .blog-photo-right.blog-photo-reflections-pair {
+.blog-photo-wrap .blog-photo-right.blog-photo-reflections-pair,
+.blog-photo-wrap .blog-photo-right.blog-photo-pair {
     width: 55%;
     max-width: 560px;
 }
 
 @media (max-width: 600px) {
-    .blog-photo-wrap .blog-photo-right.blog-photo-reflections-pair {
+    .blog-photo-wrap .blog-photo-right.blog-photo-reflections-pair,
+    .blog-photo-wrap .blog-photo-right.blog-photo-pair {
         width: 100%;
         max-width: none;
     }
 }
 
 
-.blog-photo-reflections-pair-grid {
+.blog-photo-reflections-pair-grid,
+.blog-photo-pair-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 
-.blog-photo-reflections-pair-grid .blog-photo-card {
+.blog-photo-reflections-pair-grid .blog-photo-card,
+.blog-photo-pair-grid .blog-photo-card {
     margin: 0;
 }
 
-.blog-photo-reflections-pair-grid .blog-photo-card video {
+.blog-photo-reflections-pair-grid .blog-photo-card video,
+.blog-photo-pair-grid .blog-photo-card video {
     aspect-ratio: 9 / 16;
     max-height: none;
 }
@@ -837,6 +922,14 @@ img.bike-focus-shift {
 }
 
 .blog-photo-inline .blog-photo-left {
+    grid-column: 1;
+}
+
+.blog-photo-inline-copy {
+    grid-column: 2;
+}
+
+.blog-photo-inline:has(.blog-photo-right) .blog-photo-inline-copy {
     grid-column: 1;
 }
 
@@ -896,6 +989,11 @@ img.bike-focus-shift {
 
     .blog-stat:nth-child(3),
     .blog-stat:nth-child(4) {
+        border-top: 1px solid #303030;
+    }
+
+    .blog-stats-5 .blog-stat:nth-child(5) {
+        grid-column: 1 / -1;
         border-top: 1px solid #303030;
     }
 
