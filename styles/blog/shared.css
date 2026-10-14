@@ -620,6 +620,20 @@ a {
     object-fit: cover;
 }
 
+.blog-photo-full img.blog-photo-natural {
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+}
+
+.blog-photo-full img.blog-photo-2x1 {
+    height: auto;
+    max-height: none;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    object-position: center;
+}
+
 .blog-photo-full video {
     max-height: 380px;
     object-fit: cover;
@@ -840,6 +854,15 @@ img.bike-focus-shift {
     margin-top: 0.3rem;
     font-size: 0.66rem;
     line-height: 1.35;
+}
+
+.blog-photo-3col.blog-photo-portrait-row .blog-photo-card > a {
+    aspect-ratio: 9 / 16;
+}
+
+.blog-photo-3col.blog-photo-portrait-row .blog-photo-card > video {
+    height: auto;
+    aspect-ratio: 9 / 16;
 }
 
 .blog-photo-3col .photo-credit {
