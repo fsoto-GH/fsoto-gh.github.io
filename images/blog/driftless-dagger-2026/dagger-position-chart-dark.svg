@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="284" viewBox="0 0 680 284" role="img" aria-labelledby="pos-title pos-desc" font-family="Noto Sans, sans-serif">
   <title id="pos-title">My position over the Driftless Dagger</title>
-  <desc id="pos-desc">Step chart of race position by mile. 9th at the start, 7th by mile 30, back to 8th at mile 50, 7th at Dubuque, then climbing through 6th, 5th, and 4th to a peak of 3rd at Hokah at mile 295. Zeno passes at mile 329, Jesse at mile 380, then the author passes Jesse again around mile 464 and finishes 4th.</desc>
+  <desc id="pos-desc">Step chart of race position by mile. 9th at the start, 7th by mile 30, back to 8th at mile 50, 7th at Dubuque, then climbing through 6th, 5th, and 4th to a peak of 3rd at Hokah at mile 295. Zeno passes at mile 329, Jesse at mile 380, then the author passes Jesse again around mile 468 and finishes 4th.</desc>
   <style>
     .t { fill: #f2f2f2; }
     .s { fill: #b8b8b8; }
@@ -40,7 +40,7 @@
     <text x="587.4" y="246">500</text>
   </g>
   <text x="640" y="246" text-anchor="end" font-size="13" class="m">Miles</text>
-  <path d="M50 220 H65 V200 H82.2 V180 H103.7 V200 H195.1 V180 H316.5 V160 H321.9 V140 H350.9 V120 H367 V100 H403.6 V120 H458.4 V140 H548.7 V120 H639.8" fill="none" stroke="#5DCAA5" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+  <path d="M50 220 H65 V200 H82.2 V180 H103.7 V200 H195.1 V180 H316.5 V160 H321.9 V140 H350.9 V120 H367 V100 H403.6 V120 H458.4 V140 H553 V120 H639.8" fill="none" stroke="#5DCAA5" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
   <line x1="173.6" y1="200" x2="173.6" y2="228" stroke="#858585" stroke-dasharray="2 3" />
   <circle cx="173.6" cy="200" r="4.5" fill="#202020" stroke="#b8b8b8" stroke-width="1.5" />
   <text x="173.6" y="270" text-anchor="middle" font-size="13" class="s">Fence detour, mile ~115</text>
@@ -50,7 +50,7 @@
   <text x="367" y="86" text-anchor="middle" font-size="13" font-weight="500" class="t">3rd at Hokah, mile 295</text>
   <text x="409" y="112" font-size="13" class="s">Zeno passes</text>
   <text x="464" y="132" font-size="13" class="s">Jesse passes</text>
-  <text x="548" y="156" text-anchor="end" font-size="13" class="s">Pass Jesse again</text>
+  <text x="552" y="156" text-anchor="end" font-size="13" class="s">Pass Jesse again</text>
   <circle cx="639.8" cy="120" r="5.5" fill="#5DCAA5" />
   <text x="650" y="108" text-anchor="end" font-size="13" font-weight="500" class="t">Finish, 4th</text>
 </svg>

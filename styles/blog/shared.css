@@ -492,6 +492,10 @@ a {
     border-bottom: none;
 }
 
+.learning:has(+ h3) {
+    border-bottom: none;
+}
+
 /* Title — .accomplishment-stat-val scale */
 .learning-title {
     font-family: "Lexend", sans-serif;
@@ -619,6 +623,68 @@ a {
 .blog-photo-full video {
     max-height: 380px;
     object-fit: cover;
+}
+
+/* Self-framed SVG charts: the image already draws its own background and border. */
+.blog-photo-card.blog-photo-chart,
+.blog-photo-card.blog-photo-chart:hover {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.blog-photo-card.blog-photo-chart img {
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+}
+
+/* Inline charts inherit the page fonts; colors follow the prose palette. */
+.blog-photo-card.blog-photo-chart svg {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* The viewBox is 680 wide, so rem text is 1:1 at max-width and shrinks with the chart below it. */
+.blog-chart text {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 350;
+}
+
+.blog-chart .chart-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+}
+
+.blog-chart .chart-em {
+    font-weight: 500;
+}
+
+.blog-chart .chart-t {
+    fill: #cccccc;
+}
+
+.blog-chart .chart-s {
+    fill: #aaaaaa;
+}
+
+.blog-chart .chart-m {
+    fill: #888888;
+}
+
+.blog-chart .chart-g {
+    stroke: #383838;
+}
+
+.blog-chart .chart-ax,
+.blog-chart .chart-ln {
+    stroke: #5f5f5f;
 }
 
 /* Portrait media variant (9:16) */
