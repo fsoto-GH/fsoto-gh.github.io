@@ -827,6 +827,10 @@ img.bike-focus-shift {
     margin-top: 1rem;
 }
 
+.blog-photo-inline-mantra {
+    align-items: center;
+}
+
 /* ── Float photo wrapper (multiple paragraphs wrap around image) */
 .blog-photo-wrap {
     margin-top: 1rem;
@@ -952,6 +956,10 @@ img.bike-focus-shift {
         flex-direction: column;
     }
 
+    .blog-photo-inline-mantra {
+        align-items: stretch;
+    }
+
     .blog-photo-inline .blog-photo-left,
     .blog-photo-inline .blog-photo-right {
         margin-top: 1rem;
@@ -968,6 +976,14 @@ img.bike-focus-shift {
         float: none;
         width: 100%;
         margin: 1rem 0;
+        order: 2;
+    }
+
+    .blog-photo-inline-mantra .blog-photo-inline-copy {
+        order: 1;
+    }
+
+    .blog-photo-inline-mantra .blog-photo-right {
         order: 2;
     }
 
