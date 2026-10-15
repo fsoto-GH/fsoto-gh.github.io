@@ -3,7 +3,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   /* FancyBox */
   if (typeof Fancybox !== "undefined") {
-    Fancybox.bind("[data-fancybox]");
+    // iOS: toggling body overflow and restoring focus on close can stall momentum scrolling.
+    Fancybox.bind("[data-fancybox]", {
+      hideScrollbar: false,
+      placeFocusBack: false,
+      Hash: false,
+    });
   }
 
   /* Reading progress */
