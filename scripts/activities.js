@@ -238,7 +238,7 @@
     });
 
     L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?api_key=cb1_4ok2_1_aa2315c0beafffec0ac9e730",
+      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=cb1_4ok2_1_aa2315c0beafffec0ac9e730",
       { maxZoom: 19 },
     ).addTo(map);
 

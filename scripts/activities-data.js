@@ -7783,7 +7783,8 @@ const ACTIVITIES_DATA = {
     stravaUrl: "https://www.strava.com/activities/20459123854",
     tags: [
       // cls options: accomplishment-tag-cycling | accomplishment-tag-run | accomplishment-tag-race
-      { label: "cycling", cls: "accomplishment-tag-race" },
+      { label: "cycling", cls: "accomplishment-tag-cycling" },
+      { label: "race", cls: "accomplishment-tag-race" },
     ],
     color: "#1D9E75", // teal=cycling, blue=#378ADD running, red=#A32D2D race
     mapBg: "#0b2e22", // dark teal=cycling, #0a1a2a=running, #0d0a0a=race
