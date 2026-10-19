@@ -23,8 +23,10 @@ import re
 import sys
 import os
 
-gpx_path = r"S:\Downloads\Mishigami_2026.gpx"
+gpx_path = r"S:\Downloads\portfolio_update\18th_Street_Bridge_Everesting_Take_T_w_o_Three_.gpx"
 use_all_points = False
+name = "Everest 2026"
+activity_id = 20136170041
 
 if not os.path.exists(gpx_path):
     print(f"Error: file not found: {gpx_path}", file=sys.stderr)
@@ -75,15 +77,12 @@ def fmt(arr):
 # ── Derive a default ID from the filename ──────────────────────────────────
 
 basename = os.path.splitext(os.path.basename(gpx_path))[0]
-# lowercase, replace spaces/underscores/hyphens with single hyphen
-activity_id = re.sub(r"[\s_]+", "-", basename.lower())
-activity_id = re.sub(r"-+", "-", activity_id).strip("-")
 
 # ── Print entry ────────────────────────────────────────────────────────────
 
 entry = f"""  "{activity_id}": {{
-    name: "YOUR NAME",
-    stravaUrl: "https://www.strava.com/activities/YOUR_ACTIVITY_ID",
+    name: "{name}",
+    stravaUrl: "https://www.strava.com/activities/{activity_id}",
     tags: [
       // cls options: accomplishment-tag-cycling | accomplishment-tag-run | accomplishment-tag-race
       {{ label: "cycling", cls: "accomplishment-tag-cycling" }},
@@ -92,9 +91,9 @@ entry = f"""  "{activity_id}": {{
     mapBg: "#0b2e22",       // dark teal=cycling, #0a1a2a=running, #0d0a0a=race
     startColor: "#5DCAA5",  // teal=cycling, #60a5fa=running, #FC4C02=race
     actStats: [
-      {{ val: "YOUR VAL", label: "distance"     }},
-      {{ val: "YOUR VAL", label: "elapsed time" }},
-      {{ val: "YOUR VAL", label: "avg pace"     }},
+      {{ val: "200.03 mi", label: "distance"     }},
+      {{ val: "22:35:13", label: "elapsed time" }},
+      {{ val: "29,327 ft", label: "elevation gain"     }},
     ],
     points: {{
       overview: {fmt(t_overview)},
