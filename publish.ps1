@@ -129,13 +129,19 @@ foreach ($target in $targets) {
     Write-Host "==> Updating $TargetIndex ..." -ForegroundColor Cyan
     $html = Get-Content $TargetIndex -Raw -Encoding UTF8
 
+    $regionPattern = '(?s)[ \t]*<!-- #region React/Vite Build Stuff -->.*?<!-- #endregion -->'
+    $regionCount = [regex]::Matches($html, $regionPattern).Count
+    if ($regionCount -ne 1) {
+        throw "Expected exactly one React/Vite Build Stuff region in $TargetIndex; found $regionCount"
+    }
+
     $regionBlock = @(
         "    <!-- #region React/Vite Build Stuff -->"
         $rewrittenTags
         "    <!-- #endregion -->"
     ) -join "`n"
 
-    $html = $html -replace '(?s)[ \t]*<!-- #region React/Vite Build Stuff -->.*?<!-- #endregion -->', $regionBlock
+    $html = $html -replace $regionPattern, $regionBlock
     Set-Content $TargetIndex -Value $html -Encoding UTF8 -NoNewline
     Write-Host "==> index.html updated." -ForegroundColor Green
 
