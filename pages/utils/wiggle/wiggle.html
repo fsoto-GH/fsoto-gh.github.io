@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen Wake Lock Demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; }
+    button { padding: 0.75rem 1.25rem; font-size: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <button id="toggleBtn">Enable Wake Lock</button>
+  <p id="status">Status: Screen can sleep normally.</p>
+
+  <script>
+    let wakeLock = null;
+    const toggleBtn = document.getElementById('toggleBtn');
+    const statusText = document.getElementById('status');
+
+    // Request the wake lock
+    async function requestWakeLock() {
+      try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        statusText.textContent = 'Status: Screen is locked awake.';
+        toggleBtn.textContent = 'Disable Wake Lock';
+
+        // Listen for when the system releases the lock (e.g., switching tabs)
+        wakeLock.addEventListener('release', () => {
+          statusText.textContent = 'Status: Wake lock was released.';
+          toggleBtn.textContent = 'Enable Wake Lock';
+        });
+      } catch (err) {
+        statusText.textContent = `Error: ${err.name} - ${err.message}`;
+      }
+    }
+
+    // Toggle button handler
+    toggleBtn.addEventListener('click', async () => {
+      if (wakeLock !== null && !wakeLock.released) {
+        await wakeLock.release();
+        wakeLock = null;
+      } else {
+        await requestWakeLock();
+      }
+    });
+
+    // Re-acquire the wake lock automatically when returning to the tab
+    document.addEventListener('visibilitychange', async () => {
+      if (wakeLock !== null && document.visibilityState === 'visible') {
+		console.info("Reacquired wake lock");
+        await requestWakeLock();
+      }
+    });
+  </script>
+
+</body>
+</html>
