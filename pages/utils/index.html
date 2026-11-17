@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Utilities | Fernando J. Soto</title>
+    <meta name="description" content="A collection of small browser utilities, including Wiggle, a screen wake lock.">
+    <link rel="canonical" href="https://fsoto-gh.github.io/pages/utils/">
+
+    <meta property="og:title" content="Utilities | Fernando J. Soto">
+    <meta property="og:description" content="A collection of small browser utilities, including Wiggle, a screen wake lock.">
+    <meta property="og:url" content="https://fsoto-gh.github.io/pages/utils/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Fernando J. Soto">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://fsoto-gh.github.io/images/prof-selfie.png">
+    <meta property="og:image:alt" content="Fernando J. Soto, software engineer based in Chicago.">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="../../favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/shared/content.css">
+    <style>
+        .utils-main {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .utils-home {
+            color: #5DCAA5;
+            text-decoration: none;
+        }
+
+        .utils-home:hover {
+            text-decoration: underline;
+        }
+
+        .utils-main h1, .util-card h2 {
+            font-family: "Lexend", sans-serif;
+        }
+
+        .utils-main h1 {
+            margin: 2rem 0 0.5rem;
+        }
+
+        .utils-intro, .util-card p {
+            color: #aaaaaa;
+            line-height: 1.65;
+        }
+
+        .utils-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .util-card {
+            background: #202020;
+            border: 1px solid #303030;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .util-card h2 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .util-card button {
+            margin-top: 1.25rem;
+            padding: 0.75rem 1.25rem;
+            border: 0;
+            border-radius: 6px;
+            background: #5DCAA5;
+            color: #181818;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .util-card button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .util-card button:focus-visible, .utils-home:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        .util-card .util-status {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="utils-main">
+        <a class="utils-home" href="../../index.html">&larr; Portfolio</a>
+        <h1>Utilities</h1>
+        <p class="utils-intro">Small tools for everyday tasks, right in your browser.</p>
+
+        <section class="utils-grid" aria-label="Utilities">
+            <article class="util-card" id="wiggle">
+                <h2>Wiggle</h2>
+                <p>Keep your screen awake while this page is visible.</p>
+                <button id="toggleBtn" type="button">Enable Wake Lock</button>
+                <p id="status" class="util-status" role="status">Status: Screen can sleep normally.</p>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        let wakeLock = null;
+        const toggleBtn = document.getElementById('toggleBtn');
+        const statusText = document.getElementById('status');
+
+        async function requestWakeLock() {
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                statusText.textContent = 'Status: Screen is locked awake.';
+                toggleBtn.textContent = 'Disable Wake Lock';
+                wakeLock.addEventListener('release', () => {
+                    statusText.textContent = 'Status: Wake lock was released.';
+                    toggleBtn.textContent = 'Enable Wake Lock';
+                });
+            } catch (err) {
+                statusText.textContent = `Error: ${err.name} - ${err.message}`;
+            }
+        }
+
+        if (!('wakeLock' in navigator)) {
+            toggleBtn.disabled = true;
+            statusText.textContent = 'Status: Screen wake lock is not supported in this browser or context.';
+        } else {
+            toggleBtn.addEventListener('click', async () => {
+                toggleBtn.disabled = true;
+                try {
+                    if (wakeLock !== null && !wakeLock.released) {
+                        await wakeLock.release();
+                        wakeLock = null;
+                    } else {
+                        await requestWakeLock();
+                    }
+                } catch (err) {
+                    statusText.textContent = `Error: ${err.name} - ${err.message}`;
+                } finally {
+                    toggleBtn.disabled = false;
+                }
+            });
+
+            document.addEventListener('visibilitychange', async () => {
+                if (wakeLock !== null && wakeLock.released && document.visibilityState === 'visible') {
+                    await requestWakeLock();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
